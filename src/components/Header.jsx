@@ -23,7 +23,7 @@ export default function Header() {
     <header className={`fixed inset-x-0 top-0 z-50 text-[#E8E8E4] transition-all duration-500 ${solid ? "border-b border-[rgba(232,232,228,.16)] bg-[#15181C]/90 backdrop-blur-md" : ""}`}>
       <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-3 px-4 py-4 sm:px-6 md:px-12 md:py-5">
         <a href="#top" className="inline-flex min-w-0 items-center gap-2 text-base font-bold tracking-tight sm:text-lg">
-          <img src="./assets/logo-mark.png" alt="" className="h-8 w-8 shrink-0 object-contain" />
+          <img src="./assets/logo1-transparent.png" alt="" className="h-8 w-10 shrink-0 object-contain object-left sm:h-9 sm:w-12" />
           <span>NickolasSpace</span>
         </a>
         <nav className="hidden gap-9 text-[15px] md:flex">
