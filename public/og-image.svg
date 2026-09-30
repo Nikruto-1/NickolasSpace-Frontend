@@ -1,0 +1,11 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#15181C"/>
+  <rect x="48" y="48" width="1104" height="534" rx="36" fill="#1E2329"/>
+  <path d="M272 356V184H315L420 297V184H476V356H433L328 243V356H272Z" fill="#E8E8E4"/>
+  <path d="M427 356C400 356 378 349 361 336L389 294C402 304 416 310 430 310H480C492 310 499 304 499 296C499 287 492 282 479 282H430C393 282 370 262 370 232C370 199 397 178 439 178H528L502 223H440C430 223 423 228 423 236C423 245 431 249 443 249H491C529 249 553 269 553 300C553 334 525 356 482 356H427Z" fill="#E8E8E4"/>
+  <path d="M232 338C293 269 390 228 536 196" stroke="#8A9BAA" stroke-width="14" stroke-linecap="round"/>
+  <path d="M242 340C304 395 447 371 553 263" stroke="#8A9BAA" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="550" cy="260" r="18" fill="#8A9BAA"/>
+  <text x="626" y="284" fill="#E8E8E4" font-family="Bricolage Grotesque, Inter, Arial, sans-serif" font-size="74" font-weight="700" letter-spacing="0">NickolasSpace</text>
+  <text x="630" y="342" fill="#8A9BAA" font-family="Bricolage Grotesque, Inter, Arial, sans-serif" font-size="28" font-weight="400" letter-spacing="0">Websites, automation and digital systems</text>
+</svg>

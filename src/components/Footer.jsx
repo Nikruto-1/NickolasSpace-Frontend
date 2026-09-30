@@ -24,7 +24,12 @@ export default function Footer() {
     <footer id="contact" className="bg-ink">
       <div className="mx-auto grid max-w-[1400px] gap-12 px-6 py-20 md:grid-cols-4 md:px-12">
         <div className="md:col-span-2">
-          <p className="text-2xl font-bold tracking-tight">NickolasSpace</p>
+          <a href="#top" className="inline-flex items-center gap-4">
+            <span className="flex h-12 w-12 items-center justify-center border border-[rgba(232,232,228,.18)] bg-[#1E2329]">
+              <img src="./favicon.svg" alt="" className="h-9 w-9" />
+            </span>
+            <span className="text-2xl font-bold tracking-tight">NickolasSpace</span>
+          </a>
           <p className="mt-3 max-w-xs text-paper/60">{t.footer.tagline}</p>
         </div>
         <nav className={colClass}>
