@@ -1,0 +1,159 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #15181c;
+  --ink2: #1e2329;
+  --paper: #e8e8e4;
+  --mist: #8a9baa;
+  --line: rgba(232, 232, 228, 0.16);
+  --lineDark: rgba(21, 24, 28, 0.16);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.bg-ink {
+  background: var(--ink);
+}
+
+.bg-ink2 {
+  background: var(--ink2);
+}
+
+.bg-paper {
+  background: var(--paper);
+}
+
+.text-ink {
+  color: var(--ink);
+}
+
+.text-paper {
+  color: var(--paper);
+}
+
+.text-mist {
+  color: var(--mist);
+}
+
+.bd {
+  border-color: var(--line);
+}
+
+.bdd {
+  border-color: var(--lineDark);
+}
+
+.display {
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 0.98;
+}
+
+.hero-title {
+  font-size: clamp(2.65rem, 7vw, 7rem);
+  line-height: 0.96;
+}
+
+@media (max-height: 760px) and (min-width: 768px) {
+  .hero-title {
+    font-size: clamp(2.5rem, 6vw, 5.8rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: clamp(2.45rem, 13vw, 4.25rem);
+  }
+}
+
+.mask {
+  overflow: hidden;
+  display: block;
+  padding-bottom: 0.08em;
+}
+
+.rise {
+  display: block;
+  transform: translateY(105%);
+  animation: rise 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.tabfade {
+  opacity: 0;
+  animation: fade 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--mist);
+  outline-offset: 3px;
+}
+
+@keyframes rise {
+  to {
+    transform: none;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes drop {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+
+  51% {
+    transform-origin: bottom;
+  }
+
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .rise,
+  .tabfade {
+    animation: none;
+    transform: none;
+    opacity: 1;
+  }
+
+  video {
+    display: none;
+  }
+}
