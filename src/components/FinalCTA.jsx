@@ -1,6 +1,6 @@
 import { ASSETS } from "../constants.js";
 import useLanguage from "../i18n/useLanguage.js";
-import Button from "./shared/Button.jsx";
+import ContactButton from "./contact/ContactButton.jsx";
 import Video from "./shared/Video.jsx";
 
 export default function FinalCTA() {
@@ -18,7 +18,7 @@ export default function FinalCTA() {
         </h2>
         <p className="mt-8 max-w-lg text-lg text-paper/80 md:text-xl">{t.cta.text}</p>
         <div className="mt-10 flex flex-wrap gap-3">
-          <Button href="mailto:kkosmacevskij@gmail.com">{t.cta.primary}</Button>
+          <ContactButton>{t.cta.primary}</ContactButton>
         </div>
       </div>
     </section>

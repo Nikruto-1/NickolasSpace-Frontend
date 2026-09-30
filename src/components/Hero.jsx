@@ -1,5 +1,6 @@
 import { ASSETS } from "../constants.js";
 import useLanguage from "../i18n/useLanguage.js";
+import ContactButton from "./contact/ContactButton.jsx";
 import Button from "./shared/Button.jsx";
 import Video from "./shared/Video.jsx";
 
@@ -24,7 +25,7 @@ export default function Hero() {
           <div className="tabfade max-w-md" style={{ animationDelay: "1s" }}>
             <p className="text-lg text-paper/80 md:text-xl">{t.hero.text}</p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button href="#contact">{t.hero.primary}</Button>
+              <ContactButton>{t.hero.primary}</ContactButton>
               <Button href="#services" variant="ghost">
                 {t.hero.secondary}
               </Button>

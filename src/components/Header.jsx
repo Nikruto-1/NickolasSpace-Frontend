@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { languages } from "../i18n/translations.js";
 import useLanguage from "../i18n/useLanguage.js";
+import ContactButton from "./contact/ContactButton.jsx";
 
 export default function Header() {
   const [solid, setSolid] = useState(false);
@@ -48,11 +49,11 @@ export default function Header() {
               </button>
             ))}
           </div>
-          <a href="#contact" className="inline-flex items-center justify-center border border-[rgba(232,232,228,.4)] px-3 py-2 text-sm font-semibold text-[#E8E8E4] transition-colors hover:bg-[#E8E8E4] hover:text-[#15181C] sm:px-5">
+          <ContactButton className="border border-[rgba(232,232,228,.4)] !bg-transparent !px-3 !py-2 text-sm !text-[#E8E8E4] hover:!bg-[#E8E8E4] hover:!text-[#15181C] sm:!px-5">
             <span className="hidden sm:inline">{t.nav.start}</span>
             <span className="sm:hidden" aria-hidden="true">↗</span>
             <span className="sr-only sm:hidden">{t.nav.start}</span>
-          </a>
+          </ContactButton>
         </div>
       </div>
     </header>

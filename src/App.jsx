@@ -8,10 +8,11 @@ import HowWeWork from "./components/HowWeWork.jsx";
 import IntroStatement from "./components/IntroStatement.jsx";
 import SelectedWork from "./components/SelectedWork.jsx";
 import Services from "./components/Services.jsx";
+import { ContactModalProvider } from "./components/contact/ContactModalContext.jsx";
 
 export default function App() {
   return (
-    <>
+    <ContactModalProvider>
       <Header />
       <main>
         <Hero />
@@ -24,6 +25,6 @@ export default function App() {
         <FinalCTA />
       </main>
       <Footer />
-    </>
+    </ContactModalProvider>
   );
 }

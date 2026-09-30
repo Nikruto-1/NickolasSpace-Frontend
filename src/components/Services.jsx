@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useLanguage from "../i18n/useLanguage.js";
+import ContactButton from "./contact/ContactButton.jsx";
 
 const serviceCardLayout = [
   "xl:basis-[32%]",
@@ -23,13 +24,10 @@ export default function Services() {
           <div>
             <h2 className="display max-w-xl text-[clamp(2.6rem,5.7vw,5.25rem)] leading-[0.92] text-paper">{t.services.title}</h2>
           </div>
-          <a
-            href="#contact"
-            className="group inline-flex w-fit items-center border border-[rgba(232,232,228,.4)] bg-[#E8E8E4] px-6 py-3.5 text-[15px] font-semibold text-[#15181C] transition-colors hover:bg-transparent hover:text-[#E8E8E4]"
-          >
+          <ContactButton className="group w-fit border border-[rgba(232,232,228,.4)] !px-6 !py-3.5 transition-colors hover:!bg-transparent hover:!text-[#E8E8E4]">
             {t.nav.start}
             <span className="ml-5 text-3xl leading-none transition-transform group-hover:translate-x-1">↗</span>
-          </a>
+          </ContactButton>
         </div>
 
         <div>
@@ -75,14 +73,13 @@ export default function Services() {
                 <h3 className="text-2xl font-semibold tracking-tight text-[#E8E8E4] transition-colors group-hover:text-[#15181C] md:text-3xl">{service}</h3>
               </div>
             ))}
-            <a
-              href="#contact"
-              className="tabfade group flex min-h-[118px] grow basis-full items-center justify-between border bd bg-transparent p-5 text-[#E8E8E4] transition-colors hover:bg-[#E8E8E4] hover:text-[#15181C] sm:col-span-2 xl:basis-[48%]"
+            <ContactButton
+              className="tabfade group flex min-h-[118px] grow basis-full items-center justify-between border bd !bg-transparent !p-5 text-left !text-[#E8E8E4] transition-colors hover:!bg-[#E8E8E4] hover:!text-[#15181C] sm:col-span-2 xl:basis-[48%]"
               style={{ animationDelay: `${tab.items.length * 60}ms` }}
             >
               <span className="text-2xl font-semibold tracking-tight md:text-3xl">{t.services.more}</span>
               <span className="ml-6 text-5xl font-normal leading-none transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
-            </a>
+            </ContactButton>
           </div>
         </div>
       </div>

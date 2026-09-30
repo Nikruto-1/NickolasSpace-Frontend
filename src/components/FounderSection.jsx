@@ -1,5 +1,6 @@
 import { ASSETS } from "../constants.js";
 import useLanguage from "../i18n/useLanguage.js";
+import ContactButton from "./contact/ContactButton.jsx";
 
 export default function FounderSection() {
   const { t } = useLanguage();
@@ -24,9 +25,9 @@ export default function FounderSection() {
             <p>{t.founder.quote1}</p>
             <p>{t.founder.quote2}</p>
           </blockquote>
-          <a href="#contact" className="mt-12 inline-block bg-ink px-7 py-3.5 text-[15px] font-semibold text-paper transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#2A323A]">
+          <ContactButton className="mt-12 !bg-ink !text-paper hover:!bg-[#2A323A]">
             {t.founder.cta}
-          </a>
+          </ContactButton>
         </div>
       </div>
     </section>

@@ -84,6 +84,14 @@ export const translations = {
       email: "Email",
       privacy: "Privacy Policy",
     },
+    contactModal: {
+      eyebrow: "Contact",
+      title: "Choose where to message us.",
+      text: "For now, the fastest way to discuss a project is Instagram or Telegram. Pick the channel that works best for you.",
+      instagram: "Instagram",
+      telegram: "Telegram",
+      close: "Close contact options",
+    },
   },
   uk: {
     nav: {
@@ -164,6 +172,14 @@ export const translations = {
       email: "Email",
       privacy: "Політика конфіденційності",
     },
+    contactModal: {
+      eyebrow: "Контакти",
+      title: "Оберіть, де вам зручніше написати.",
+      text: "Поки що найшвидше обговорити проєкт можна в Instagram або Telegram. Оберіть зручний для вас канал.",
+      instagram: "Instagram",
+      telegram: "Telegram",
+      close: "Закрити варіанти контакту",
+    },
   },
   sv: {
     nav: {
@@ -243,6 +259,14 @@ export const translations = {
       tagline: "Digitala system byggda runt verkliga företag.",
       email: "E-post",
       privacy: "Integritetspolicy",
+    },
+    contactModal: {
+      eyebrow: "Kontakt",
+      title: "Välj var du vill skriva till oss.",
+      text: "Just nu är Instagram eller Telegram det snabbaste sättet att prata om ett projekt. Välj den kanal som passar dig bäst.",
+      instagram: "Instagram",
+      telegram: "Telegram",
+      close: "Stäng kontaktalternativ",
     },
   },
 };
