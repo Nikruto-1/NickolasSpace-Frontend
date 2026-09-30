@@ -9,7 +9,7 @@ export default function Hero() {
 
   return (
     <section id="top" className="relative flex min-h-screen min-h-[100svh] items-end overflow-hidden bg-ink">
-      <Video src={ASSETS.hero} poster="./assets/hero.jpg" />
+      <Video src={ASSETS.hero} />
       <div className="absolute inset-0 bg-gradient-to-t from-[#15181C] via-[#15181C]/55 to-[#15181C]/40" />
       <div className="relative mx-auto w-full max-w-[1400px] px-6 pb-10 pt-32 sm:pb-14 md:px-12 md:pb-16 lg:pb-20">
         <h1 className="hero-title display">
