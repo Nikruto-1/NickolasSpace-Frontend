@@ -33,7 +33,20 @@ export default function Services() {
         </div>
 
         <div>
-          <div role="tablist" className="flex flex-wrap gap-3">
+          <select
+            value={tabIndex}
+            onChange={(event) => setTabIndex(Number(event.target.value))}
+            className="w-full border border-[rgba(232,232,228,.28)] bg-[#15181C] px-4 py-4 text-base font-semibold text-[#E8E8E4] outline-none md:hidden"
+            aria-label={t.nav.services}
+          >
+            {groups.map((item, index) => (
+              <option key={item.name} value={index}>
+                {item.name}
+              </option>
+            ))}
+          </select>
+
+          <div role="tablist" className="hidden flex-wrap gap-3 md:flex">
             {groups.map((item, index) => (
               <button
                 key={item.name}
