@@ -19,9 +19,6 @@ export default function FinalCTA() {
         <p className="mt-8 max-w-lg text-lg text-paper/80 md:text-xl">{t.cta.text}</p>
         <div className="mt-10 flex flex-wrap gap-3">
           <Button href="mailto:kkosmacevskij@gmail.com">{t.cta.primary}</Button>
-          <Button href="#contact" variant="ghost">
-            {t.cta.secondary}
-          </Button>
         </div>
       </div>
     </section>
