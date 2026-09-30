@@ -5,12 +5,34 @@ import { ContactModalContext } from "./contactModalCore.js";
 const contactLinks = [
   { key: "instagram", href: "https://www.instagram.com/nickolas_space/" },
   { key: "telegram", href: "https://t.me/nickolas_space" },
-  { key: "email", href: "mailto:kkosmacevskij@gmail.com", detail: "kkosmacevskij@gmail.com" },
+  { key: "email", detail: "kkosmacevskij@gmail.com" },
 ];
 
 export function ContactModalProvider({ children }) {
   const [open, setOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
   const { t } = useLanguage();
+
+  const copyEmail = async () => {
+    const email = "kkosmacevskij@gmail.com";
+
+    try {
+      await window.navigator.clipboard.writeText(email);
+    } catch {
+      const textArea = document.createElement("textarea");
+      textArea.value = email;
+      textArea.setAttribute("readonly", "");
+      textArea.style.position = "fixed";
+      textArea.style.opacity = "0";
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+    }
+
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 1800);
+  };
 
   useEffect(() => {
     if (!open) return undefined;
@@ -49,22 +71,29 @@ export function ContactModalProvider({ children }) {
             </h2>
             <p className="mt-4 text-base leading-relaxed text-[#E8E8E4]/70 md:text-lg">{t.contactModal.text}</p>
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              {contactLinks.map((item) => (
-                <a
-                  key={item.key}
-                  href={item.href}
-                  target={item.href.startsWith("http") ? "_blank" : undefined}
-                  rel={item.href.startsWith("http") ? "noreferrer" : undefined}
-                  className={`group flex min-h-20 items-center justify-between border border-[rgba(232,232,228,.24)] bg-[#1E242A] px-5 py-4 text-lg font-semibold transition-colors hover:bg-[#E8E8E4] hover:text-[#15181C] ${item.key === "email" ? "sm:col-span-2" : ""}`}
-                  onClick={() => setOpen(false)}
-                >
-                  <span className="flex min-w-0 flex-col gap-1">
-                    <span>{t.contactModal[item.key]}</span>
-                    {item.detail ? <span className="break-all text-sm font-medium text-[#E8E8E4]/60 transition-colors group-hover:text-[#15181C]/65">{item.detail}</span> : null}
-                  </span>
-                  <span className="ml-4 text-3xl leading-none transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
-                </a>
-              ))}
+              {contactLinks.map((item) => {
+                const isEmail = item.key === "email";
+                const className = `group flex min-h-20 items-center justify-between border border-[rgba(232,232,228,.24)] bg-[#1E242A] px-5 py-4 text-left text-lg font-semibold transition-colors hover:bg-[#E8E8E4] hover:text-[#15181C] ${isEmail ? "sm:col-span-2" : ""}`;
+                const content = (
+                  <>
+                    <span className="flex min-w-0 flex-col gap-1">
+                      <span>{copied && isEmail ? t.contactModal.copied : t.contactModal[item.key]}</span>
+                      {item.detail ? <span className="break-all text-sm font-medium text-[#E8E8E4]/60 transition-colors group-hover:text-[#15181C]/65">{item.detail}</span> : null}
+                    </span>
+                    <span className="ml-4 text-3xl leading-none transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">{isEmail ? "⧉" : "↗"}</span>
+                  </>
+                );
+
+                return isEmail ? (
+                  <button key={item.key} type="button" className={className} onClick={copyEmail}>
+                    {content}
+                  </button>
+                ) : (
+                  <a key={item.key} href={item.href} target="_blank" rel="noreferrer" className={className} onClick={() => setOpen(false)}>
+                    {content}
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
