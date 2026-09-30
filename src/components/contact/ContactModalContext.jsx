@@ -5,34 +5,12 @@ import { ContactModalContext } from "./contactModalCore.js";
 const contactLinks = [
   { key: "instagram", href: "https://www.instagram.com/nickolas_space/" },
   { key: "telegram", href: "https://t.me/nickolas_space" },
-  { key: "email", detail: "kkosmacevskij@gmail.com" },
+  { key: "email", href: "https://mail.google.com/mail/?view=cm&fs=1&to=kkosmacevskij@gmail.com", detail: "kkosmacevskij@gmail.com" },
 ];
 
 export function ContactModalProvider({ children }) {
   const [open, setOpen] = useState(false);
-  const [copied, setCopied] = useState(false);
   const { t } = useLanguage();
-
-  const copyEmail = async () => {
-    const email = "kkosmacevskij@gmail.com";
-
-    try {
-      await window.navigator.clipboard.writeText(email);
-    } catch {
-      const textArea = document.createElement("textarea");
-      textArea.value = email;
-      textArea.setAttribute("readonly", "");
-      textArea.style.position = "fixed";
-      textArea.style.opacity = "0";
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand("copy");
-      document.body.removeChild(textArea);
-    }
-
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1800);
-  };
 
   useEffect(() => {
     if (!open) return undefined;
@@ -77,18 +55,14 @@ export function ContactModalProvider({ children }) {
                 const content = (
                   <>
                     <span className="flex min-w-0 flex-col gap-1">
-                      <span>{copied && isEmail ? t.contactModal.copied : t.contactModal[item.key]}</span>
+                      <span>{t.contactModal[item.key]}</span>
                       {item.detail ? <span className="break-all text-sm font-medium text-[#E8E8E4]/60 transition-colors group-hover:text-[#15181C]/65">{item.detail}</span> : null}
                     </span>
-                    <span className="ml-4 text-3xl leading-none transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">{isEmail ? "⧉" : "↗"}</span>
+                    <span className="ml-4 text-3xl leading-none transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
                   </>
                 );
 
-                return isEmail ? (
-                  <button key={item.key} type="button" className={className} onClick={copyEmail}>
-                    {content}
-                  </button>
-                ) : (
+                return (
                   <a key={item.key} href={item.href} target="_blank" rel="noreferrer" className={className} onClick={() => setOpen(false)}>
                     {content}
                   </a>
