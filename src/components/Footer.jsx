@@ -25,7 +25,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-[1400px] gap-12 px-6 py-20 md:grid-cols-4 md:px-12">
         <div className="md:col-span-2">
           <a href="#top" aria-label="NickolasSpace" className="inline-flex items-center">
-            <img src="./assets/logo-mark.png" alt="" className="h-28 w-28 object-contain md:h-36 md:w-36" />
+            <img src="./assets/logo1.png" alt="" className="h-24 w-44 object-contain object-left md:h-32 md:w-60" />
           </a>
           <p className="mt-3 max-w-xs text-paper/60">{t.footer.tagline}</p>
         </div>
