@@ -21,7 +21,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 text-[#E8E8E4] transition-all duration-500 ${solid ? "border-b border-[rgba(232,232,228,.16)] bg-[#15181C]/90 backdrop-blur-md" : ""}`}>
+    <header className={`fixed inset-x-0 top-0 z-50 text-[#E8E8E4] transition-all duration-500 ${solid ? "border-b border-[rgba(232,232,228,.16)] bg-[#15181C]/90 backdrop-blur-md" : "bg-[#15181C]/20 backdrop-blur-[2px]"}`}>
       <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-3 px-4 py-4 sm:px-6 md:px-12 md:py-5">
         <a href="#top" className="inline-flex min-w-0 items-center gap-2 text-base font-bold tracking-tight sm:text-lg">
           <img src="./assets/logo1-transparent.png" alt="" className="h-8 w-10 shrink-0 object-contain object-left sm:h-9 sm:w-12" />
@@ -54,6 +54,12 @@ export default function Header() {
             <span className="sm:hidden" aria-hidden="true">↗</span>
             <span className="sr-only sm:hidden">{t.nav.start}</span>
           </ContactButton>
+        </div>
+      </div>
+      <div className="border-y border-[rgba(232,232,228,.12)] bg-[#15181C]/70">
+        <div className="mx-auto flex max-w-[1400px] items-center justify-center gap-2 px-4 py-2 text-center text-[11px] font-medium leading-snug text-[#E8E8E4]/75 sm:px-6 sm:text-xs md:px-12">
+          <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#9DB2C5]" aria-hidden="true" />
+          <span>{t.notice}</span>
         </div>
       </div>
     </header>

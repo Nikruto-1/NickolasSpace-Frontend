@@ -14,6 +14,7 @@ export const translations = {
       contact: "Contact",
       start: "Contact us",
     },
+    notice: "The website is still being refined, but requests are open. New projects are handled with priority.",
     hero: {
       lines: ["Digital products.", "Business systems.", "Built to grow."],
       text: "We build websites, automation and digital systems that help businesses grow.",
@@ -103,6 +104,7 @@ export const translations = {
       contact: "Контакти",
       start: "Зв’язатися з нами",
     },
+    notice: "Сайт ще допрацьовується, але заявки вже приймаємо. Ваші проєкти беремо в роботу в першу чергу.",
     hero: {
       lines: ["Цифрові продукти.", "Бізнес-системи.", "Створені для росту."],
       text: "Ми створюємо сайти, автоматизацію та цифрові системи, які допомагають бізнесу зростати.",
@@ -192,6 +194,7 @@ export const translations = {
       contact: "Kontakt",
       start: "Kontakta oss",
     },
+    notice: "Webbplatsen finslipas fortfarande, men vi tar redan emot förfrågningar. Nya projekt prioriteras.",
     hero: {
       lines: ["Digitala produkter.", "Affärssystem.", "Byggda för tillväxt."],
       text: "Vi bygger webbplatser, automation och digitala system som hjälper företag att växa.",
