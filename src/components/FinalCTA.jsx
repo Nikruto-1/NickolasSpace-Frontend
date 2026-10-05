@@ -8,7 +8,7 @@ export default function FinalCTA() {
 
   return (
     <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-ink">
-      <Video src={ASSETS.cta} />
+      <Video src={ASSETS.cta} smoothLoop />
       <div className="absolute inset-0 bg-[#15181C]/65" />
       <div className="relative mx-auto w-full max-w-[1400px] px-6 py-32 md:px-12">
         <h2 className="display text-[clamp(2.6rem,7.5vw,7rem)]">

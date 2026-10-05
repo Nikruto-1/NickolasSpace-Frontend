@@ -9,7 +9,7 @@ export default function BusinessAutomation() {
 
   return (
     <section className="relative overflow-hidden bg-ink">
-      <Video src={ASSETS.automation} />
+      <Video src={ASSETS.automation} smoothLoop />
       <div className="absolute inset-0 bg-[#15181C]/70" />
       <div className="relative mx-auto max-w-[1400px] px-6 py-32 md:px-12 md:py-48">
         <h2 className="display max-w-4xl text-[clamp(2.4rem,6vw,5.5rem)]">

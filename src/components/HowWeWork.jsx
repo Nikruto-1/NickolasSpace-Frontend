@@ -19,7 +19,7 @@ export default function HowWeWork() {
             {t.process.accent}
           </h2>
           <div className="relative mt-12 aspect-[4/3] overflow-hidden">
-            <Video src={ASSETS.how} />
+            <Video src={ASSETS.how} smoothLoop />
           </div>
         </div>
         <div ref={listRef} className="relative pl-10 md:pl-14">
