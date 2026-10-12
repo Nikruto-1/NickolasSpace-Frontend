@@ -33,6 +33,41 @@
     <meta name="twitter:image" content="./assets/logo1-transparent.png" />
     <meta property="og:url" content="https://nickolasspace.com/" />
     <title>NickolasSpace | Web Development & Business Automation</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://nickolasspace.com/#organization",
+          "name": "NickolasSpace",
+          "url": "https://nickolasspace.com/",
+          "description": "Custom web development, business automation, and digital integrations."
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://nickolasspace.com/#website",
+          "name": "NickolasSpace",
+          "url": "https://nickolasspace.com/",
+          "publisher": {
+            "@id": "https://nickolasspace.com/#organization"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://nickolasspace.com/#webpage",
+          "url": "https://nickolasspace.com/",
+          "name": "NickolasSpace | Web Development & Business Automation",
+          "isPartOf": {
+            "@id": "https://nickolasspace.com/#website"
+          },
+          "about": {
+            "@id": "https://nickolasspace.com/#organization"
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
