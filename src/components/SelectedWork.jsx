@@ -12,8 +12,10 @@ const nickolasGamesScreens = [
   { src: "./assets/nickolasgames-home-uk.png", width: 1903, height: 1080 },
   { src: "./assets/nickolasgames-home-en.png", width: 1900, height: 1080 },
   { src: "./assets/nickolasgames-home-sv.png", width: 1901, height: 1079 },
+  { src: "./assets/nickolasgames-catalog-uk.png", width: 1900, height: 1080 },
+  { src: "./assets/nickolasgames-catalog-en.png", width: 1900, height: 1080 },
+  { src: "./assets/nickolasgames-catalog-sv.png", width: 1898, height: 1080 },
 ];
-const gameScreenLabels = ["Українська", "English", "Svenska"];
 const gameScreenByLanguage = { uk: 0, en: 1, sv: 2 };
 
 function ProjectGallery({ screens, labels, name, galleryLabel, initialIndex = 0 }) {
@@ -46,6 +48,7 @@ function ProjectGallery({ screens, labels, name, galleryLabel, initialIndex = 0 
 export default function SelectedWork() {
   const { t, language } = useLanguage();
   const [featured, ...secondaryCases] = t.work.cases;
+  const gameScreenLabels = t.work.gamesViews.flatMap((view) => ["UA", "EN", "SV"].map((code) => `${view} · ${code}`));
 
   return (
     <section id="work" className="bg-ink2 text-paper">

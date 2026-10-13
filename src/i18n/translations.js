@@ -47,6 +47,7 @@ export const translations = {
       viewProject: "View project",
       gallery: "Auto Alex project screenshots",
       gamesGallery: "NickolasGames screenshots by language",
+      gamesViews: ["Homepage", "Game catalogue"],
       screens: ["Homepage", "Cost calculator", "Order form"],
       openImage: "View full-size image",
       cases: [
@@ -141,6 +142,7 @@ export const translations = {
       viewProject: "Переглянути проєкт",
       gallery: "Скриншоти проєкту Auto Alex",
       gamesGallery: "Скриншоти NickolasGames різними мовами",
+      gamesViews: ["Головна", "Каталог ігор"],
       screens: ["Головна", "Калькулятор", "Замовлення"],
       openImage: "Відкрити зображення",
       cases: [
@@ -235,6 +237,7 @@ export const translations = {
       viewProject: "Visa projekt",
       gallery: "Skärmbilder av Auto Alex",
       gamesGallery: "Skärmbilder av NickolasGames på olika språk",
+      gamesViews: ["Startsida", "Spelkatalog"],
       screens: ["Startsida", "Kostnadskalkyl", "Beställningsformulär"],
       openImage: "Visa bilden i full storlek",
       cases: [
