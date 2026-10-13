@@ -29,6 +29,15 @@ test("metadata is unique and structured data is valid JSON", () => {
   assert.ok(schema["@graph"].some((node) => node["@type"] === "WebSite" && node.url === "https://nickolasspace.com/"));
 });
 
+test("all slider projects remain in the built HTML", () => {
+  for (const [index, project] of translations.en.work.cases.entries()) {
+    assert.ok(html.includes(`id="project-slide-${index}"`));
+    assert.ok(html.includes(escapeHtml(project.desc)), `Missing project description: ${project.name}`);
+  }
+  assert.match(html, /id="project-slide-1"[^>]*hidden/);
+  assert.ok(html.includes("Timed or relaxed rounds"));
+});
+
 test("the initial HTML does not request decorative videos", () => {
   for (const video of html.matchAll(/<video\b[^>]*>/g)) {
     assert.doesNotMatch(video[0], /\bsrc=/);
