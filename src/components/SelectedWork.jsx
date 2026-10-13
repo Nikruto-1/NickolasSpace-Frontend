@@ -29,7 +29,7 @@ function ProjectGallery({ screens, labels, name, galleryLabel, initialIndex = 0 
       <a href={screen.src} target="_blank" rel="noreferrer" aria-label={`${t.work.openImage}: ${name}, ${labels[selected]}`} className="block aspect-[16/9] overflow-hidden bg-[#202020]">
         <img src={screen.src} alt={`${name} — ${labels[selected]}`} width={screen.width} height={screen.height} loading="lazy" decoding="async" className="h-full w-full object-contain" />
       </a>
-      <div className="grid grid-cols-3 gap-2" role="group" aria-label={galleryLabel}>
+      <div className={`grid gap-2 ${screens.length === 2 ? "grid-cols-2" : "grid-cols-3"}`} role="group" aria-label={galleryLabel}>
         {screens.map((item, index) => (
           <button key={item.src} type="button" aria-label={labels[index]} title={labels[index]} aria-pressed={selected === index} onClick={() => setSelection(index)} className={`min-w-0 border p-1.5 text-left transition-colors ${selected === index ? "border-paper text-paper" : "bd text-paper/65 hover:border-paper/60"}`}>
             <img src={item.src} alt="" width={item.width} height={item.height} loading="lazy" decoding="async" className="aspect-[16/9] w-full object-contain" />
@@ -48,7 +48,7 @@ function ProjectGallery({ screens, labels, name, galleryLabel, initialIndex = 0 
 export default function SelectedWork() {
   const { t, language } = useLanguage();
   const [featured, ...secondaryCases] = t.work.cases;
-  const gameScreenLabels = t.work.gamesViews.flatMap((view) => ["UA", "EN", "SV"].map((code) => `${view} · ${code}`));
+  const gameScreens = nickolasGamesScreens.filter((_, index) => index % 3 === gameScreenByLanguage[language]);
 
   return (
     <section id="work" className="bg-ink2 text-paper">
@@ -112,7 +112,7 @@ export default function SelectedWork() {
                     {t.work.viewProject}<span className="ml-5 text-3xl leading-none" aria-hidden="true">↗</span>
                   </Button>
                 </div>
-                <ProjectGallery screens={nickolasGamesScreens} labels={gameScreenLabels} name={item.name} galleryLabel={t.work.gamesGallery} initialIndex={gameScreenByLanguage[language]} />
+                <ProjectGallery screens={gameScreens} labels={t.work.gamesViews} name={item.name} galleryLabel={t.work.gamesGallery} />
             </article>
           ))}
         </div>
