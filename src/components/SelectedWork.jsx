@@ -9,9 +9,9 @@ const autoAlexScreens = [
 ];
 
 const nickolasGamesScreens = [
-  { src: "./assets/nickolasgames-home-uk.png", width: 1903, height: 1080 },
-  { src: "./assets/nickolasgames-home-en.png", width: 1900, height: 1080 },
-  { src: "./assets/nickolasgames-home-sv.png", width: 1901, height: 1079 },
+  { src: "./assets/nickolasgames-home-uk.png?v=2", width: 1904, height: 876 },
+  { src: "./assets/nickolasgames-home-en.png?v=2", width: 1902, height: 877 },
+  { src: "./assets/nickolasgames-home-sv.png?v=2", width: 1900, height: 878 },
   { src: "./assets/nickolasgames-catalog-uk.png", width: 1900, height: 1080 },
   { src: "./assets/nickolasgames-catalog-en.png", width: 1900, height: 1080 },
   { src: "./assets/nickolasgames-catalog-sv.png", width: 1898, height: 1080 },
