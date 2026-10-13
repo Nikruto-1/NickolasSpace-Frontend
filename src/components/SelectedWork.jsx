@@ -1,40 +1,50 @@
+import { useState } from "react";
 import useLanguage from "../i18n/useLanguage.js";
+import Button from "./shared/Button.jsx";
 
-function AutoAlexMockup() {
+const autoAlexScreens = [
+  { src: "./assets/autoalex-home.jpeg", width: 1536, height: 874 },
+  { src: "./assets/autoalex-calculator.png", width: 1902, height: 1080 },
+  { src: "./assets/autoalex-order.png", width: 1901, height: 1080 },
+];
+
+const nickolasGamesScreens = [
+  { src: "./assets/nickolasgames-home-uk.png", width: 1903, height: 1080 },
+  { src: "./assets/nickolasgames-home-en.png", width: 1900, height: 1080 },
+  { src: "./assets/nickolasgames-home-sv.png", width: 1901, height: 1079 },
+];
+const gameScreenLabels = ["Українська", "English", "Svenska"];
+const gameScreenByLanguage = { uk: 0, en: 1, sv: 2 };
+
+function ProjectGallery({ screens, labels, name, galleryLabel, initialIndex = 0 }) {
+  const { t } = useLanguage();
+  const [selection, setSelection] = useState(null);
+  const selected = selection ?? initialIndex;
+  const screen = screens[selected];
+
   return (
-    <div className="relative min-h-[360px] overflow-hidden border border-[rgba(232,232,228,.16)] bg-[#111418] p-5 md:min-h-[430px]">
-      <div className="flex items-center justify-between border-b border-[rgba(232,232,228,.12)] pb-4 text-sm text-paper/55">
-        <span>Auto Alex KFZ-Handel</span>
-        <span>autoalex.net</span>
+    <figure className="flex min-w-0 flex-col justify-center gap-5 bg-[#111418] p-4 md:p-6">
+      <a href={screen.src} target="_blank" rel="noreferrer" aria-label={`${t.work.openImage}: ${name}, ${labels[selected]}`} className="block aspect-[16/9] overflow-hidden bg-[#202020]">
+        <img src={screen.src} alt={`${name} — ${labels[selected]}`} width={screen.width} height={screen.height} loading="lazy" decoding="async" className="h-full w-full object-contain" />
+      </a>
+      <div className="grid grid-cols-3 gap-2" role="group" aria-label={galleryLabel}>
+        {screens.map((item, index) => (
+          <button key={item.src} type="button" aria-label={labels[index]} title={labels[index]} aria-pressed={selected === index} onClick={() => setSelection(index)} className={`min-w-0 border p-1.5 text-left transition-colors ${selected === index ? "border-paper text-paper" : "bd text-paper/65 hover:border-paper/60"}`}>
+            <img src={item.src} alt="" width={item.width} height={item.height} loading="lazy" decoding="async" className="aspect-[16/9] w-full object-contain" />
+            <span className="mt-2 hidden min-h-10 break-words px-1 text-xs leading-5 min-[360px]:block sm:text-sm">{labels[index]}</span>
+          </button>
+        ))}
       </div>
-      <div className="mt-8 grid gap-4 md:grid-cols-5">
-        <div className="md:col-span-3">
-          <div className="flex aspect-[16/10] flex-col justify-end border border-[rgba(232,232,228,.14)] bg-gradient-to-br from-[#29313A] via-[#1E2329] to-[#15181C] p-6">
-            <div className="mb-5 h-20 w-full border border-[rgba(232,232,228,.14)] bg-[#E8E8E4]/8" />
-            <div className="h-3 w-2/3 bg-[#E8E8E4]" />
-            <div className="mt-3 h-3 w-1/2 bg-[#8A9BAA]" />
-          </div>
-        </div>
-        <div className="space-y-4 md:col-span-2">
-          {["Search", "Lead", "Telegram"].map((item, index) => (
-            <div key={item} className="border border-[rgba(232,232,228,.14)] bg-[#1E2329] p-4">
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-paper/55">{item}</span>
-                <span className="h-2 w-2 bg-[#8A9BAA]" />
-              </div>
-              <div className="mt-8 h-2 bg-[#E8E8E4]" style={{ width: `${70 - index * 12}%` }} />
-              <div className="mt-3 h-2 bg-[#E8E8E4]/25" />
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className="absolute -bottom-16 -right-16 h-44 w-44 border border-[rgba(232,232,228,.12)]" />
-    </div>
+      <figcaption className="flex flex-wrap items-center justify-between gap-3 text-sm text-paper/65">
+        <span>{labels[selected]}</span>
+        <a href={screen.src} target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:text-paper">{t.work.openImage} ↗</a>
+      </figcaption>
+    </figure>
   );
 }
 
 export default function SelectedWork() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [featured, ...secondaryCases] = t.work.cases;
 
   return (
@@ -78,26 +88,28 @@ export default function SelectedWork() {
               ) : null}
             </div>
           </div>
-          <AutoAlexMockup />
+          <ProjectGallery screens={autoAlexScreens} labels={t.work.screens} name="Auto Alex KFZ-Handel" galleryLabel={t.work.gallery} />
         </article>
 
-        <div className="mt-5 grid gap-5 md:grid-cols-2">
+        <div className="mt-5 grid gap-5">
           {secondaryCases.map((item, index) => (
-            <article key={item.name} className="group border border-[rgba(232,232,228,.16)] bg-ink p-7 transition-colors hover:bg-[#E8E8E4]">
-              <div className="flex min-h-[240px] flex-col justify-between">
-                <div>
-                  <span className="text-sm text-mist transition-colors group-hover:text-[#15181C]/55">0{index + 2}</span>
-                  <h3 className="display mt-6 text-[clamp(1.9rem,3.6vw,3.2rem)] text-paper transition-colors group-hover:text-[#15181C]">{item.name}</h3>
-                  <p className="mt-5 max-w-md text-paper/65 transition-colors group-hover:text-[#15181C]/70">{item.desc}</p>
+            <article key={item.name} className="grid overflow-hidden border border-[rgba(232,232,228,.16)] bg-ink lg:grid-cols-[0.85fr_1.15fr]">
+                <div className="p-7 md:p-10">
+                  <span className="text-sm text-mist">0{index + 2}</span>
+                  <h3 className="display mt-6 text-[clamp(1.9rem,3.6vw,3.2rem)] text-paper">{item.name}</h3>
+                  <p className="mt-5 max-w-md text-paper/70">{item.desc}</p>
+                  <ul className="mt-8 flex flex-wrap gap-2">
+                    {item.tags.map((tag) => (
+                      <li key={tag} className="border border-[rgba(232,232,228,.18)] px-3 py-1 text-sm text-paper/70">
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+                  <Button href={item.url} target="_blank" rel="noreferrer" className="mt-6">
+                    {t.work.viewProject}<span className="ml-5 text-3xl leading-none" aria-hidden="true">↗</span>
+                  </Button>
                 </div>
-                <ul className="mt-8 flex flex-wrap gap-2">
-                  {item.tags.map((tag) => (
-                    <li key={tag} className="border border-[rgba(232,232,228,.18)] px-3 py-1 text-sm text-paper/70 transition-colors group-hover:border-[#15181C]/20 group-hover:text-[#15181C]/70">
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                <ProjectGallery screens={nickolasGamesScreens} labels={gameScreenLabels} name={item.name} galleryLabel={t.work.gamesGallery} initialIndex={gameScreenByLanguage[language]} />
             </article>
           ))}
         </div>

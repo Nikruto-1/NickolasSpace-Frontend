@@ -29,8 +29,8 @@ export default function HowWeWork() {
             const active = progress >= index / t.process.steps.length + 0.04;
 
             return (
-              <div key={number} className="relative pb-24 last:pb-0 md:pb-32" style={{ opacity: active ? 1 : 0.3, transition: "opacity .6s" }}>
-                <span className="absolute -left-[45px] top-3 h-[9px] w-[9px] rounded-full bg-paper md:-left-[61px]" />
+              <div key={number} className="relative pb-24 last:pb-0 md:pb-32">
+                <span className="absolute -left-[45px] top-3 h-[9px] w-[9px] rounded-full md:-left-[61px]" style={{ background: active ? "#E8E8E4" : "#8A9BAA" }} />
                 <span className="text-mist">{number}</span>
                 <h3 className="display mt-2 text-4xl md:text-5xl">{title}</h3>
                 <p className="mt-4 max-w-sm text-lg text-paper/70">{description}</p>

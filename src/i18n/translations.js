@@ -17,7 +17,7 @@ export const translations = {
     notice: "The website is still being refined, but requests are open. New projects are handled with priority.",
     hero: {
       lines: ["Websites & automation", "for your business."],
-      text: "For small businesses and independent professionals: websites that explain your services and make enquiries easy, plus automation that reduces repetitive work.",
+      text: "Websites that help customers understand your services. Automation that reduces routine work. For small businesses and independent professionals.",
       primary: "Discuss your project",
       secondary: "View service catalogue",
       scroll: "Scroll",
@@ -45,10 +45,13 @@ export const translations = {
       title: "Work built around real businesses.",
       eyebrow: "Selected work",
       viewProject: "View project",
+      gallery: "Auto Alex project screenshots",
+      gamesGallery: "NickolasGames screenshots by language",
+      screens: ["Homepage", "Cost calculator", "Order form"],
+      openImage: "View full-size image",
       cases: [
         { name: "AutoAlexDE", desc: "Vehicle sourcing and automation platform for Auto Alex KFZ-Handel.", tags: ["Web Platform", "Automation", "Telegram", "API"], url: "https://autoalex.net/" },
-        { name: "Corporate Website", desc: "A professional business website for a modern company.", tags: ["Web Development", "Design", "Multilingual"] },
-        { name: "Business Automation System", desc: "Workflow automation, CRM processes and integrations.", tags: ["Automation", "CRM", "Integrations"] },
+        { name: "NickolasGames", desc: "Our own browser-based party games product. Built with multilingual interfaces, offline play and progress saved on the device.", tags: ["Own Product", "Web App", "PWA", "Multilingual"], url: "https://games.nickolasspace.com/", image: "./assets/nickolasgames-icon.png" },
       ],
     },
     automation: {
@@ -84,7 +87,7 @@ export const translations = {
     footer: {
       tagline: "Digital systems built around real businesses.",
       email: "Email",
-      privacy: "Privacy Policy",
+      privacy: "Privacy & site data",
     },
     contactModal: {
       eyebrow: "Contact",
@@ -108,7 +111,7 @@ export const translations = {
     notice: "Сайт ще допрацьовується, але заявки вже приймаємо. Ваші проєкти беремо в роботу в першу чергу.",
     hero: {
       lines: ["Сайти й автоматизація", "для вашого бізнесу."],
-      text: "Для малого бізнесу та незалежних фахівців: сайти, які зрозуміло представляють послуги й спрощують звернення клієнтів, та автоматизація, що зменшує рутинну роботу.",
+      text: "Сайти, які допомагають клієнтам зрозуміти ваші послуги. Автоматизація, що зменшує рутину. Для малого бізнесу та незалежних фахівців.",
       primary: "Обговорити проєкт",
       secondary: "Переглянути каталог послуг",
       scroll: "Скрол",
@@ -136,10 +139,13 @@ export const translations = {
       title: "Роботи, побудовані навколо бізнесу.",
       eyebrow: "Вибрані роботи",
       viewProject: "Переглянути проєкт",
+      gallery: "Скриншоти проєкту Auto Alex",
+      gamesGallery: "Скриншоти NickolasGames різними мовами",
+      screens: ["Головна", "Калькулятор", "Замовлення"],
+      openImage: "Відкрити зображення",
       cases: [
         { name: "AutoAlexDE", desc: "Платформа для підбору авто та автоматизації для Auto Alex KFZ-Handel.", tags: ["Вебплатформа", "Автоматизація", "Telegram", "API"], url: "https://autoalex.net/" },
-        { name: "Корпоративний сайт", desc: "Професійний бізнес-сайт для сучасної компанії.", tags: ["Веброзробка", "Дизайн", "Мультимовність"] },
-        { name: "Система автоматизації бізнесу", desc: "Автоматизація процесів, CRM та інтеграції.", tags: ["Автоматизація", "CRM", "Інтеграції"] },
+        { name: "NickolasGames", desc: "Наш власний продукт із компанійськими іграми у браузері. Мультимовний інтерфейс, гра офлайн і збереження прогресу на пристрої.", tags: ["Власний продукт", "Вебзастосунок", "PWA", "Мультимовність"], url: "https://games.nickolasspace.com/", image: "./assets/nickolasgames-icon.png" },
       ],
     },
     automation: {
@@ -175,7 +181,7 @@ export const translations = {
     footer: {
       tagline: "Цифрові системи, побудовані навколо реального бізнесу.",
       email: "Email",
-      privacy: "Політика конфіденційності",
+      privacy: "Конфіденційність і дані сайту",
     },
     contactModal: {
       eyebrow: "Контакти",
@@ -199,7 +205,7 @@ export const translations = {
     notice: "Webbplatsen finslipas fortfarande, men vi tar redan emot förfrågningar. Nya projekt prioriteras.",
     hero: {
       lines: ["Webbplatser & automation", "för ditt företag."],
-      text: "För småföretag och egenföretagare: webbplatser som förklarar era tjänster och gör det lätt att ta kontakt, samt automation som minskar återkommande arbete.",
+      text: "Webbplatser som hjälper kunder att förstå era tjänster. Automation som minskar rutinarbete. För småföretag och egenföretagare.",
       primary: "Diskutera ditt projekt",
       secondary: "Visa tjänstekatalogen",
       scroll: "Scrolla",
@@ -227,10 +233,13 @@ export const translations = {
       title: "Arbete byggt runt verkliga företag.",
       eyebrow: "Utvalda projekt",
       viewProject: "Visa projekt",
+      gallery: "Skärmbilder av Auto Alex",
+      gamesGallery: "Skärmbilder av NickolasGames på olika språk",
+      screens: ["Startsida", "Kostnadskalkyl", "Beställningsformulär"],
+      openImage: "Visa bilden i full storlek",
       cases: [
         { name: "AutoAlexDE", desc: "Plattform för fordonsförmedling och automation för Auto Alex KFZ-Handel.", tags: ["Webbplattform", "Automation", "Telegram", "API"], url: "https://autoalex.net/" },
-        { name: "Företagswebbplats", desc: "En professionell webbplats för ett modernt företag.", tags: ["Webbutveckling", "Design", "Flerspråkig"] },
-        { name: "Affärsautomationssystem", desc: "Workflow-automation, CRM-processer och integrationer.", tags: ["Automation", "CRM", "Integrationer"] },
+        { name: "NickolasGames", desc: "Vår egen produkt med sällskapsspel i webbläsaren. Flerspråkigt gränssnitt, spel offline och framsteg som sparas på enheten.", tags: ["Egen produkt", "Webbapp", "PWA", "Flerspråkig"], url: "https://games.nickolasspace.com/", image: "./assets/nickolasgames-icon.png" },
       ],
     },
     automation: {
@@ -266,7 +275,7 @@ export const translations = {
     footer: {
       tagline: "Digitala system byggda runt verkliga företag.",
       email: "E-post",
-      privacy: "Integritetspolicy",
+      privacy: "Integritet och webbplatsdata",
     },
     contactModal: {
       eyebrow: "Kontakt",

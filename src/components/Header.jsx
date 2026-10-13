@@ -56,12 +56,6 @@ export default function Header() {
           </ContactButton>
         </div>
       </div>
-      <div className="border-y border-[rgba(232,232,228,.12)] bg-[#15181C]/70">
-        <div className="mx-auto flex max-w-[1400px] items-center justify-center gap-2 px-4 py-2 text-center text-[11px] font-medium leading-snug text-[#E8E8E4]/75 sm:px-6 sm:text-xs md:px-12">
-          <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#9DB2C5]" aria-hidden="true" />
-          <span>{t.notice}</span>
-        </div>
-      </div>
     </header>
   );
 }

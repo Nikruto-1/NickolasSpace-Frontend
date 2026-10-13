@@ -46,9 +46,9 @@ export default function Footer() {
           ))}
         </div>
       </div>
-      <div className="mx-auto flex max-w-[1400px] justify-between border-t bd px-6 py-6 text-sm text-paper/50 md:px-12">
+      <div className="mx-auto flex max-w-[1400px] flex-wrap justify-between gap-4 border-t bd px-6 py-6 text-sm text-paper/50 md:px-12">
         <span>© {new Date().getFullYear()} NickolasSpace</span>
-        <a href="#" className="hover:text-paper">
+        <a href="./privacy.html" className="hover:text-paper">
           {t.footer.privacy}
         </a>
       </div>

@@ -7,7 +7,6 @@ export default function Services() {
   const { t, language } = useLanguage();
   const [tabIndex, setTabIndex] = useState(0);
   const groups = t.services.groups;
-  const tab = groups[tabIndex] ?? groups[0];
 
   return (
     <section id="services" className="bg-ink text-paper">
@@ -44,9 +43,19 @@ export default function Services() {
                 type="button"
                 role="tab"
                 id={`service-tab-${index}`}
-                aria-controls="service-panel"
+                aria-controls={`service-panel-${index}`}
                 aria-selected={tabIndex === index}
+                tabIndex={tabIndex === index ? 0 : -1}
                 onClick={() => setTabIndex(index)}
+                onKeyDown={(event) => {
+                  const keys = ["ArrowRight", "ArrowLeft", "Home", "End"];
+                  if (!keys.includes(event.key)) return;
+                  event.preventDefault();
+                  const next = event.key === "Home" ? 0 : event.key === "End" ? groups.length - 1 :
+                    (index + (event.key === "ArrowRight" ? 1 : -1) + groups.length) % groups.length;
+                  setTabIndex(next);
+                  event.currentTarget.parentElement.querySelectorAll('[role="tab"]')[next].focus();
+                }}
                 className={`min-h-14 w-auto whitespace-nowrap border px-6 py-3 text-lg font-semibold transition-colors md:text-xl ${
                   tabIndex === index ? "border-[#E8E8E4] bg-[#E8E8E4] text-[#15181C]" : "bd text-[#E8E8E4]/75 hover:border-[#E8E8E4]/70 hover:text-[#E8E8E4]"
                 }`}
@@ -56,25 +65,28 @@ export default function Services() {
             ))}
           </div>
 
-          <div key={`${language}-${tab.name}`} id="service-panel" role="tabpanel" aria-labelledby={`service-tab-${tabIndex}`} className="mt-8 grid gap-4 sm:grid-cols-2">
-            {tab.items.map((service, index) => (
+          {groups.map((group, groupIndex) => (
+          <div key={`${language}-${group.name}`} id={`service-panel-${groupIndex}`} role="tabpanel" aria-label={group.name} hidden={tabIndex !== groupIndex} className={`service-panel mt-8 gap-4 sm:grid-cols-2 ${tabIndex === groupIndex ? "grid" : "hidden"}`}>
+            <h3 className="text-base font-semibold text-mist sm:col-span-2">{group.name}</h3>
+            {group.items.map((service, index) => (
               <article
                 key={service}
                 className="tabfade flex min-w-0 flex-col border bd bg-ink2 p-5 md:p-6"
                 style={{ animationDelay: `${index * 60}ms` }}
               >
-                <h3 className="break-words text-2xl font-semibold text-paper">{service}</h3>
-                <p className="mt-3 text-base leading-relaxed text-paper/70">{serviceDescriptions[language][tabIndex][index]}</p>
+                <h4 className="break-words text-2xl font-semibold text-paper">{service}</h4>
+                <p className="mt-3 text-base leading-relaxed text-paper/70">{serviceDescriptions[language][groupIndex][index]}</p>
               </article>
             ))}
             <ContactButton
               className="tabfade group flex min-h-[72px] items-center justify-between border bd !bg-transparent !p-5 text-left !text-[#E8E8E4] transition-colors hover:!bg-[#E8E8E4] hover:!text-[#15181C] sm:col-span-2"
-              style={{ animationDelay: `${tab.items.length * 60}ms` }}
+              style={{ animationDelay: `${group.items.length * 60}ms` }}
             >
               <span className="text-lg font-semibold">{t.services.discuss}</span>
               <span className="ml-6 text-5xl font-normal leading-none transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
             </ContactButton>
           </div>
+          ))}
         </div>
       </div>
     </section>

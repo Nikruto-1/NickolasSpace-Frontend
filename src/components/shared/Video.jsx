@@ -1,11 +1,15 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
-function BasicVideo({ src, poster, className = "" }) {
+function BasicVideo({ src, poster, active, className = "" }) {
   const videoRef = useRef(null);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return undefined;
+    if (!active) {
+      video.pause();
+      return undefined;
+    }
 
     let frameId = 0;
     let seekingToStart = false;
@@ -31,13 +35,15 @@ function BasicVideo({ src, poster, className = "" }) {
     const play = () => video.play().catch(() => {});
 
     video.addEventListener("canplay", play);
+    play();
     frameId = window.requestAnimationFrame(tick);
 
     return () => {
       window.cancelAnimationFrame(frameId);
       video.removeEventListener("canplay", play);
+      video.pause();
     };
-  }, [src]);
+  }, [src, active]);
 
   return (
     <video
@@ -45,16 +51,15 @@ function BasicVideo({ src, poster, className = "" }) {
       className={`absolute inset-0 h-full w-full object-cover will-change-transform ${className}`}
       src={src}
       poster={poster}
-      autoPlay
       muted
       playsInline
-      preload="auto"
+      preload="none"
       aria-hidden="true"
     />
   );
 }
 
-function CrossfadeVideo({ src, poster, className = "" }) {
+function CrossfadeVideo({ src, poster, active: isActive, className = "" }) {
   const firstRef = useRef(null);
   const secondRef = useRef(null);
   const activeRef = useRef(0);
@@ -64,6 +69,11 @@ function CrossfadeVideo({ src, poster, className = "" }) {
   useEffect(() => {
     const videos = [firstRef.current, secondRef.current];
     if (!videos[0] || !videos[1]) return undefined;
+    if (!isActive) {
+      videos.forEach((video) => video.pause());
+      return undefined;
+    }
+    let timeoutId;
 
     activeRef.current = 0;
     transitionRef.current = false;
@@ -75,6 +85,8 @@ function CrossfadeVideo({ src, poster, className = "" }) {
     });
 
     const play = (video) => video.play().catch(() => {});
+    const onCanPlay = () => play(videos[activeRef.current]);
+    videos.forEach((video) => video.addEventListener("canplay", onCanPlay));
     play(videos[0]);
 
     const tick = () => {
@@ -92,7 +104,7 @@ function CrossfadeVideo({ src, poster, className = "" }) {
           standby.style.opacity = "1";
           active.style.opacity = "0";
 
-          window.setTimeout(() => {
+          timeoutId = window.setTimeout(() => {
             active.pause();
             active.currentTime = 0;
             activeRef.current = standbyIndex;
@@ -108,20 +120,55 @@ function CrossfadeVideo({ src, poster, className = "" }) {
 
     return () => {
       window.cancelAnimationFrame(frameRef.current);
-      videos.forEach((video) => video.pause());
+      window.clearTimeout(timeoutId);
+      videos.forEach((video) => {
+        video.pause();
+        video.removeEventListener("canplay", onCanPlay);
+      });
     };
-  }, [src]);
+  }, [src, isActive]);
 
   const videoClass = `absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-linear will-change-opacity ${className}`;
 
   return (
     <>
-      <video ref={firstRef} className={videoClass} src={src} poster={poster} autoPlay muted playsInline preload="auto" aria-hidden="true" />
-      <video ref={secondRef} className={videoClass} src={src} muted playsInline preload="auto" aria-hidden="true" />
+      <video ref={firstRef} className={videoClass} src={src} poster={poster} muted playsInline preload="none" aria-hidden="true" />
+      <video ref={secondRef} className={videoClass} src={src} muted playsInline preload="none" aria-hidden="true" />
     </>
   );
 }
 
-export default function Video({ smoothLoop = false, ...props }) {
-  return smoothLoop ? <CrossfadeVideo {...props} /> : <BasicVideo {...props} />;
+export default function Video({ smoothLoop = false, src, ...props }) {
+  const containerRef = useRef(null);
+  const [status, setStatus] = useState({ loaded: false, active: false });
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const observer = new IntersectionObserver(([entry]) => {
+      const active = entry.isIntersecting && !reducedMotion.matches;
+      setStatus((previous) => ({ loaded: previous.loaded || active, active }));
+    }, { rootMargin: "200px" });
+    observer.observe(containerRef.current);
+    const onVisibility = () => setVisible(document.visibilityState !== "hidden");
+    const onMotionChange = () => {
+      observer.unobserve(containerRef.current);
+      observer.observe(containerRef.current);
+    };
+    onVisibility();
+    document.addEventListener("visibilitychange", onVisibility);
+    reducedMotion.addEventListener("change", onMotionChange);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
+      reducedMotion.removeEventListener("change", onMotionChange);
+    };
+  }, []);
+
+  const VideoPlayer = smoothLoop ? CrossfadeVideo : BasicVideo;
+  return (
+    <div ref={containerRef} className="absolute inset-0" aria-hidden="true">
+      <VideoPlayer {...props} src={status.loaded ? src : undefined} active={status.active && visible} />
+    </div>
+  );
 }

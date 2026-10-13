@@ -71,6 +71,13 @@
     </script>
   </head>
   <body>
+    <noscript>
+      <style>
+        .rise, .tabfade { opacity: 1 !important; transform: none !important; }
+        .service-panel[hidden] { display: grid !important; }
+        [role="tablist"], #services select { display: none !important; }
+      </style>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
