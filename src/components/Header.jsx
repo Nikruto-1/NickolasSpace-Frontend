@@ -22,12 +22,12 @@ export default function Header() {
 
   return (
     <header className={`fixed inset-x-0 top-0 z-50 text-[#E8E8E4] transition-all duration-500 ${solid ? "border-b border-[rgba(232,232,228,.16)] bg-[#15181C]/90 backdrop-blur-md" : "bg-[#15181C]/20 backdrop-blur-[2px]"}`}>
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-3 px-4 py-4 sm:px-6 md:px-12 md:py-5">
-        <a href="#top" className="inline-flex min-w-0 items-center gap-2 text-base font-bold tracking-tight sm:text-lg">
-          <img src="./assets/logo1-transparent.png" alt="" className="h-8 w-10 shrink-0 object-contain object-left sm:h-9 sm:w-12" />
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-2 px-3 py-4 sm:gap-3 sm:px-6 md:px-12 md:py-5">
+        <a href="#top" className="inline-flex shrink-0 items-center gap-1.5 text-sm font-bold sm:gap-2 sm:text-lg">
+          <img src="./assets/logo1-transparent.png" alt="" className="h-7 w-8 shrink-0 object-contain object-left sm:h-9 sm:w-12" />
           <span>NickolasSpace</span>
         </a>
-        <nav className="hidden gap-9 text-[15px] md:flex">
+        <nav className="hidden gap-7 text-[15px] xl:flex">
           {links.map(([label, href]) => (
             <a key={label} href={href} className="text-[#E8E8E4]/70 transition-colors hover:text-[#E8E8E4]">
               {label}
@@ -41,7 +41,7 @@ export default function Header() {
                 key={item.code}
                 type="button"
                 onClick={() => setLanguage(item.code)}
-                className={`px-2 py-2 transition-colors sm:px-2.5 ${language === item.code ? "bg-[#E8E8E4] text-[#15181C]" : "text-[#E8E8E4]/65 hover:text-[#E8E8E4]"}`}
+                className={`px-1.5 py-2 transition-colors sm:px-2.5 ${language === item.code ? "bg-[#E8E8E4] text-[#15181C]" : "text-[#E8E8E4]/65 hover:text-[#E8E8E4]"}`}
                 aria-pressed={language === item.code}
                 title={item.name}
               >
@@ -49,7 +49,7 @@ export default function Header() {
               </button>
             ))}
           </div>
-          <ContactButton className="border border-[rgba(232,232,228,.4)] !bg-transparent !px-3 !py-2 text-sm !text-[#E8E8E4] hover:!bg-[#E8E8E4] hover:!text-[#15181C] sm:!px-5">
+          <ContactButton className="border border-[rgba(232,232,228,.4)] !bg-transparent !px-2 !py-2 text-sm !text-[#E8E8E4] hover:!bg-[#E8E8E4] hover:!text-[#15181C] sm:!px-5">
             <span className="hidden sm:inline">{t.nav.start}</span>
             <span className="sm:hidden" aria-hidden="true">↗</span>
             <span className="sr-only sm:hidden">{t.nav.start}</span>

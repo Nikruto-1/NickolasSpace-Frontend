@@ -1,15 +1,7 @@
 import { useState } from "react";
 import useLanguage from "../i18n/useLanguage.js";
 import ContactButton from "./contact/ContactButton.jsx";
-
-const serviceCardLayout = [
-  "xl:basis-[32%]",
-  "xl:basis-[34%]",
-  "xl:basis-[28%]",
-  "xl:basis-[39%]",
-  "xl:basis-[31%]",
-  "xl:basis-[48%]",
-];
+import { serviceDescriptions } from "../i18n/serviceDescriptions.js";
 
 export default function Services() {
   const { t, language } = useLanguage();
@@ -23,6 +15,7 @@ export default function Services() {
         <div className="flex flex-col justify-between gap-10">
           <div>
             <h2 className="display max-w-xl text-[clamp(2.6rem,5.7vw,5.25rem)] leading-[0.92] text-paper">{t.services.title}</h2>
+            <p className="mt-6 max-w-md text-lg leading-relaxed text-paper/70">{t.services.text}</p>
           </div>
           <ContactButton className="group w-fit border border-[rgba(232,232,228,.4)] !px-6 !py-3.5 transition-colors hover:!bg-transparent hover:!text-[#E8E8E4]">
             {t.nav.start}
@@ -44,12 +37,14 @@ export default function Services() {
             ))}
           </select>
 
-          <div role="tablist" className="hidden flex-wrap gap-3 md:flex">
+          <div role="tablist" aria-label={t.nav.services} className="hidden flex-wrap gap-3 md:flex">
             {groups.map((item, index) => (
               <button
                 key={item.name}
                 type="button"
                 role="tab"
+                id={`service-tab-${index}`}
+                aria-controls="service-panel"
                 aria-selected={tabIndex === index}
                 onClick={() => setTabIndex(index)}
                 className={`min-h-14 w-auto whitespace-nowrap border px-6 py-3 text-lg font-semibold transition-colors md:text-xl ${
@@ -61,23 +56,22 @@ export default function Services() {
             ))}
           </div>
 
-          <div key={`${language}-${tab.name}`} role="tabpanel" className="mt-8 flex flex-col gap-3 sm:grid sm:grid-cols-2 xl:flex xl:flex-row xl:flex-wrap">
+          <div key={`${language}-${tab.name}`} id="service-panel" role="tabpanel" aria-labelledby={`service-tab-${tabIndex}`} className="mt-8 grid gap-4 sm:grid-cols-2">
             {tab.items.map((service, index) => (
-              <div
+              <article
                 key={service}
-                className={`tabfade group flex min-h-[118px] grow items-end border bd bg-ink2 p-5 transition-colors hover:bg-[#E8E8E4] ${
-                  serviceCardLayout[index] ?? "xl:basis-[32%]"
-                } ${index === tab.items.length - 1 ? "sm:col-span-2" : ""}`}
+                className="tabfade flex min-w-0 flex-col border bd bg-ink2 p-5 md:p-6"
                 style={{ animationDelay: `${index * 60}ms` }}
               >
-                <h3 className="text-2xl font-semibold tracking-tight text-[#E8E8E4] transition-colors group-hover:text-[#15181C] md:text-3xl">{service}</h3>
-              </div>
+                <h3 className="break-words text-2xl font-semibold text-paper">{service}</h3>
+                <p className="mt-3 text-base leading-relaxed text-paper/70">{serviceDescriptions[language][tabIndex][index]}</p>
+              </article>
             ))}
             <ContactButton
-              className="tabfade group flex min-h-[118px] grow basis-full items-center justify-between border bd !bg-transparent !p-5 text-left !text-[#E8E8E4] transition-colors hover:!bg-[#E8E8E4] hover:!text-[#15181C] sm:col-span-2 xl:basis-[48%]"
+              className="tabfade group flex min-h-[72px] items-center justify-between border bd !bg-transparent !p-5 text-left !text-[#E8E8E4] transition-colors hover:!bg-[#E8E8E4] hover:!text-[#15181C] sm:col-span-2"
               style={{ animationDelay: `${tab.items.length * 60}ms` }}
             >
-              <span className="text-2xl font-semibold tracking-tight md:text-3xl">{t.services.more}</span>
+              <span className="text-lg font-semibold">{t.services.discuss}</span>
               <span className="ml-6 text-5xl font-normal leading-none transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
             </ContactButton>
           </div>

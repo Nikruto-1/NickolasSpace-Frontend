@@ -15,6 +15,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 150px;
 }
 
 body {
@@ -63,19 +64,26 @@ body {
 }
 
 .hero-title {
-  font-size: clamp(2.65rem, 7vw, 7rem);
-  line-height: 0.96;
+  font-size: 4.5rem;
+  line-height: 1.05;
+  overflow-wrap: anywhere;
 }
 
 @media (max-height: 760px) and (min-width: 768px) {
   .hero-title {
-    font-size: clamp(2.5rem, 6vw, 5.8rem);
+    font-size: 3.5rem;
   }
 }
 
 @media (max-width: 640px) {
   .hero-title {
-    font-size: clamp(2.45rem, 13vw, 4.25rem);
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  .hero-title {
+    font-size: 3rem;
   }
 }
 
