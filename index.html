@@ -8,8 +8,9 @@
       content="Web development and business automation for small businesses and independent professionals. Explore websites, bots, integrations and ongoing support."
     />
     <meta name="google-site-verification" content="5Uz-Q6zzyMvK562QzOXE6Ea1MyqIZzo7d7ob3vi8pK0" />
-    <meta name="theme-color" content="#15181C" />
     <link rel="canonical" href="https://nickolasspace.com/" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#15181C" />
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png?v=2" />
     <link rel="icon" type="image/png" sizes="48x48" href="./assets/favicon-48.png?v=2" />
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png?v=2" />
@@ -19,7 +20,7 @@
     <meta property="og:url" content="https://nickolasspace.com/" />
     <meta
       property="og:description"
-      content="Websites, automation and digital systems for growing businesses."
+      content="Custom websites, web apps, business automation and AI integrations to help businesses grow."
     />
     <meta property="og:image" content="https://nickolasspace.com/assets/logo1-transparent.png" />
     <meta property="og:image:type" content="image/png" />
@@ -34,12 +35,39 @@
     <meta name="twitter:image:alt" content="NickolasSpace logo" />
     <title>NickolasSpace | Web Development & Business Automation</title>
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "NickolasSpace",
-        "url": "https://nickolasspace.com/"
-      }
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://nickolasspace.com/#organization",
+          "name": "NickolasSpace",
+          "url": "https://nickolasspace.com/",
+          "description": "Custom web development, business automation, and digital integrations."
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://nickolasspace.com/#website",
+          "name": "NickolasSpace",
+          "url": "https://nickolasspace.com/",
+          "publisher": {
+            "@id": "https://nickolasspace.com/#organization"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://nickolasspace.com/#webpage",
+          "url": "https://nickolasspace.com/",
+          "name": "NickolasSpace | Web Development & Business Automation",
+          "isPartOf": {
+            "@id": "https://nickolasspace.com/#website"
+          },
+          "about": {
+            "@id": "https://nickolasspace.com/#organization"
+          }
+        }
+      ]
+    }
     </script>
   </head>
   <body>
