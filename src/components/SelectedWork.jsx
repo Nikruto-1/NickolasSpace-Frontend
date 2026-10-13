@@ -114,7 +114,11 @@ export default function SelectedWork() {
                   </Button>
                 </div>
                 <ProjectGallery screens={gameScreens} labels={t.work.gamesViews} name={item.name} galleryLabel={t.work.gamesGallery} />
-                <div className="grid gap-10 border-t bd p-7 md:grid-cols-2 md:p-10 lg:col-span-2 xl:grid-cols-3">
+                <details className="border-t bd lg:col-span-2">
+                  <summary className="cursor-pointer px-7 py-5 font-semibold text-paper transition-colors hover:bg-ink2 md:px-10">
+                    {t.work.gamesDetailsLabel}
+                  </summary>
+                  <div className="grid gap-10 px-7 pb-7 pt-3 md:grid-cols-2 md:px-10 md:pb-10 xl:grid-cols-3">
                   {gameProjectDetails[language].map((group) => (
                     <section key={group.title}>
                       <h4 className="text-xl font-semibold text-paper">{group.title}</h4>
@@ -128,7 +132,8 @@ export default function SelectedWork() {
                       </dl>
                     </section>
                   ))}
-                </div>
+                  </div>
+                </details>
             </article>
           ))}
         </div>
