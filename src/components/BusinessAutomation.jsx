@@ -10,14 +10,14 @@ export default function BusinessAutomation() {
   return (
     <section className="relative overflow-hidden bg-ink">
       <Video src={ASSETS.automation} smoothLoop />
-      <div className="absolute inset-0 bg-[#15181C]/70" />
-      <div className="relative mx-auto max-w-[1400px] px-6 py-32 md:px-12 md:py-48">
-        <h2 className="display max-w-4xl text-[clamp(2.4rem,6vw,5.5rem)]">
+      <div className="absolute inset-0 bg-ink/85" />
+      <div className="relative mx-auto max-w-[1400px] px-6 py-20 md:px-12 md:py-28">
+        <h2 className="display section-title">
           {t.automation.title}
           <br />
           {t.automation.accent}
         </h2>
-        <div ref={ref} className="relative mt-24 md:mt-32">
+        <div ref={ref} className="relative mt-12 md:mt-16">
           <div className="absolute bottom-3 left-[7px] top-3 w-px bg-paper/20 md:bottom-auto md:left-0 md:right-0 md:top-[7px] md:h-px md:w-auto" />
           <div
             className="absolute bottom-3 left-[7px] top-3 w-px origin-top bg-paper transition-transform duration-[2400ms] ease-out md:bottom-auto md:left-0 md:right-0 md:top-[7px] md:h-px md:w-auto md:origin-left"
@@ -27,10 +27,10 @@ export default function BusinessAutomation() {
             {t.automation.nodes.map((node, index) => (
               <li key={node} className="flex items-center gap-5 md:flex-col md:items-start md:gap-6">
                 <span
-                  className="h-[15px] w-[15px] rounded-full border border-paper transition-all duration-500"
-                  style={{ transitionDelay: `${index * 330}ms`, background: seen ? "#E8E8E4" : "#15181C" }}
+                  className="h-[15px] w-[15px] shrink-0 rounded-full border border-accent transition-colors duration-500"
+                  style={{ transitionDelay: `${index * 330}ms`, background: seen ? "var(--accent)" : "var(--ink)" }}
                 />
-                <span className="text-lg font-medium transition-opacity duration-700" style={{ transitionDelay: `${index * 330}ms`, opacity: seen ? 1 : 0.25 }}>
+                <span className="text-base font-medium text-paper">
                   {node}
                 </span>
               </li>

@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { MotionContext } from "./motionContext.js";
 
 function BasicVideo({ src, poster, active, className = "" }) {
   const videoRef = useRef(null);
@@ -142,11 +143,14 @@ export default function Video({ smoothLoop = false, src, ...props }) {
   const containerRef = useRef(null);
   const [status, setStatus] = useState({ loaded: false, active: false });
   const [visible, setVisible] = useState(true);
+  const { paused } = useContext(MotionContext);
 
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const connection = window.navigator.connection;
+    const limitedConnection = () => connection?.saveData || ["slow-2g", "2g"].includes(connection?.effectiveType);
     const observer = new IntersectionObserver(([entry]) => {
-      const active = entry.isIntersecting && !reducedMotion.matches;
+      const active = entry.isIntersecting && !reducedMotion.matches && !limitedConnection();
       setStatus((previous) => ({ loaded: previous.loaded || active, active }));
     }, { rootMargin: "200px" });
     observer.observe(containerRef.current);
@@ -158,17 +162,19 @@ export default function Video({ smoothLoop = false, src, ...props }) {
     onVisibility();
     document.addEventListener("visibilitychange", onVisibility);
     reducedMotion.addEventListener("change", onMotionChange);
+    connection?.addEventListener("change", onMotionChange);
     return () => {
       observer.disconnect();
       document.removeEventListener("visibilitychange", onVisibility);
       reducedMotion.removeEventListener("change", onMotionChange);
+      connection?.removeEventListener("change", onMotionChange);
     };
   }, []);
 
   const VideoPlayer = smoothLoop ? CrossfadeVideo : BasicVideo;
   return (
     <div ref={containerRef} className="absolute inset-0" aria-hidden="true">
-      <VideoPlayer {...props} src={status.loaded ? src : undefined} active={status.active && visible} />
+      <VideoPlayer {...props} src={status.loaded && !paused ? src : undefined} active={status.active && visible && !paused} />
     </div>
   );
 }

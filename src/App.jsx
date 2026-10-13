@@ -9,12 +9,13 @@ import IntroStatement from "./components/IntroStatement.jsx";
 import SelectedWork from "./components/SelectedWork.jsx";
 import Services from "./components/Services.jsx";
 import { ContactModalProvider } from "./components/contact/ContactModalContext.jsx";
+import MotionProvider from "./components/shared/MotionProvider.jsx";
 
 export default function App() {
   return (
-    <ContactModalProvider>
+    <MotionProvider><ContactModalProvider>
       <Header />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Hero />
         <IntroStatement />
         <Services />
@@ -25,6 +26,6 @@ export default function App() {
         <FinalCTA />
       </main>
       <Footer />
-    </ContactModalProvider>
+    </ContactModalProvider></MotionProvider>
   );
 }

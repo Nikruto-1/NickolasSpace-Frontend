@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { ArrowUpRight, Menu, Pause, Play, X } from "lucide-react";
+import { MotionContext } from "./shared/motionContext.js";
 import { languages } from "../i18n/translations.js";
 import useLanguage from "../i18n/useLanguage.js";
 import ContactButton from "./contact/ContactButton.jsx";
 
 export default function Header() {
   const [solid, setSolid] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+  const { paused, toggleMotion } = useContext(MotionContext);
   const { language, setLanguage, t } = useLanguage();
   const links = [
     [t.nav.services, "#services"],
@@ -21,27 +26,30 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 text-[#E8E8E4] transition-all duration-500 ${solid ? "border-b border-[rgba(232,232,228,.16)] bg-[#15181C]/90 backdrop-blur-md" : "bg-[#15181C]/20 backdrop-blur-[2px]"}`}>
+    <header onKeyDown={(event) => {
+      if (event.key === "Escape" && menuOpen) { setMenuOpen(false); menuRef.current?.focus(); }
+    }} className={`fixed inset-x-0 top-0 z-50 text-paper transition-colors duration-200 ${solid || menuOpen ? "border-b bd bg-ink/95 backdrop-blur-md" : "bg-ink/95"}`}>
+      <a href="#main-content" className="skip-link">{t.nav.skip}</a>
       <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-2 px-3 py-4 sm:gap-3 sm:px-6 md:px-12 md:py-5">
-        <a href="#top" className="inline-flex shrink-0 items-center gap-1.5 text-sm font-bold sm:gap-2 sm:text-lg">
-          <img src="./assets/logo1-transparent.png" alt="" className="h-7 w-8 shrink-0 object-contain object-left sm:h-9 sm:w-12" />
+        <a href="#top" className="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold sm:gap-2 sm:text-lg" onClick={() => setMenuOpen(false)}>
+          <img src="./assets/logo-96.webp" alt="" width="96" height="96" className="h-7 w-8 shrink-0 object-contain object-left sm:h-9 sm:w-12" />
           <span>NickolasSpace</span>
         </a>
-        <nav className="hidden gap-7 text-[15px] xl:flex">
+        <nav aria-label={t.nav.navigation} className="hidden gap-6 text-[15px] xl:flex">
           {links.map(([label, href]) => (
-            <a key={label} href={href} className="text-[#E8E8E4]/70 transition-colors hover:text-[#E8E8E4]">
+            <a key={label} href={href} className="text-mist transition-colors hover:text-accent">
               {label}
             </a>
           ))}
         </nav>
         <div className="flex min-w-0 items-center gap-2 sm:gap-3">
-          <div className="flex border border-[rgba(232,232,228,.28)] text-[12px] font-semibold" aria-label="Language selector">
+          <div role="group" className="flex gap-0.5 rounded-md bg-paper/5 p-1 text-[12px] font-medium" aria-label={t.nav.language}>
             {languages.map((item) => (
               <button
                 key={item.code}
                 type="button"
                 onClick={() => setLanguage(item.code)}
-                className={`px-1.5 py-2 transition-colors sm:px-2.5 ${language === item.code ? "bg-[#E8E8E4] text-[#15181C]" : "text-[#E8E8E4]/65 hover:text-[#E8E8E4]"}`}
+                className={`min-h-9 rounded px-1.5 py-2 transition-colors sm:px-2.5 ${language === item.code ? "bg-accent/15 text-accent" : "text-mist hover:text-paper"}`}
                 aria-pressed={language === item.code}
                 title={item.name}
               >
@@ -49,13 +57,28 @@ export default function Header() {
               </button>
             ))}
           </div>
-          <ContactButton className="border border-[rgba(232,232,228,.4)] !bg-transparent !px-2 !py-2 text-sm !text-[#E8E8E4] hover:!bg-[#E8E8E4] hover:!text-[#15181C] sm:!px-5">
+          <button type="button" onClick={toggleMotion} aria-pressed={paused} title={paused ? t.nav.resumeMotion : t.nav.pauseMotion} aria-label={paused ? t.nav.resumeMotion : t.nav.pauseMotion} className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-full text-mist hover:bg-paper/5 hover:text-paper sm:flex">
+            {paused ? <Play size={18} aria-hidden="true" /> : <Pause size={18} aria-hidden="true" />}
+          </button>
+          <ContactButton className="hidden border border-control !bg-transparent !px-5 !py-2 text-sm !text-paper hover:!bg-paper/5 sm:inline-flex">
             <span className="hidden sm:inline">{t.nav.start}</span>
-            <span className="sm:hidden" aria-hidden="true">↗</span>
+            <ArrowUpRight className="sm:hidden" size={18} aria-hidden="true" />
             <span className="sr-only sm:hidden">{t.nav.start}</span>
           </ContactButton>
+          <button ref={menuRef} type="button" aria-expanded={menuOpen} aria-controls="mobile-navigation" aria-label={menuOpen ? t.nav.closeMenu : t.nav.openMenu} title={menuOpen ? t.nav.closeMenu : t.nav.openMenu} onClick={() => setMenuOpen(!menuOpen)} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md text-paper hover:bg-paper/5 xl:hidden">
+            {menuOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
+          </button>
         </div>
       </div>
+      {menuOpen && <nav id="mobile-navigation" aria-label={t.nav.navigation} className="max-h-[calc(100dvh-5rem)] overflow-y-auto border-t bd bg-ink px-6 py-4 xl:hidden">
+        {links.map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)} className="block rounded-md py-3 text-mist hover:text-accent">{label}</a>)}
+        <div className="mt-3 flex items-center justify-between gap-3 border-t bd pt-4">
+          <ContactButton onClick={() => { setMenuOpen(false); menuRef.current?.focus(); }}>{t.nav.start}</ContactButton>
+          <button type="button" onClick={toggleMotion} aria-pressed={paused} title={paused ? t.nav.resumeMotion : t.nav.pauseMotion} aria-label={paused ? t.nav.resumeMotion : t.nav.pauseMotion} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-control text-paper">
+            {paused ? <Play size={18} aria-hidden="true" /> : <Pause size={18} aria-hidden="true" />}
+          </button>
+        </div>
+      </nav>}
     </header>
   );
 }

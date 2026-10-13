@@ -8,7 +8,7 @@ export default [
   },
   js.configs.recommended,
   {
-    files: ["src/**/*.{js,jsx}"],
+    files: ["src/**/*.{js,jsx}", "public/privacy.js"],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: "module",

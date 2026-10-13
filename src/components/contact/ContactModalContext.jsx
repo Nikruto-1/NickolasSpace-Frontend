@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import useLanguage from "../../i18n/useLanguage.js";
 import { ContactModalContext } from "./contactModalCore.js";
+import { ArrowUpRight, X } from "lucide-react";
 
 const contactLinks = [
   { key: "instagram", href: "https://www.instagram.com/nickolas_space/" },
@@ -50,32 +51,33 @@ export function ContactModalProvider({ children }) {
       <div inert={open ? true : undefined}>{children}</div>
       {open ? (
         <div className="fixed inset-0 z-[100] flex items-center justify-center px-5 py-8" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" aria-describedby="contact-modal-description">
-          <button type="button" tabIndex={-1} aria-hidden="true" className="absolute inset-0 bg-[#15181C]/75 backdrop-blur-sm" aria-label={t.contactModal.close} onClick={() => setOpen(false)} />
-          <div ref={panelRef} className="relative max-h-[calc(100dvh-4rem)] w-full max-w-lg overflow-y-auto border bd bg-[#15181C] p-6 text-[#E8E8E4] shadow-2xl md:p-8">
+          <div className="absolute inset-0 bg-ink/85 backdrop-blur-sm" onClick={() => setOpen(false)} />
+          <div ref={panelRef} className="relative max-h-[calc(100dvh-4rem)] w-full max-w-lg overflow-y-auto rounded-lg border bd bg-ink p-6 text-paper shadow-2xl md:p-8">
             <button
               type="button"
-              className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center border border-[rgba(232,232,228,.22)] text-xl text-[#E8E8E4]/70 transition-colors hover:border-[#E8E8E4] hover:text-[#E8E8E4]"
+              className="absolute right-3 top-3 flex h-11 w-11 items-center justify-center rounded-full text-mist transition-colors hover:bg-paper/5 hover:text-paper"
               aria-label={t.contactModal.close}
+              title={t.contactModal.close}
               onClick={() => setOpen(false)}
             >
-              ×
+              <X size={20} aria-hidden="true" />
             </button>
-            <p className="text-sm font-semibold text-[#9DB2C5]">{t.contactModal.eyebrow}</p>
-            <h2 id="contact-modal-title" className="mt-3 pr-10 text-3xl font-bold tracking-tight md:text-4xl">
+            <p className="text-sm font-medium text-accent">{t.contactModal.eyebrow}</p>
+            <h2 id="contact-modal-title" className="display mt-3 pr-10 text-2xl md:text-3xl">
               {t.contactModal.title}
             </h2>
-            <p id="contact-modal-description" className="mt-4 text-base leading-relaxed text-[#E8E8E4]/70 md:text-lg">{t.contactModal.text}</p>
+            <p id="contact-modal-description" className="mt-4 text-base leading-relaxed text-mist">{t.contactModal.text}</p>
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {contactLinks.map((item) => {
                 const isEmail = item.key === "email";
-                const className = `group flex min-h-20 items-center justify-between border border-[rgba(232,232,228,.24)] bg-[#1E242A] px-5 py-4 text-left text-lg font-semibold transition-colors hover:border-[#8A9BAA] hover:bg-[#2A323A] ${isEmail ? "sm:col-span-2" : ""}`;
+                const className = `group flex min-h-20 items-center justify-between rounded-md border border-control bg-ink2 px-5 py-4 text-left text-base font-medium transition-colors hover:border-accent hover:bg-accent/10 ${isEmail ? "sm:col-span-2" : ""}`;
                 const content = (
                   <>
                     <span className="flex min-w-0 flex-col gap-1">
                       <span>{t.contactModal[item.key]}</span>
-                      {item.detail ? <span className="break-all text-sm font-medium text-[#E8E8E4]/75">{item.detail}</span> : null}
+                      {item.detail ? <span className="break-all text-sm font-normal text-mist">{item.detail}</span> : null}
                     </span>
-                    <span className="ml-4 text-3xl leading-none transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
+                    <ArrowUpRight size={18} className="ml-4 shrink-0" aria-hidden="true" />
                   </>
                 );
 
@@ -86,6 +88,7 @@ export function ContactModalProvider({ children }) {
                 );
               })}
             </div>
+            <a href={t.footer.privacyUrl} className="mt-6 inline-block py-2 text-sm text-mist underline underline-offset-4 hover:text-paper">{t.footer.privacy}</a>
           </div>
         </div>
       ) : null}

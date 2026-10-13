@@ -18,19 +18,19 @@ const social = [
 
 export default function Footer() {
   const { t } = useLanguage();
-  const colClass = "flex flex-col gap-3 text-paper/70 [&_a]:transition-colors [&_a:hover]:text-paper";
+  const colClass = "flex flex-col gap-3 text-mist [&_a]:transition-colors [&_a:hover]:text-accent";
 
   return (
     <footer id="contact" className="bg-ink">
       <div className="mx-auto grid max-w-[1400px] gap-12 px-6 py-20 md:grid-cols-4 md:px-12">
         <div className="md:col-span-2">
           <a href="#top" aria-label="NickolasSpace" className="inline-flex flex-col items-start">
-            <img src="./assets/logo1-transparent.png" alt="" className="h-24 w-44 object-contain object-left md:h-32 md:w-60" />
-            <span className="-mt-2 text-2xl font-bold tracking-tight text-paper md:text-3xl">NickolasSpace</span>
+            <img src="./assets/logo-480.webp" alt="" width="480" height="480" loading="lazy" decoding="async" className="h-24 w-44 object-contain object-left md:h-32 md:w-60" />
+            <span className="-mt-2 text-2xl font-semibold text-paper md:text-3xl">NickolasSpace</span>
           </a>
-          <p className="mt-3 max-w-xs text-paper/60">{t.footer.tagline}</p>
+          <p className="mt-3 max-w-xs text-mist">{t.footer.tagline}</p>
         </div>
-        <nav className={colClass}>
+        <nav className={colClass} aria-label={t.nav.navigation}>
           {nav.map(([key, href]) => (
             <a key={key} href={href}>
               {t.nav[key]}
@@ -38,7 +38,7 @@ export default function Footer() {
           ))}
         </nav>
         <div className={colClass}>
-          <p className="font-semibold text-paper">Social Media & Contacts</p>
+          <p className="font-medium text-paper">{t.footer.social}</p>
           {social.map(([label, href]) => (
             <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noreferrer" : undefined}>
               {label}
@@ -46,9 +46,9 @@ export default function Footer() {
           ))}
         </div>
       </div>
-      <div className="mx-auto flex max-w-[1400px] flex-wrap justify-between gap-4 border-t bd px-6 py-6 text-sm text-paper/50 md:px-12">
+      <div className="mx-auto flex max-w-[1400px] flex-wrap justify-between gap-4 border-t bd px-6 py-6 text-sm text-mist md:px-12">
         <span>© {new Date().getFullYear()} NickolasSpace</span>
-        <a href="./privacy.html" className="hover:text-paper">
+        <a href={t.footer.privacyUrl} className="hover:text-paper">
           {t.footer.privacy}
         </a>
       </div>

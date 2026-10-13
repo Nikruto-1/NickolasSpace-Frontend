@@ -1,0 +1,14 @@
+body { margin: 0; background: var(--ink); color: var(--paper); font: 17px/1.7 system-ui, sans-serif; }
+main { max-width: 760px; margin: auto; padding: 40px 24px 80px; }
+nav { display: flex; gap: 16px; margin-top: 24px; }
+a { color: var(--accent); text-underline-offset: 4px; overflow-wrap: anywhere; }
+nav a { min-width: 36px; padding: 8px 4px; text-align: center; }
+nav [aria-current] { border-bottom: 2px solid var(--accent); }
+h1 { font-size: 36px; line-height: 1.2; font-weight: 400; margin-top: 40px; }
+h2 { font-size: 23px; line-height: 1.3; font-weight: 500; margin-top: 36px; }
+p, .updated { color: rgb(var(--mist-rgb)); }
+.updated { font-size: 14px; }
+button { padding: 12px 18px; border: 1px solid rgb(var(--control-rgb)); border-radius: 6px; background: transparent; color: var(--paper); font: inherit; cursor: pointer; }
+button:hover { background: rgb(var(--accent-rgb) / .1); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+@media (max-width: 480px) { h1 { font-size: 30px; } }

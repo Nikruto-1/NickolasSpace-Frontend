@@ -1,0 +1,15 @@
+:root {
+  color-scheme: dark;
+  --ink-rgb: 24 27 28;
+  --ink2-rgb: 35 41 40;
+  --paper-rgb: 237 240 235;
+  --mist-rgb: 181 190 184;
+  --accent-rgb: 178 213 193;
+  --accent-hover-rgb: 201 226 213;
+  --muted-dark-rgb: 76 93 84;
+  --line-rgb: 61 72 67;
+  --control-rgb: 108 128 117;
+  --ink: rgb(var(--ink-rgb));
+  --paper: rgb(var(--paper-rgb));
+  --accent: rgb(var(--accent-rgb));
+}

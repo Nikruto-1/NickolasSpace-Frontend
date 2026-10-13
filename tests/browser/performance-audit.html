@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8" /><meta name="robots" content="noindex" /><title>Local performance check</title>
+<style>body{margin:0;font:14px system-ui}output{display:block;box-sizing:border-box;height:64px;padding:8px;background:#fff;overflow:auto;overflow-wrap:anywhere}iframe{display:block;border:0;width:100%;height:calc(100vh - 64px)}</style></head>
+<body><output id="metrics">Waiting for the local page...</output><iframe title="NickolasSpace under test" src="/"></iframe>
+<script>
+const frame = document.querySelector('iframe');
+frame.addEventListener('load', () => {
+  const win = frame.contentWindow;
+  const metrics = { lcp: null, cls: 0, maxInteraction: null, fcp: null, externalResources: [] };
+  let session = { first: 0, last: 0, value: 0 };
+  const render = () => {
+    metrics.fcp = win.performance.getEntriesByName('first-contentful-paint')[0]?.startTime ?? null;
+    metrics.externalResources = win.performance.getEntriesByType('resource').map(e => e.name).filter(url => new URL(url).origin !== location.origin);
+    document.getElementById('metrics').textContent = JSON.stringify(metrics);
+  };
+  new win.PerformanceObserver(list => {
+    metrics.lcp = list.getEntries().at(-1)?.startTime ?? metrics.lcp;
+    render();
+  }).observe({ type: 'largest-contentful-paint', buffered: true });
+  new win.PerformanceObserver(list => {
+    for (const e of list.getEntries()) {
+      if (e.hadRecentInput) continue;
+      if (!session.first || e.startTime - session.last > 1000 || e.startTime - session.first > 5000) session = { first: e.startTime, last: e.startTime, value: 0 };
+      session.value += e.value; session.last = e.startTime;
+      metrics.cls = Math.max(metrics.cls, session.value);
+    }
+    render();
+  }).observe({ type: 'layout-shift', buffered: true });
+  new win.PerformanceObserver(list => {
+    for (const e of list.getEntries()) if (e.interactionId) metrics.maxInteraction = Math.max(metrics.maxInteraction ?? 0, e.duration);
+    render();
+  }).observe({ type: 'event', buffered: true, durationThreshold: 16 });
+  win.addEventListener('click', () => setTimeout(render, 250));
+  render();
+});
+</script></body></html>

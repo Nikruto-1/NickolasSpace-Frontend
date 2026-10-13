@@ -5,13 +5,13 @@ export default function IntroStatement() {
 
   return (
     <section id="intro" className="bg-paper text-ink">
-      <div className="mx-auto max-w-[1400px] px-6 py-32 md:px-12 md:py-48">
-        <p className="display max-w-6xl text-[clamp(2.2rem,6vw,5.5rem)]">
+      <div className="mx-auto max-w-[1400px] px-6 py-20 md:px-12 md:py-28">
+        <p className="display section-title">
           {t.intro.title}
           <br />
-          <span className="text-[#5E6E7C]">{t.intro.accent}</span>
+          <span className="text-muted-dark">{t.intro.accent}</span>
         </p>
-        <ul className="mt-16 flex flex-wrap gap-x-10 gap-y-3 border-t bdd pt-6">
+        <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t bdd pt-6">
           {t.intro.words.map((word) => (
             <li key={word} className="group relative cursor-default py-1 text-lg font-medium">
               {word}

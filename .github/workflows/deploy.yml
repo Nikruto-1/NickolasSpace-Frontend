@@ -34,6 +34,11 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Lint and regression tests
+        run: |
+          npm run lint
+          npm test
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

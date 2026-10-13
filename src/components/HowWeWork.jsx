@@ -11,14 +11,14 @@ export default function HowWeWork() {
 
   return (
     <section id="process" className="bg-ink2">
-      <div className="mx-auto grid max-w-[1400px] gap-16 px-6 py-28 md:px-12 md:py-40 lg:grid-cols-2">
+      <div className="mx-auto grid max-w-[1400px] gap-12 px-6 py-20 md:px-12 md:py-28 lg:grid-cols-2">
         <div className="lg:sticky lg:top-28 lg:self-start">
-          <h2 className="display text-[clamp(2.4rem,6vw,5.5rem)]">
+          <h2 className="display section-title">
             {t.process.title}
             <br />
             {t.process.accent}
           </h2>
-          <div className="relative mt-12 aspect-[4/3] overflow-hidden">
+          <div className="relative mt-8 aspect-[4/3] overflow-hidden rounded-lg">
             <Video src={ASSETS.how} smoothLoop />
           </div>
         </div>
@@ -29,11 +29,11 @@ export default function HowWeWork() {
             const active = progress >= index / t.process.steps.length + 0.04;
 
             return (
-              <div key={number} className="relative pb-24 last:pb-0 md:pb-32">
-                <span className="absolute -left-[45px] top-3 h-[9px] w-[9px] rounded-full md:-left-[61px]" style={{ background: active ? "#E8E8E4" : "#8A9BAA" }} />
+              <div key={number} className="relative pb-12 last:pb-0 md:pb-16">
+                <span className="absolute -left-[45px] top-3 h-[9px] w-[9px] rounded-full md:-left-[61px]" style={{ background: active ? "var(--accent)" : "rgb(var(--mist-rgb))" }} />
                 <span className="text-mist">{number}</span>
-                <h3 className="display mt-2 text-4xl md:text-5xl">{title}</h3>
-                <p className="mt-4 max-w-sm text-lg text-paper/70">{description}</p>
+                <h3 className="display mt-2 text-2xl md:text-3xl">{title}</h3>
+                <p className="mt-4 max-w-md text-base text-mist">{description}</p>
               </div>
             );
           })}
