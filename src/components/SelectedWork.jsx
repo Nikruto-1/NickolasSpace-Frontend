@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useLanguage from "../i18n/useLanguage.js";
 import Button from "./shared/Button.jsx";
+import { gameProjectDetails } from "../i18n/gameProjectDetails.js";
 
 const autoAlexScreens = [
   { src: "./assets/autoalex-home.jpeg", width: 1536, height: 874 },
@@ -113,6 +114,21 @@ export default function SelectedWork() {
                   </Button>
                 </div>
                 <ProjectGallery screens={gameScreens} labels={t.work.gamesViews} name={item.name} galleryLabel={t.work.gamesGallery} />
+                <div className="grid gap-10 border-t bd p-7 md:grid-cols-2 md:p-10 lg:col-span-2 xl:grid-cols-3">
+                  {gameProjectDetails[language].map((group) => (
+                    <section key={group.title}>
+                      <h4 className="text-xl font-semibold text-paper">{group.title}</h4>
+                      <dl className="mt-6 space-y-5">
+                        {group.items.map(([title, description]) => (
+                          <div key={title}>
+                            <dt className="font-semibold text-paper">{title}</dt>
+                            <dd className="mt-2 text-sm leading-relaxed text-paper/70">{description}</dd>
+                          </div>
+                        ))}
+                      </dl>
+                    </section>
+                  ))}
+                </div>
             </article>
           ))}
         </div>
