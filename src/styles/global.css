@@ -55,7 +55,7 @@ body {
 }
 
 .hero-title {
-  font-size: 3.75rem;
+  font-size: 4rem;
   line-height: 1.12;
   overflow-wrap: anywhere;
 }
@@ -85,6 +85,18 @@ body {
 
 button, a, summary, select {
   -webkit-tap-highlight-color: transparent;
+}
+
+@media (min-width: 1280px) and (min-height: 761px) {
+  .hero-title {
+    font-size: 4.5rem;
+  }
+}
+
+@media (min-width: 1536px) and (min-height: 850px) {
+  .hero-title {
+    font-size: 5rem;
+  }
 }
 
 @media (max-height: 760px) and (min-width: 768px) {
