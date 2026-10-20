@@ -48,6 +48,22 @@ export const serviceDescriptions = {
       "Respond to comments and messages in your brand voice and pass customer enquiries to your team.",
       "Track reach, engagement and enquiries, with regular reports and recommendations for the next period.",
     ],
+    [
+      "Plan, launch and manage targeted campaigns on Instagram and Facebook for your agreed audience and goals.",
+      "Set up and manage Google Ads campaigns based on search intent, your offer and the agreed advertising budget.",
+      "Prepare and test TikTok advertising campaigns with creatives tailored to your audience and offer.",
+      "Build campaigns for previous visitors and engaged audiences, using the required consent and tracking settings.",
+      "Create and test advertising copy, visuals and short videos for different audiences and campaign goals.",
+      "Set up conversion measurement and review spending, enquiries and campaign results to guide ongoing optimisation.",
+    ],
+    [
+      "Improve crawling, indexing, page speed and technical issues that affect your site's search visibility.",
+      "Research customer searches, group keywords by intent and map them to the right pages.",
+      "Optimise page titles, descriptions, headings, internal links and content structure.",
+      "Plan and prepare useful service pages and articles based on your audience's questions and search intent.",
+      "Improve your business profile and local pages so customers can find your services in the areas you serve.",
+      "Monitor search visibility, organic visits and enquiries, with reports and prioritised next steps.",
+    ],
   ],
   uk: [
     [
@@ -98,6 +114,22 @@ export const serviceDescriptions = {
       "Відповіді на коментарі та повідомлення в тоні бренду й передавання звернень клієнтів вашій команді.",
       "Відстеження охоплення, залученості та звернень, регулярні звіти й рекомендації на наступний період.",
     ],
+    [
+      "Планування, запуск і ведення таргетованих кампаній в Instagram та Facebook під погоджену аудиторію й цілі.",
+      "Налаштування та ведення кампаній Google Ads з урахуванням пошукового попиту, вашої пропозиції й погодженого рекламного бюджету.",
+      "Підготовка й тестування реклами в TikTok із креативами під вашу аудиторію та пропозицію.",
+      "Кампанії для попередніх відвідувачів і зацікавленої аудиторії з необхідними налаштуваннями згоди та відстеження.",
+      "Створення й тестування рекламних текстів, візуалів і коротких відео для різних аудиторій та цілей кампаній.",
+      "Налаштування вимірювання конверсій, аналіз витрат, звернень і результатів кампаній для подальшої оптимізації.",
+    ],
+    [
+      "Покращення сканування, індексації, швидкості сторінок та усунення технічних проблем, що впливають на видимість сайту в пошуку.",
+      "Дослідження пошукових запитів клієнтів, групування ключових слів за наміром і розподіл між сторінками.",
+      "Оптимізація назв сторінок, метаописів, заголовків, внутрішніх посилань і структури контенту.",
+      "Планування й підготовка корисних сторінок послуг і статей на основі запитань аудиторії та пошукового попиту.",
+      "Оптимізація профілю компанії та локальних сторінок, щоб клієнти знаходили ваші послуги в потрібних містах і регіонах.",
+      "Відстеження видимості в пошуку, органічних переходів і звернень зі звітами та пріоритетами наступних робіт.",
+    ],
   ],
   sv: [
     [
@@ -147,6 +179,22 @@ export const serviceDescriptions = {
       "Planera, godkänn och publicera innehåll, uppdatera profiler och håll ihop närvaron på valda plattformar.",
       "Besvara kommentarer och meddelanden i varumärkets ton och förmedla kundförfrågningar till ditt team.",
       "Följ räckvidd, engagemang och förfrågningar med regelbundna rapporter och rekommendationer inför nästa period.",
+    ],
+    [
+      "Planera, starta och hantera riktade kampanjer på Instagram och Facebook för överenskomna målgrupper och mål.",
+      "Skapa och hantera Google Ads-kampanjer utifrån sökintention, erbjudande och överenskommen annonsbudget.",
+      "Förbered och testa annonsering på TikTok med annonsmaterial anpassat till målgruppen och erbjudandet.",
+      "Skapa kampanjer för tidigare besökare och engagerade målgrupper med nödvändiga inställningar för samtycke och spårning.",
+      "Skapa och testa annonstexter, bilder och korta videor för olika målgrupper och kampanjmål.",
+      "Ställ in konverteringsmätning och följ kostnader, förfrågningar och kampanjresultat för löpande optimering.",
+    ],
+    [
+      "Förbättra genomsökning, indexering, sidhastighet och tekniska problem som påverkar webbplatsens synlighet i sökresultaten.",
+      "Undersök kundernas sökningar, gruppera sökord efter avsikt och koppla dem till rätt sidor.",
+      "Optimera sidtitlar, metabeskrivningar, rubriker, interna länkar och innehållets struktur.",
+      "Planera och skapa användbara tjänstesidor och artiklar utifrån målgruppens frågor och sökintention.",
+      "Förbättra företagsprofilen och lokala sidor så att kunder hittar tjänsterna i de områden där ni arbetar.",
+      "Följ synlighet, organisk trafik och förfrågningar med rapporter och prioriterade nästa steg.",
     ],
   ],
 };

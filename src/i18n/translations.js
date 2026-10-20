@@ -37,7 +37,7 @@ export const translations = {
     },
     services: {
       title: "Find what your business needs.",
-      text: "Need a website, fewer manual tasks or connected tools? Explore each service to see what it can do for your business.",
+      text: "Websites, automation, social media, advertising and SEO. Find the services that match your business goals.",
       more: "More details",
       discuss: "Discuss the services you need",
       groups: [
@@ -47,6 +47,8 @@ export const translations = {
         { name: "Audit & Security", items: ["Security Audit", "Technical Audit", "Performance Audit", "Code Review", "SEO Audit", "Architecture Review"] },
         { name: "Support", items: ["Maintenance", "Bug Fixing", "Monitoring", "Cloud Deployment", "Backups", "Product Growth"] },
         { name: "Social Media & SMM", items: ["Instagram & Facebook", "Social Media Strategy", "Content Creation", "Publishing & Account Management", "Community Management", "Analytics & Reporting"] },
+        { name: "Paid Advertising", items: ["Instagram & Facebook Ads", "Google Ads", "TikTok Ads", "Retargeting", "Ad Creatives", "Campaign Analytics"] },
+        { name: "SEO", items: ["Technical SEO", "Keyword Research", "On-page Optimisation", "SEO Content", "Local SEO", "SEO Monitoring & Reporting"] },
       ],
     },
     work: {
@@ -147,7 +149,7 @@ export const translations = {
     },
     services: {
       title: "Знайдіть те, що потрібно вашому бізнесу.",
-      text: "Потрібен сайт, менше ручної роботи чи зв’язок між сервісами? Перегляньте пояснення послуг і виберіть те, що відповідає вашому завданню.",
+      text: "Сайти, автоматизація, соцмережі, реклама та SEO. Виберіть послуги, що відповідають завданням вашого бізнесу.",
       more: "Детальніше",
       discuss: "Обговорити потрібні послуги",
       groups: [
@@ -157,6 +159,8 @@ export const translations = {
         { name: "Аудит і безпека", items: ["Аудит безпеки", "Технічний аудит", "Аудит продуктивності", "Code Review", "SEO-аудит", "Аудит архітектури"] },
         { name: "Підтримка", items: ["Супровід", "Виправлення багів", "Моніторинг", "Cloud Deployment", "Бекапи", "Розвиток продукту"] },
         { name: "Соцмережі та SMM", items: ["Instagram та Facebook", "SMM-стратегія", "Створення контенту", "Публікації та ведення", "Комунікація з аудиторією", "Аналітика та звітність"] },
+        { name: "Таргетована реклама", items: ["Реклама в Instagram та Facebook", "Google Ads", "TikTok Ads", "Ретаргетинг", "Рекламні креативи", "Аналітика кампаній"] },
+        { name: "SEO-просування", items: ["Технічне SEO", "Семантика та ключові слова", "Оптимізація сторінок", "SEO-контент", "Локальне SEO", "Моніторинг і звітність"] },
       ],
     },
     work: {
@@ -257,7 +261,7 @@ export const translations = {
     },
     services: {
       title: "Hitta det ditt företag behöver.",
-      text: "Behöver du en webbplats, mindre manuellt arbete eller sammankopplade verktyg? Läs om tjänsterna och hitta det som passar din uppgift.",
+      text: "Webbplatser, automation, sociala medier, annonsering och SEO. Välj tjänster som passar ditt företags mål.",
       more: "Mer information",
       discuss: "Diskutera tjänsterna du behöver",
       groups: [
@@ -267,6 +271,8 @@ export const translations = {
         { name: "Granskning & säkerhet", items: ["Säkerhetsgranskning", "Teknisk granskning", "Prestandagranskning", "Kodgranskning", "SEO-granskning", "Arkitekturgranskning"] },
         { name: "Support", items: ["Underhåll", "Buggfixar", "Övervakning", "Molnpublicering", "Backuper", "Produkttillväxt"] },
         { name: "Sociala medier & SMM", items: ["Instagram & Facebook", "Strategi för sociala medier", "Innehållsproduktion", "Publicering & kontohantering", "Dialog med målgruppen", "Analys & rapportering"] },
+        { name: "Betald annonsering", items: ["Instagram & Facebook Ads", "Google Ads", "TikTok Ads", "Retargeting", "Annonsmaterial", "Kampanjanalys"] },
+        { name: "SEO", items: ["Teknisk SEO", "Sökordsanalys", "Sidoptimering", "SEO-innehåll", "Lokal SEO", "SEO-uppföljning & rapportering"] },
       ],
     },
     work: {
