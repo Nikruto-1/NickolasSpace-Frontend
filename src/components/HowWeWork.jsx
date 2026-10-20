@@ -10,7 +10,7 @@ export default function HowWeWork() {
   const { t } = useLanguage();
 
   return (
-    <section id="process" className="bg-ink2">
+    <section id="process" className="bg-ink">
       <div className="mx-auto grid max-w-[1400px] gap-12 px-6 py-20 md:px-12 md:py-28 lg:grid-cols-2">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <h2 className="display section-title">
@@ -22,22 +22,25 @@ export default function HowWeWork() {
             <Video src={ASSETS.how} smoothLoop />
           </div>
         </div>
-        <div ref={listRef} className="relative pl-10 md:pl-14">
-          <div className="absolute bottom-0 left-0 top-0 w-px bg-paper/15" />
-          <div className="absolute left-0 top-0 w-px bg-paper" style={{ height: `${progress * 100}%` }} />
+        <ol ref={listRef} className="process-timeline">
           {t.process.steps.map(([number, title, description], index) => {
-            const active = progress >= index / t.process.steps.length + 0.04;
+            const stepProgress = Math.min(1, Math.max(0, progress * t.process.steps.length - index));
+            const active = index === 0 || stepProgress > 0;
 
             return (
-              <div key={number} className="relative pb-12 last:pb-0 md:pb-16">
-                <span className="absolute -left-[45px] top-3 h-[9px] w-[9px] rounded-full md:-left-[61px]" style={{ background: active ? "var(--accent)" : "rgb(var(--mist-rgb))" }} />
-                <span className="text-mist">{number}</span>
-                <h3 className="display mt-2 text-2xl md:text-3xl">{title}</h3>
-                <p className="mt-4 max-w-md text-base text-mist">{description}</p>
-              </div>
+              <li key={number} className="process-step" data-active={active}>
+                <span className="process-step-number" aria-hidden="true">{number}</span>
+                {index < t.process.steps.length - 1 && <span className="process-step-line" aria-hidden="true">
+                  <span style={{ transform: `scaleY(${stepProgress})` }} />
+                </span>}
+                <div className="process-step-copy">
+                  <h3 className="display text-2xl md:text-3xl">{title}</h3>
+                  <p className="mt-4 text-lg leading-relaxed text-mist">{description}</p>
+                </div>
+              </li>
             );
           })}
-        </div>
+        </ol>
       </div>
     </section>
   );

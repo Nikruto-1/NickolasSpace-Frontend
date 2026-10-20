@@ -40,6 +40,14 @@ export const serviceDescriptions = {
       "Set up scheduled backups and a recovery procedure for the agreed data.",
       "Extend your product with new features based on customer needs and business priorities.",
     ],
+    [
+      "Manage your Instagram and Facebook accounts, with TikTok, Threads and other platforms chosen to suit your audience.",
+      "Define your audience, positioning, content themes and publishing plan around your business goals.",
+      "Prepare copy, visual content, Stories and short videos in an agreed brand style and format.",
+      "Plan, approve and publish content, update profiles and keep accounts consistent across your chosen platforms.",
+      "Respond to comments and messages in your brand voice and pass customer enquiries to your team.",
+      "Track reach, engagement and enquiries, with regular reports and recommendations for the next period.",
+    ],
   ],
   uk: [
     [
@@ -82,6 +90,14 @@ export const serviceDescriptions = {
       "Резервне копіювання за розкладом і порядок відновлення погоджених даних.",
       "Додавання функцій відповідно до потреб клієнтів і пріоритетів бізнесу.",
     ],
+    [
+      "Ведення акаунтів Instagram і Facebook, а також TikTok, Threads та інших платформ, які підходять вашій аудиторії.",
+      "Визначення аудиторії, позиціювання, рубрик і контент-плану відповідно до бізнес-цілей.",
+      "Підготовка текстів, візуалів, Stories і коротких відео в погодженому стилі та форматі бренду.",
+      "Планування, погодження й публікація контенту, оформлення профілів і системне ведення обраних соцмереж.",
+      "Відповіді на коментарі та повідомлення в тоні бренду й передавання звернень клієнтів вашій команді.",
+      "Відстеження охоплення, залученості та звернень, регулярні звіти й рекомендації на наступний період.",
+    ],
   ],
   sv: [
     [
@@ -123,6 +139,14 @@ export const serviceDescriptions = {
       "Förbered hosting, konfiguration och publicering av webbplatsen eller applikationen.",
       "Ställ in schemalagda säkerhetskopior och en rutin för att återställa avtalade data.",
       "Utöka produkten med funktioner utifrån kundernas behov och företagets prioriteringar.",
+    ],
+    [
+      "Hantera Instagram och Facebook samt TikTok, Threads och andra plattformar som passar din målgrupp.",
+      "Definiera målgrupp, positionering, innehållsteman och publiceringsplan utifrån företagets mål.",
+      "Skapa texter, visuellt innehåll, Stories och korta videor enligt överenskommen varumärkesstil och format.",
+      "Planera, godkänn och publicera innehåll, uppdatera profiler och håll ihop närvaron på valda plattformar.",
+      "Besvara kommentarer och meddelanden i varumärkets ton och förmedla kundförfrågningar till ditt team.",
+      "Följ räckvidd, engagemang och förfrågningar med regelbundna rapporter och rekommendationer inför nästa period.",
     ],
   ],
 };

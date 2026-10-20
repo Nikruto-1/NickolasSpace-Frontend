@@ -46,6 +46,7 @@ export const translations = {
         { name: "Integrations & AI", items: ["API Integrations", "AI Assistants", "AI Chatbots", "CRM Integration", "Payment Integration", "Data Aggregation"] },
         { name: "Audit & Security", items: ["Security Audit", "Technical Audit", "Performance Audit", "Code Review", "SEO Audit", "Architecture Review"] },
         { name: "Support", items: ["Maintenance", "Bug Fixing", "Monitoring", "Cloud Deployment", "Backups", "Product Growth"] },
+        { name: "Social Media & SMM", items: ["Instagram & Facebook", "Social Media Strategy", "Content Creation", "Publishing & Account Management", "Community Management", "Analytics & Reporting"] },
       ],
     },
     work: {
@@ -72,13 +73,14 @@ export const translations = {
       nodes: ["Customer", "Website", "CRM", "Manager", "Telegram", "Payment", "Analytics"],
     },
     process: {
-      title: "From idea",
-      accent: "to launch.",
+      title: "From the first conversation",
+      accent: "to ongoing growth.",
       steps: [
-        ["01", "Discuss your needs", "Tell us about your business, the problem you want to solve and what a useful result would look like."],
-        ["02", "Agree on the scope", "Before development, we agree on the deliverables, timeline and terms so you know what to expect."],
-        ["03", "Build & review", "We design, develop and connect the solution. You review the agreed stages and share feedback."],
-        ["04", "Launch & handover", "We check the result, publish it and explain how to use it. Ongoing support can be agreed separately."],
+        ["01", "Start", "We start with a brief, a contract and payment. On our kickoff call, we clarify the details, discuss expectations and lay the groundwork for effective collaboration."],
+        ["02", "Strategy", "We develop a brand strategy, social media strategy and promotion plan. We research your market, competitors and audience, building a foundation that helps your content serve your business goals."],
+        ["03", "Implementation", "We put the agreed plan into action: design and build your website or service, connect automation, prepare content and manage social accounts. The scope follows your project's goals."],
+        ["04", "Launch & promotion", "We check and launch your solution, set up publishing and manage your presence on Instagram, Facebook and other agreed platforms. Campaigns and partnerships are included when agreed in the scope."],
+        ["05", "Analysis & development", "We review enquiries, audience engagement and the performance of your website and channels. We share clear reports and use the findings to plan improvements and the next steps."],
       ],
     },
     founder: {
@@ -154,6 +156,7 @@ export const translations = {
         { name: "Інтеграції та AI", items: ["API-інтеграції", "AI-асистенти", "AI-чатботи", "CRM-інтеграція", "Платіжні інтеграції", "Агрегація даних"] },
         { name: "Аудит і безпека", items: ["Аудит безпеки", "Технічний аудит", "Аудит продуктивності", "Code Review", "SEO-аудит", "Аудит архітектури"] },
         { name: "Підтримка", items: ["Супровід", "Виправлення багів", "Моніторинг", "Cloud Deployment", "Бекапи", "Розвиток продукту"] },
+        { name: "Соцмережі та SMM", items: ["Instagram та Facebook", "SMM-стратегія", "Створення контенту", "Публікації та ведення", "Комунікація з аудиторією", "Аналітика та звітність"] },
       ],
     },
     work: {
@@ -180,13 +183,14 @@ export const translations = {
       nodes: ["Клієнт", "Сайт", "CRM", "Менеджер", "Telegram", "Оплата", "Аналітика"],
     },
     process: {
-      title: "Від ідеї",
-      accent: "до запуску.",
+      title: "Від знайомства",
+      accent: "до розвитку бізнесу.",
       steps: [
-        ["01", "Обговорення завдання", "Розкажіть про бізнес, проблему, яку хочете вирішити, та результат, який буде для вас корисним."],
-        ["02", "Погодження обсягу", "До розробки погоджуємо склад робіт, терміни та умови, щоб ви розуміли, чого очікувати."],
-        ["03", "Розробка й перевірка", "Проєктуємо, розробляємо та підключаємо рішення. Ви переглядаєте погоджені етапи й надаєте зворотний зв’язок."],
-        ["04", "Запуск і передавання", "Перевіряємо результат, публікуємо та пояснюємо, як ним користуватися. Подальший супровід можна погодити окремо."],
+        ["01", "Старт", "Починаємо з брифування, підписання договору та оплати. Проводимо стартовий дзвінок — дебрифінг, де уточнюємо деталі, обговорюємо очікування та закладаємо основу для ефективної роботи."],
+        ["02", "Стратегія", "Створюємо бренд-стратегію, SMM-стратегію та стратегію просування. Аналізуємо ринок, конкурентів і цільову аудиторію. Закладаємо фундамент, який дозволяє контенту працювати на ваші бізнес-цілі."],
+        ["03", "Реалізація", "Втілюємо погоджений план: створюємо дизайн, розробляємо сайт чи сервіс, підключаємо автоматизацію, готуємо контент і ведемо акаунти. Склад робіт визначаємо відповідно до завдань вашого проєкту."],
+        ["04", "Запуск і просування", "Перевіряємо та запускаємо рішення, налагоджуємо публікації й присутність в Instagram, Facebook та інших погоджених соцмережах. Рекламні кампанії й партнерства включаємо за домовленістю."],
+        ["05", "Аналітика та розвиток", "Аналізуємо заявки, взаємодію з аудиторією та роботу сайту й каналів просування. Готуємо зрозумілі звіти, визначаємо, що варто покращити, та плануємо наступні кроки."],
       ],
     },
     founder: {
@@ -262,6 +266,7 @@ export const translations = {
         { name: "Integrationer & AI", items: ["API-integrationer", "AI-assistenter", "AI-chatbotar", "CRM-integration", "Betalningsintegration", "Datainsamling"] },
         { name: "Granskning & säkerhet", items: ["Säkerhetsgranskning", "Teknisk granskning", "Prestandagranskning", "Kodgranskning", "SEO-granskning", "Arkitekturgranskning"] },
         { name: "Support", items: ["Underhåll", "Buggfixar", "Övervakning", "Molnpublicering", "Backuper", "Produkttillväxt"] },
+        { name: "Sociala medier & SMM", items: ["Instagram & Facebook", "Strategi för sociala medier", "Innehållsproduktion", "Publicering & kontohantering", "Dialog med målgruppen", "Analys & rapportering"] },
       ],
     },
     work: {
@@ -288,13 +293,14 @@ export const translations = {
       nodes: ["Kund", "Webbplats", "CRM", "Manager", "Telegram", "Betalning", "Analys"],
     },
     process: {
-      title: "Från idé",
-      accent: "till lansering.",
+      title: "Från första samtalet",
+      accent: "till fortsatt utveckling.",
       steps: [
-        ["01", "Diskutera behovet", "Berätta om företaget, problemet du vill lösa och vilket resultat som skulle vara användbart."],
-        ["02", "Kom överens om omfattningen", "Före utvecklingen kommer vi överens om leveranser, tidsplan och villkor så att du vet vad du kan förvänta dig."],
-        ["03", "Utveckla & granska", "Vi designar, utvecklar och ansluter lösningen. Du granskar överenskomna steg och ger återkoppling."],
-        ["04", "Lansera & lämna över", "Vi kontrollerar resultatet, publicerar och förklarar hur det används. Fortsatt support kan avtalas separat."],
+        ["01", "Start", "Vi börjar med en brief, avtal och betalning. Under uppstartsmötet klargör vi detaljer, diskuterar förväntningar och lägger grunden för ett bra samarbete."],
+        ["02", "Strategi", "Vi tar fram en varumärkesstrategi, en strategi för sociala medier och en plan för marknadsföring. Vi analyserar marknaden, konkurrenterna och målgruppen så att innehållet stödjer dina affärsmål."],
+        ["03", "Genomförande", "Vi genomför den överenskomna planen: designar och utvecklar webbplatsen eller tjänsten, ansluter automation, skapar innehåll och hanterar konton. Arbetets omfattning följer projektets mål."],
+        ["04", "Lansering & marknadsföring", "Vi kontrollerar och lanserar lösningen, planerar publicering och sköter närvaron på Instagram, Facebook och andra överenskomna plattformar. Kampanjer och samarbeten ingår enligt överenskommelse."],
+        ["05", "Analys & utveckling", "Vi följer upp förfrågningar, målgruppens engagemang samt webbplatsens och kanalernas resultat. Du får tydliga rapporter och förslag på förbättringar och nästa steg."],
       ],
     },
     founder: {

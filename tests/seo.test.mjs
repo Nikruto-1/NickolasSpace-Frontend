@@ -18,7 +18,7 @@ test("built HTML contains every service before JavaScript runs", () => {
       assert.ok(html.includes(escapeHtml(serviceDescriptions.en[groupIndex][index])), `Missing description: ${name}`);
     }
   }
-  assert.equal((html.match(/role="tabpanel"/g) || []).length, 5);
+  assert.equal((html.match(/role="tabpanel"/g) || []).length, translations.en.services.groups.length);
   assert.equal((html.match(/<h1\b/g) || []).length, 1);
 });
 
@@ -27,6 +27,24 @@ test("metadata is unique and structured data is valid JSON", () => {
   assert.equal((html.match(/property="og:url"/g) || []).length, 1);
   const schema = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
   assert.ok(schema["@graph"].some((node) => node["@type"] === "WebSite" && node.url === "https://nickolasspace.com/"));
+});
+
+test("every translated service has a matching description", () => {
+  for (const [language, copy] of Object.entries(translations)) {
+    assert.equal(serviceDescriptions[language].length, copy.services.groups.length);
+    for (const [index, group] of copy.services.groups.entries()) {
+      assert.equal(serviceDescriptions[language][index].length, group.items.length);
+      assert.ok(serviceDescriptions[language][index].every((description) => description.trim().length > 0));
+    }
+  }
+});
+
+test("the process is readable before scroll and JavaScript", () => {
+  for (const [, title, description] of translations.en.process.steps) {
+    assert.ok(html.includes(escapeHtml(title)));
+    assert.ok(html.includes(escapeHtml(description)));
+  }
+  assert.equal((html.match(/class="process-step"/g) || []).length, translations.en.process.steps.length);
 });
 
 test("social previews use the dedicated landscape cover", async () => {
