@@ -9,7 +9,7 @@ export const serviceDescriptions = {
       "A tailored application when your workflow needs more than a standard website.",
     ],
     [
-      "Let customers send requests, book services or receive updates directly in Telegram.",
+      "Build chatbots for Telegram, WhatsApp, Instagram, Viber and other platforms to answer questions, accept enquiries, book services and connect to your CRM.",
       "Connect repetitive tasks into a workflow to reduce manual copying and follow-ups.",
       "Organise customer records, enquiries and sales stages in one workspace.",
       "Send website enquiries to your CRM or team so they can be assigned and followed up.",
@@ -93,7 +93,7 @@ export const serviceDescriptions = {
       "Застосунок під ваші процеси, коли можливостей стандартного сайту недостатньо.",
     ],
     [
-      "Приймання заявок, запис на послуги чи надсилання оновлень безпосередньо в Telegram.",
+      "Розробка чатботів для Telegram, WhatsApp, Instagram, Viber та інших платформ: відповіді на запитання, приймання заявок, запис на послуги й інтеграція з CRM.",
       "Об’єднання повторюваних завдань у процес, щоб зменшити ручне перенесення даних і нагадування.",
       "Клієнти, заявки та етапи продажу в одному робочому просторі.",
       "Передавання заявок із сайту в CRM або команді для призначення відповідального й подальшої роботи.",
@@ -177,7 +177,7 @@ export const serviceDescriptions = {
       "En skräddarsydd applikation när arbetsflödet kräver mer än en vanlig webbplats.",
     ],
     [
-      "Ta emot förfrågningar, boka tjänster eller skicka uppdateringar direkt i Telegram.",
+      "Utveckla chattbotar för Telegram, WhatsApp, Instagram, Viber och andra plattformar för att besvara frågor, ta emot förfrågningar, boka tjänster och ansluta till CRM.",
       "Koppla ihop återkommande uppgifter för att minska manuell kopiering och uppföljning.",
       "Samla kunduppgifter, förfrågningar och försäljningssteg i en arbetsyta.",
       "Skicka webbplatsens förfrågningar till CRM eller teamet för fördelning och uppföljning.",

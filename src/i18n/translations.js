@@ -42,7 +42,7 @@ export const translations = {
       discuss: "Discuss the services you need",
       groups: [
         { name: "Web Development", items: ["Landing Page", "Corporate Website", "E-commerce", "Web Platform", "Redesign", "Custom Development"] },
-        { name: "Automation & Bots", items: ["Telegram Bots", "Business Automation", "CRM Systems", "Lead Automation", "Document Automation", "Notifications"] },
+        { name: "Automation & Bots", items: ["Messaging Chatbots", "Business Automation", "CRM Systems", "Lead Automation", "Document Automation", "Notifications"] },
         { name: "Integrations & AI", items: ["API Integrations", "AI Assistants", "AI Chatbots", "CRM Integration", "Payment Integration", "Data Aggregation"] },
         { name: "Audit & Security", items: ["Security Audit", "Technical Audit", "Performance Audit", "Code Review", "SEO Audit", "Architecture Review"] },
         { name: "Support", items: ["Maintenance", "Bug Fixing", "Monitoring", "Cloud Deployment", "Backups", "Product Growth"] },
@@ -74,7 +74,7 @@ export const translations = {
     automation: {
       title: "Automate repetitive work.",
       accent: "Focus on what matters.",
-      nodes: ["Customer", "Website", "CRM", "Manager", "Telegram", "Payment", "Analytics"],
+      nodes: ["Customer", "Website", "CRM", "Manager", "Messengers", "Payment", "Analytics"],
     },
     process: {
       title: "From the first conversation",
@@ -156,7 +156,7 @@ export const translations = {
       discuss: "Обговорити потрібні послуги",
       groups: [
         { name: "Веброзробка", items: ["Лендінг", "Корпоративний сайт", "E-commerce", "Вебплатформа", "Редизайн", "Індивідуальна розробка"] },
-        { name: "Автоматизація та боти", items: ["Telegram-боти", "Автоматизація бізнесу", "CRM-системи", "Автоматизація лідів", "Автоматизація документів", "Сповіщення"] },
+        { name: "Автоматизація та боти", items: ["Чатботи для месенджерів", "Автоматизація бізнесу", "CRM-системи", "Автоматизація лідів", "Автоматизація документів", "Сповіщення"] },
         { name: "Інтеграції та AI", items: ["API-інтеграції", "AI-асистенти", "AI-чатботи", "CRM-інтеграція", "Платіжні інтеграції", "Агрегація даних"] },
         { name: "Аудит і безпека", items: ["Аудит безпеки", "Технічний аудит", "Аудит продуктивності", "Code Review", "SEO-аудит", "Аудит архітектури"] },
         { name: "Підтримка", items: ["Супровід", "Виправлення багів", "Моніторинг", "Cloud Deployment", "Бекапи", "Розвиток продукту"] },
@@ -188,7 +188,7 @@ export const translations = {
     automation: {
       title: "Автоматизуйте рутинну роботу.",
       accent: "Фокусуйтеся на головному.",
-      nodes: ["Клієнт", "Сайт", "CRM", "Менеджер", "Telegram", "Оплата", "Аналітика"],
+      nodes: ["Клієнт", "Сайт", "CRM", "Менеджер", "Месенджери", "Оплата", "Аналітика"],
     },
     process: {
       title: "Від знайомства",
@@ -270,7 +270,7 @@ export const translations = {
       discuss: "Diskutera tjänsterna du behöver",
       groups: [
         { name: "Webbutveckling", items: ["Landningssida", "Företagswebbplats", "E-handel", "Webbplattform", "Redesign", "Anpassad utveckling"] },
-        { name: "Automation & botar", items: ["Telegram-botar", "Affärsautomation", "CRM-system", "Lead-automation", "Dokumentautomation", "Notiser"] },
+        { name: "Automation & botar", items: ["Chattbotar för meddelandetjänster", "Affärsautomation", "CRM-system", "Lead-automation", "Dokumentautomation", "Notiser"] },
         { name: "Integrationer & AI", items: ["API-integrationer", "AI-assistenter", "AI-chatbotar", "CRM-integration", "Betalningsintegration", "Datainsamling"] },
         { name: "Granskning & säkerhet", items: ["Säkerhetsgranskning", "Teknisk granskning", "Prestandagranskning", "Kodgranskning", "SEO-granskning", "Arkitekturgranskning"] },
         { name: "Support", items: ["Underhåll", "Buggfixar", "Övervakning", "Molnpublicering", "Backuper", "Produkttillväxt"] },
@@ -302,7 +302,7 @@ export const translations = {
     automation: {
       title: "Automatisera repetitivt arbete.",
       accent: "Fokusera på det som räknas.",
-      nodes: ["Kund", "Webbplats", "CRM", "Manager", "Telegram", "Betalning", "Analys"],
+      nodes: ["Kund", "Webbplats", "CRM", "Manager", "Meddelandetjänster", "Betalning", "Analys"],
     },
     process: {
       title: "Från första samtalet",
