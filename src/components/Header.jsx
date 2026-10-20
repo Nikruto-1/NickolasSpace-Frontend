@@ -1,6 +1,5 @@
-import { useContext, useEffect, useRef, useState } from "react";
-import { ArrowUpRight, Menu, Pause, Play, X } from "lucide-react";
-import { MotionContext } from "./shared/motionContext.js";
+import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { languages } from "../i18n/translations.js";
 import useLanguage from "../i18n/useLanguage.js";
 import ContactButton from "./contact/ContactButton.jsx";
@@ -9,7 +8,6 @@ export default function Header() {
   const [solid, setSolid] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
-  const { paused, toggleMotion } = useContext(MotionContext);
   const { language, setLanguage, t } = useLanguage();
   const links = [
     [t.nav.services, "#services"],
@@ -57,9 +55,6 @@ export default function Header() {
               </button>
             ))}
           </div>
-          <button type="button" onClick={toggleMotion} aria-pressed={paused} title={paused ? t.nav.resumeMotion : t.nav.pauseMotion} aria-label={paused ? t.nav.resumeMotion : t.nav.pauseMotion} className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-full text-mist hover:bg-paper/5 hover:text-paper sm:flex">
-            {paused ? <Play size={18} aria-hidden="true" /> : <Pause size={18} aria-hidden="true" />}
-          </button>
           <ContactButton className="hidden border border-control !bg-transparent !px-5 !py-2 text-sm !text-paper hover:!bg-paper/5 sm:inline-flex">
             <span className="hidden sm:inline">{t.nav.start}</span>
             <ArrowUpRight className="sm:hidden" size={18} aria-hidden="true" />
@@ -74,9 +69,6 @@ export default function Header() {
         {links.map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)} className="block rounded-md py-3 text-mist hover:text-accent">{label}</a>)}
         <div className="mt-3 flex items-center justify-between gap-3 border-t bd pt-4">
           <ContactButton onClick={() => { setMenuOpen(false); menuRef.current?.focus(); }}>{t.nav.start}</ContactButton>
-          <button type="button" onClick={toggleMotion} aria-pressed={paused} title={paused ? t.nav.resumeMotion : t.nav.pauseMotion} aria-label={paused ? t.nav.resumeMotion : t.nav.pauseMotion} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-control text-paper">
-            {paused ? <Play size={18} aria-hidden="true" /> : <Pause size={18} aria-hidden="true" />}
-          </button>
         </div>
       </nav>}
     </header>
