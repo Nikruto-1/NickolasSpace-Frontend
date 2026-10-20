@@ -74,6 +74,14 @@ export const serviceDescriptions = {
       "Define how your brand speaks, with practical examples for social posts, website copy and customer conversations.",
       "Document how to use your identity, layouts and communication style so your team and partners can keep the brand consistent.",
     ],
+    [
+      "Design landing pages, company websites and online stores around your offer and brand. Available as a standalone service without development.",
+      "Design interfaces for web and mobile apps, customer portals, CRM systems and dashboards, including the key screens and interaction states.",
+      "Study user needs and review navigation, content structure and task flows to identify usability problems and prioritise improvements.",
+      "Map the structure and user journeys in wireframes, then create clickable prototypes to review key flows before development.",
+      "Adapt layouts, navigation and components for mobile, tablet and desktop, with attention to readability and touch interactions.",
+      "Prepare reusable components, styles and documented states, then organise the design files and specifications for your development team.",
+    ],
   ],
   uk: [
     [
@@ -150,6 +158,14 @@ export const serviceDescriptions = {
       "Визначення голосу бренду з практичними прикладами для публікацій, текстів сайту та спілкування з клієнтами.",
       "Правила використання айдентики, макетів і стилю комунікації, щоб команда й партнери послідовно представляли бренд.",
     ],
+    [
+      "Дизайн лендінгів, корпоративних сайтів та інтернет-магазинів під вашу пропозицію й бренд. Можна замовити окремо, без розробки.",
+      "Проєктування інтерфейсів веб- і мобільних застосунків, особистих кабінетів, CRM та дашбордів із ключовими екранами й станами взаємодії.",
+      "Дослідження потреб користувачів і перевірка навігації, структури контенту та сценаріїв для виявлення проблем і визначення пріоритетів покращення.",
+      "Опрацювання структури й користувацьких сценаріїв у вайрфреймах та створення клікабельних прототипів для перевірки логіки до розробки.",
+      "Адаптація макетів, навігації й компонентів для телефонів, планшетів і комп’ютерів з увагою до читабельності та сенсорної взаємодії.",
+      "Підготовка повторно використовуваних компонентів, стилів і станів, упорядкування макетів та специфікацій для передавання вашій команді розробки.",
+    ],
   ],
   sv: [
     [
@@ -225,6 +241,14 @@ export const serviceDescriptions = {
       "Samla syfte, värderingar, målgrupp, löfte och personlighet i en gemensam grund för framtida varumärkesbeslut.",
       "Definiera varumärkets röst med praktiska exempel för sociala inlägg, webbtexter och kunddialog.",
       "Dokumentera hur identitet, layouter och kommunikationsstil ska användas så att team och partners kan arbeta enhetligt.",
+    ],
+    [
+      "Designa landningssidor, företagswebbplatser och webbutiker utifrån ditt erbjudande och varumärke. Kan beställas separat utan utveckling.",
+      "Utforma gränssnitt för webb- och mobilappar, kundportaler, CRM-system och dashboards med viktiga vyer och interaktionstillstånd.",
+      "Undersök användarnas behov och granska navigering, innehållsstruktur och arbetsflöden för att hitta användbarhetsproblem och prioritera förbättringar.",
+      "Planera struktur och användarflöden med wireframes och skapa klickbara prototyper för att granska funktionens logik före utveckling.",
+      "Anpassa layouter, navigering och komponenter för mobil, surfplatta och dator med fokus på läsbarhet och pekskärmsanvändning.",
+      "Förbered återanvändbara komponenter, stilar och dokumenterade tillstånd samt organisera designfiler och specifikationer för utvecklingsteamet.",
     ],
   ],
 };

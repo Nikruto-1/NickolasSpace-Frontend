@@ -50,6 +50,7 @@ export const translations = {
         { name: "Paid Advertising", items: ["Instagram & Facebook Ads", "Google Ads", "TikTok Ads", "Retargeting", "Ad Creatives", "Campaign Analytics"] },
         { name: "SEO", items: ["Technical SEO", "Keyword Research", "On-page Optimisation", "SEO Content", "Local SEO", "SEO Monitoring & Reporting"] },
         { name: "Branding & Strategy", items: ["Audience Research", "Brand Strategy", "Naming", "Visual Identity", "Rebranding", "Brand Platform", "Tone of Voice", "Brand Guidelines"] },
+        { name: "UI/UX Design", items: ["Website Design", "App & Dashboard Design", "UX Research & Audit", "Wireframes & Prototypes", "Responsive Design", "Design Systems & Handoff"] },
       ],
     },
     work: {
@@ -163,6 +164,7 @@ export const translations = {
         { name: "Таргетована реклама", items: ["Реклама в Instagram та Facebook", "Google Ads", "TikTok Ads", "Ретаргетинг", "Рекламні креативи", "Аналітика кампаній"] },
         { name: "SEO-просування", items: ["Технічне SEO", "Семантика та ключові слова", "Оптимізація сторінок", "SEO-контент", "Локальне SEO", "Моніторинг і звітність"] },
         { name: "Брендинг та стратегія", items: ["Дослідження аудиторії", "Стратегія бренду", "Неймінг", "Унікальний візуальний стиль", "Ребрендинг", "Бренд-платформа", "Тон комунікації", "Брендбук і гайдлайни"] },
+        { name: "UI/UX-дизайн", items: ["Дизайн сайтів", "Дизайн застосунків і кабінетів", "UX-дослідження та аудит", "Вайрфрейми й прототипи", "Адаптивний дизайн", "Дизайн-системи та передавання"] },
       ],
     },
     work: {
@@ -276,6 +278,7 @@ export const translations = {
         { name: "Betald annonsering", items: ["Instagram & Facebook Ads", "Google Ads", "TikTok Ads", "Retargeting", "Annonsmaterial", "Kampanjanalys"] },
         { name: "SEO", items: ["Teknisk SEO", "Sökordsanalys", "Sidoptimering", "SEO-innehåll", "Lokal SEO", "SEO-uppföljning & rapportering"] },
         { name: "Varumärke & strategi", items: ["Målgruppsanalys", "Varumärkesstrategi", "Namngivning", "Visuell identitet", "Rebranding", "Varumärkesplattform", "Tonalitet", "Varumärkesmanual"] },
+        { name: "UI/UX-design", items: ["Webbdesign", "App- & dashboarddesign", "UX-research & granskning", "Wireframes & prototyper", "Responsiv design", "Designsystem & överlämning"] },
       ],
     },
     work: {
