@@ -64,6 +64,16 @@ export const serviceDescriptions = {
       "Improve your business profile and local pages so customers can find your services in the areas you serve.",
       "Monitor search visibility, organic visits and enquiries, with reports and prioritised next steps.",
     ],
+    [
+      "Explore customer needs, motivations and buying decisions through research and agreed interviews, alongside competitor analysis.",
+      "Define your positioning, value proposition and brand idea so customers understand why they should choose you.",
+      "Develop name concepts that reflect your positioning, with explanations and an initial check of available domains and social handles.",
+      "Create a distinctive visual identity: logo, colours, typography and graphic elements for your website, social media and other materials.",
+      "Review and refresh an existing brand's positioning, identity and communication while preserving what your audience recognises and values.",
+      "Bring together your purpose, values, audience, promise and personality in a shared foundation for future brand decisions.",
+      "Define how your brand speaks, with practical examples for social posts, website copy and customer conversations.",
+      "Document how to use your identity, layouts and communication style so your team and partners can keep the brand consistent.",
+    ],
   ],
   uk: [
     [
@@ -130,6 +140,16 @@ export const serviceDescriptions = {
       "Оптимізація профілю компанії та локальних сторінок, щоб клієнти знаходили ваші послуги в потрібних містах і регіонах.",
       "Відстеження видимості в пошуку, органічних переходів і звернень зі звітами та пріоритетами наступних робіт.",
     ],
+    [
+      "Дослідження потреб, мотивації та рішень клієнтів через аналіз і погоджені інтерв’ю, а також вивчення конкурентів.",
+      "Формування позиціювання, ціннісної пропозиції та ідеї бренду, щоб клієнти розуміли, чому варто обрати саме вас.",
+      "Розробка варіантів назви під позиціювання бренду з поясненням ідей і попередньою перевіркою доступності доменів та імен у соцмережах.",
+      "Створення впізнаваної айдентики: логотип, кольори, типографіка й графічні елементи для сайту, соцмереж та інших матеріалів.",
+      "Аналіз і оновлення позиціювання, айдентики та комунікації наявного бренду зі збереженням того, що аудиторія впізнає й цінує.",
+      "Об’єднання місії, цінностей, аудиторії, обіцянки та характеру бренду в спільну основу для подальших рішень.",
+      "Визначення голосу бренду з практичними прикладами для публікацій, текстів сайту та спілкування з клієнтами.",
+      "Правила використання айдентики, макетів і стилю комунікації, щоб команда й партнери послідовно представляли бренд.",
+    ],
   ],
   sv: [
     [
@@ -195,6 +215,16 @@ export const serviceDescriptions = {
       "Planera och skapa användbara tjänstesidor och artiklar utifrån målgruppens frågor och sökintention.",
       "Förbättra företagsprofilen och lokala sidor så att kunder hittar tjänsterna i de områden där ni arbetar.",
       "Följ synlighet, organisk trafik och förfrågningar med rapporter och prioriterade nästa steg.",
+    ],
+    [
+      "Undersök kundernas behov, drivkrafter och köpbeslut genom analys och överenskomna intervjuer samt konkurrentanalys.",
+      "Definiera positionering, värdeerbjudande och varumärkesidé så att kunder förstår varför de ska välja er.",
+      "Ta fram namnförslag utifrån varumärkets positionering med motiveringar och en första kontroll av domäner och namn i sociala medier.",
+      "Skapa en tydlig visuell identitet med logotyp, färger, typografi och grafiska element för webbplatsen, sociala medier och andra material.",
+      "Analysera och förnya ett befintligt varumärkes positionering, identitet och kommunikation med hänsyn till det målgruppen känner igen och uppskattar.",
+      "Samla syfte, värderingar, målgrupp, löfte och personlighet i en gemensam grund för framtida varumärkesbeslut.",
+      "Definiera varumärkets röst med praktiska exempel för sociala inlägg, webbtexter och kunddialog.",
+      "Dokumentera hur identitet, layouter och kommunikationsstil ska användas så att team och partners kan arbeta enhetligt.",
     ],
   ],
 };

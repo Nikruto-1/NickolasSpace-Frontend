@@ -49,6 +49,7 @@ export const translations = {
         { name: "Social Media & SMM", items: ["Instagram & Facebook", "Social Media Strategy", "Content Creation", "Publishing & Account Management", "Community Management", "Analytics & Reporting"] },
         { name: "Paid Advertising", items: ["Instagram & Facebook Ads", "Google Ads", "TikTok Ads", "Retargeting", "Ad Creatives", "Campaign Analytics"] },
         { name: "SEO", items: ["Technical SEO", "Keyword Research", "On-page Optimisation", "SEO Content", "Local SEO", "SEO Monitoring & Reporting"] },
+        { name: "Branding & Strategy", items: ["Audience Research", "Brand Strategy", "Naming", "Visual Identity", "Rebranding", "Brand Platform", "Tone of Voice", "Brand Guidelines"] },
       ],
     },
     work: {
@@ -161,6 +162,7 @@ export const translations = {
         { name: "Соцмережі та SMM", items: ["Instagram та Facebook", "SMM-стратегія", "Створення контенту", "Публікації та ведення", "Комунікація з аудиторією", "Аналітика та звітність"] },
         { name: "Таргетована реклама", items: ["Реклама в Instagram та Facebook", "Google Ads", "TikTok Ads", "Ретаргетинг", "Рекламні креативи", "Аналітика кампаній"] },
         { name: "SEO-просування", items: ["Технічне SEO", "Семантика та ключові слова", "Оптимізація сторінок", "SEO-контент", "Локальне SEO", "Моніторинг і звітність"] },
+        { name: "Брендинг та стратегія", items: ["Дослідження аудиторії", "Стратегія бренду", "Неймінг", "Унікальний візуальний стиль", "Ребрендинг", "Бренд-платформа", "Тон комунікації", "Брендбук і гайдлайни"] },
       ],
     },
     work: {
@@ -273,6 +275,7 @@ export const translations = {
         { name: "Sociala medier & SMM", items: ["Instagram & Facebook", "Strategi för sociala medier", "Innehållsproduktion", "Publicering & kontohantering", "Dialog med målgruppen", "Analys & rapportering"] },
         { name: "Betald annonsering", items: ["Instagram & Facebook Ads", "Google Ads", "TikTok Ads", "Retargeting", "Annonsmaterial", "Kampanjanalys"] },
         { name: "SEO", items: ["Teknisk SEO", "Sökordsanalys", "Sidoptimering", "SEO-innehåll", "Lokal SEO", "SEO-uppföljning & rapportering"] },
+        { name: "Varumärke & strategi", items: ["Målgruppsanalys", "Varumärkesstrategi", "Namngivning", "Visuell identitet", "Rebranding", "Varumärkesplattform", "Tonalitet", "Varumärkesmanual"] },
       ],
     },
     work: {
