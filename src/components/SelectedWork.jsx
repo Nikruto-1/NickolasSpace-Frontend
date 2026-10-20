@@ -9,6 +9,7 @@ const autoAlexScreens = [
   { src: "./assets/autoalex-calculator.png", preview: "./assets/autoalex-calculator", width: 1902, height: 1080 },
   { src: "./assets/autoalex-order.png", preview: "./assets/autoalex-order", width: 1901, height: 1080 },
 ];
+const autoAlexMockup = { src: "./assets/autoalex-devices-figma.png", width: 836, height: 607 };
 const gameScreensByLanguage = {
   uk: [
     { src: "./assets/nickolasgames-home-uk.png?v=2", preview: "./assets/nickolasgames-home-uk", width: 1904, height: 876 },
@@ -24,18 +25,21 @@ const gameScreensByLanguage = {
   ],
 };
 
-function ProjectGallery({ screens, labels, name, galleryLabel }) {
+function ProjectGallery({ screens, labels, name, galleryLabel, mockup }) {
   const { t } = useLanguage();
   const [selected, setSelected] = useState(0);
-  const screen = screens[selected];
+  const showingMockup = mockup && selected === 0;
+  const screen = showingMockup ? mockup : screens[selected];
 
   return (
     <figure className="min-w-0">
-      <a href={screen.src} target="_blank" rel="noreferrer" aria-label={`${t.work.openImage}: ${name}, ${labels[selected]}`} className="block aspect-[16/9] overflow-hidden rounded-lg bg-[#202020]">
-        <picture>
-          <source type="image/webp" srcSet={`${screen.preview}-720.webp 720w, ${screen.preview}-1440.webp 1440w`} sizes="(min-width: 1400px) 810px, (min-width: 1024px) 60vw, 100vw" />
+      <a href={screen.src} target="_blank" rel="noreferrer" aria-label={`${t.work.openImage}: ${name}, ${labels[selected]}`} className={`block overflow-hidden rounded-lg ${showingMockup ? "aspect-[4/3] bg-[#e5e5e5] md:aspect-[16/10]" : "aspect-[16/9] bg-[#202020]"}`}>
+        {showingMockup ? (
           <img src={screen.src} alt={`${name} — ${labels[selected]}`} width={screen.width} height={screen.height} loading="lazy" decoding="async" draggable={false} className="h-full w-full object-contain" />
-        </picture>
+        ) : <picture>
+          <source type="image/webp" srcSet={`${screen.preview}-720.webp 720w, ${screen.preview}-1440.webp 1440w`} sizes="(min-width: 1400px) 1304px, (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)" />
+          <img src={screen.src} alt={`${name} — ${labels[selected]}`} width={screen.width} height={screen.height} loading="lazy" decoding="async" draggable={false} className="h-full w-full object-contain" />
+        </picture>}
       </a>
       <div role="group" aria-label={galleryLabel} className="mt-4 flex flex-wrap gap-x-5 gap-y-1">
         {screens.map((item, index) => (
@@ -101,20 +105,24 @@ export default function SelectedWork() {
           {projects.map((project, index) => {
             const isGames = project.name === "NickolasGames";
             return (
-              <article key={project.name} id={`project-slide-${index}`} aria-labelledby={`project-title-${index}`} hidden={active !== index} className={`project-slide gap-8 pt-8 lg:grid-cols-[minmax(0,1.8fr)_minmax(0,1fr)] lg:gap-12 ${active === index ? "grid" : "hidden"}`}>
-                <div className="order-last min-w-0 lg:py-4">
-                  <h3 id={`project-title-${index}`} className="display break-words text-3xl md:text-4xl">{project.name}</h3>
-                  <p className="mt-5 max-w-lg text-base leading-7 text-mist">{project.desc}</p>
-                  <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-sm text-mist">
-                    {project.tags.map((tag) => <li key={tag}>{tag}</li>)}
-                  </ul>
-                  <Button href={project.url} target="_blank" rel="noreferrer" variant="outline" className="mt-7">
-                    {t.work.viewProject}<ArrowUpRight size={18} className="ml-4" aria-hidden="true" />
-                  </Button>
+              <article key={project.name} id={`project-slide-${index}`} aria-labelledby={`project-title-${index}`} hidden={active !== index} className={`project-slide gap-8 pt-8 lg:gap-10 ${active === index ? "grid" : "hidden"}`}>
+                <div className="order-last grid min-w-0 gap-6 border-t bd pt-7 lg:grid-cols-[1.2fr_1fr] lg:gap-12">
+                  <div>
+                    <h3 id={`project-title-${index}`} className="display break-words text-3xl md:text-4xl">{project.name}</h3>
+                    <p className="mt-5 max-w-lg text-base leading-7 text-mist">{project.desc}</p>
+                  </div>
+                  <div className="lg:justify-self-end lg:text-right">
+                    <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-mist lg:justify-end">
+                      {project.tags.map((tag) => <li key={tag}>{tag}</li>)}
+                    </ul>
+                    <Button href={project.url} target="_blank" rel="noreferrer" variant="outline" className="mt-7">
+                      {t.work.viewProject}<ArrowUpRight size={18} className="ml-4" aria-hidden="true" />
+                    </Button>
+                  </div>
                 </div>
-                <ProjectGallery screens={isGames ? gameScreensByLanguage[language] : autoAlexScreens} labels={isGames ? t.work.gamesViews : t.work.screens} name={project.name} galleryLabel={isGames ? t.work.gamesGallery : t.work.gallery} />
+                <ProjectGallery screens={isGames ? gameScreensByLanguage[language] : autoAlexScreens} labels={isGames ? t.work.gamesViews : [t.work.devicesPreview, ...t.work.screens.slice(1)]} name={project.name} galleryLabel={isGames ? t.work.gamesGallery : t.work.gallery} mockup={isGames ? undefined : autoAlexMockup} />
                 {isGames && (
-                  <details className="order-last border-t bd lg:col-span-2">
+                  <details className="order-last border-t bd">
                     <summary className="cursor-pointer py-5 font-semibold text-paper hover:text-mist">{t.work.gamesDetailsLabel}</summary>
                     <div className="grid gap-10 pb-6 pt-3 md:grid-cols-2 xl:grid-cols-3">
                       {gameProjectDetails[language].map((group) => (
