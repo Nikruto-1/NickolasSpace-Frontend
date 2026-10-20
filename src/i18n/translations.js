@@ -18,8 +18,8 @@ export const translations = {
       language: "Language",
       openMenu: "Open navigation",
       closeMenu: "Close navigation",
-      pauseMotion: "Pause background videos",
-      resumeMotion: "Resume background videos",
+      pauseMotion: "Pause motion and background videos",
+      resumeMotion: "Resume motion and background videos",
     },
     notice: "The website is still being refined, but requests are open. New projects are handled with priority.",
     hero: {
@@ -126,8 +126,8 @@ export const translations = {
       language: "Мова",
       openMenu: "Відкрити навігацію",
       closeMenu: "Закрити навігацію",
-      pauseMotion: "Призупинити фонові відео",
-      resumeMotion: "Відновити фонові відео",
+      pauseMotion: "Призупинити рух і фонові відео",
+      resumeMotion: "Відновити рух і фонові відео",
     },
     notice: "Сайт ще допрацьовується, але заявки вже приймаємо. Ваші проєкти беремо в роботу в першу чергу.",
     hero: {
@@ -234,8 +234,8 @@ export const translations = {
       language: "Språk",
       openMenu: "Öppna navigationen",
       closeMenu: "Stäng navigationen",
-      pauseMotion: "Pausa bakgrundsvideor",
-      resumeMotion: "Återuppta bakgrundsvideor",
+      pauseMotion: "Pausa rörelser och bakgrundsvideor",
+      resumeMotion: "Återuppta rörelser och bakgrundsvideor",
     },
     notice: "Webbplatsen finslipas fortfarande, men vi tar redan emot förfrågningar. Nya projekt prioriteras.",
     hero: {

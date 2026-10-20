@@ -60,6 +60,128 @@ body {
   overflow-wrap: anywhere;
 }
 
+.business-challenges {
+  isolation: isolate;
+}
+
+.challenges-heading,
+.challenge-stack,
+.challenges-action {
+  max-width: 980px;
+  margin-inline: auto;
+}
+
+.challenge-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+  margin-block: 56px 0;
+  list-style: none;
+  padding: 0;
+}
+
+/* Each new card covers the previous one while its numbered edge stays visible. */
+.challenge-card {
+  position: sticky;
+  top: calc(104px + var(--card-index) * 12px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 320px;
+  padding: 56px 112px;
+  border: 1px solid rgb(var(--ink-rgb));
+  border-radius: 8px;
+  background: rgb(var(--paper-rgb));
+  color: rgb(var(--ink-rgb));
+}
+
+.challenge-card--1,
+.challenge-card--4 {
+  background: rgb(var(--ink-rgb));
+  color: rgb(var(--paper-rgb));
+}
+
+.challenge-card--3 {
+  background: rgb(var(--accent-rgb));
+}
+
+.challenge-card-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid currentColor;
+}
+
+.challenge-card h3,
+.challenge-card-number {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.challenge-card h3 {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.challenge-card-number {
+  flex-shrink: 0;
+  color: rgb(var(--muted-dark-rgb));
+}
+
+.challenge-card--1 .challenge-card-number,
+.challenge-card--4 .challenge-card-number {
+  color: rgb(var(--mist-rgb));
+}
+
+.challenge-card > p {
+  max-width: 35ch;
+  margin-top: 20px;
+  font-size: 1.625rem;
+  line-height: 1.35;
+  overflow-wrap: break-word;
+}
+
+.challenges-action {
+  margin-top: 56px;
+}
+
+.business-challenges[data-motion="paused"] .challenge-card {
+  position: relative;
+  top: auto;
+}
+
+@media (max-width: 767px) {
+  .challenge-stack {
+    gap: 64px;
+    margin-top: 36px;
+  }
+
+  .challenge-card {
+    top: calc(96px + var(--card-index) * 10px);
+    min-height: 260px;
+    padding: 32px 24px;
+  }
+
+  .challenge-card h3,
+  .challenge-card-number {
+    font-size: 1.5rem;
+  }
+
+  .challenge-card > p {
+    font-size: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce), (max-height: 600px) {
+  .challenge-card {
+    position: relative;
+    top: auto;
+  }
+}
+
 .section-title {
   font-size: 2.75rem;
   max-width: 24ch;

@@ -1,4 +1,5 @@
 import BusinessAutomation from "./components/BusinessAutomation.jsx";
+import BusinessChallenges from "./components/BusinessChallenges.jsx";
 import FinalCTA from "./components/FinalCTA.jsx";
 import Footer from "./components/Footer.jsx";
 import FounderSection from "./components/FounderSection.jsx";
@@ -18,6 +19,7 @@ export default function App() {
       <main id="main-content" tabIndex={-1}>
         <Hero />
         <IntroStatement />
+        <BusinessChallenges />
         <Services />
         <SelectedWork />
         <BusinessAutomation />
