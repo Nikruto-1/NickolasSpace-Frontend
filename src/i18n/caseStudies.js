@@ -4,7 +4,7 @@ export const caseStudies = {
     projects: {
       AutoAlexDE: [
         "Bring vehicle selection, cost estimates and order requests together in one online service.",
-        "A vehicle catalogue, cost calculator, order form and API integrations. A Telegram bot sends new enquiry notifications with the details and can be managed through an admin panel. We also carried out SEO optimisation.",
+        "A vehicle catalogue, cost calculator, order form and API integrations. A Telegram bot sends new enquiry notifications with the details and can be managed through an admin panel. SEO work covered meta tags, a sitemap, search indexing, page speed and site structure.",
         "Customers can browse vehicles, estimate costs and send a request on one website. The manager automatically receives the new enquiry details in Telegram, while the bot can be managed from the admin panel.",
       ],
       NickolasGames: [
@@ -19,7 +19,7 @@ export const caseStudies = {
     projects: {
       AutoAlexDE: [
         "Об’єднати вибір автомобіля, попередній розрахунок вартості та заявку на замовлення в одному онлайн-сервісі.",
-        "Каталог авто, калькулятор вартості, форму замовлення й API-інтеграції. Telegram-бот надсилає сповіщення про нові заявки з деталями та керується через адмінпанель. Також виконали SEO-оптимізацію сайту.",
+        "Каталог авто, калькулятор вартості, форму замовлення й API-інтеграції. Telegram-бот надсилає сповіщення про нові заявки з деталями та керується через адмінпанель. SEO-роботи охопили метатеги, sitemap, індексацію, оптимізацію швидкості та структури сторінок.",
         "Клієнт переглядає автомобілі, оцінює витрати й залишає заявку на одному сайті. Менеджер автоматично отримує її деталі в Telegram, а керування ботом доступне в адмінпанелі.",
       ],
       NickolasGames: [
@@ -34,7 +34,7 @@ export const caseStudies = {
     projects: {
       AutoAlexDE: [
         "Samla fordonsval, kostnadsberäkning och beställningsförfrågningar i en och samma onlinetjänst.",
-        "En fordonskatalog, kostnadskalkyl, beställningsformulär och API-integrationer. En Telegram-bot skickar aviseringar med detaljer om nya förfrågningar och kan hanteras via en adminpanel. Vi utförde även SEO-optimering.",
+        "En fordonskatalog, kostnadskalkyl, beställningsformulär och API-integrationer. En Telegram-bot skickar aviseringar med detaljer om nya förfrågningar och kan hanteras via en adminpanel. SEO-arbetet omfattade metataggar, en webbplatskarta, sökindexering, laddningshastighet och sidstruktur.",
         "Kunder kan se fordon, uppskatta kostnader och skicka en förfrågan på samma webbplats. Ansvarig får automatiskt detaljerna i Telegram, och boten kan hanteras via adminpanelen.",
       ],
       NickolasGames: [
