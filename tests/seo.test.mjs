@@ -11,6 +11,13 @@ const escapeHtml = (value) => value.replace(/[&<>"']/g, (character) => ({
   "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#x27;",
 })[character]);
 
+test("project enquiry buttons are translated and rendered for every case", () => {
+  for (const copy of Object.values(translations)) {
+    assert.ok(copy.work.discussSimilar.trim());
+  }
+  assert.equal(html.split(escapeHtml(translations.en.work.discussSimilar)).length - 1, translations.en.work.cases.length);
+});
+
 test("built HTML contains every service before JavaScript runs", () => {
   assert.match(html, /data-prerendered="true"/);
   for (const [groupIndex, group] of translations.en.services.groups.entries()) {

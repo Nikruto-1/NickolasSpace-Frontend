@@ -11,6 +11,7 @@ const contactLinks = [
 
 export function ContactModalProvider({ children }) {
   const [open, setOpen] = useState(false);
+  const [project, setProject] = useState(null);
   const panelRef = useRef(null);
   const { t } = useLanguage();
 
@@ -47,7 +48,10 @@ export function ContactModalProvider({ children }) {
   }, [open]);
 
   return (
-    <ContactModalContext.Provider value={{ openContactModal: () => setOpen(true) }}>
+    <ContactModalContext.Provider value={{ openContactModal: (projectName = null) => {
+      setProject(projectName);
+      setOpen(true);
+    } }}>
       <div inert={open ? true : undefined}>{children}</div>
       {open ? (
         <div className="fixed inset-0 z-[100] flex items-center justify-center px-5 py-8" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" aria-describedby="contact-modal-description">
@@ -67,6 +71,7 @@ export function ContactModalProvider({ children }) {
               {t.contactModal.title}
             </h2>
             <p id="contact-modal-description" className="mt-4 text-base leading-relaxed text-mist">{t.contactModal.text}</p>
+            {project && <p className="mt-4 border-l-2 border-accent pl-3 text-base text-accent">{t.work.discussSimilar}: {project}</p>}
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {contactLinks.map((item) => {
                 const isEmail = item.key === "email";
@@ -82,7 +87,7 @@ export function ContactModalProvider({ children }) {
                 );
 
                 return (
-                  <a key={item.key} href={item.href} target={isEmail ? undefined : "_blank"} rel={isEmail ? undefined : "noreferrer"} className={className} onClick={() => setOpen(false)}>
+                  <a key={item.key} href={isEmail && project ? `${item.href}?subject=${encodeURIComponent(`${t.work.discussSimilar}: ${project}`)}` : item.href} target={isEmail ? undefined : "_blank"} rel={isEmail ? undefined : "noreferrer"} className={className} onClick={() => setOpen(false)}>
                     {content}
                   </a>
                 );

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import useLanguage from "../i18n/useLanguage.js";
 import Button from "./shared/Button.jsx";
+import ContactButton from "./contact/ContactButton.jsx";
 import DeviceMockup from "./DeviceMockup.jsx";
 import { gameProjectDetails } from "../i18n/gameProjectDetails.js";
 import { caseStudies } from "../i18n/caseStudies.js";
@@ -149,9 +150,14 @@ export default function SelectedWork() {
                     <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-mist lg:justify-end">
                       {project.tags.map((tag) => <li key={tag}>{tag}</li>)}
                     </ul>
-                    <Button href={project.url} target="_blank" rel="noreferrer" variant="outline" className="mt-7">
+                    <div className="mt-7 flex flex-wrap gap-3 lg:justify-end">
+                    <ContactButton project={project.name}>
+                      {t.work.discussSimilar}<ArrowUpRight size={18} className="ml-3 shrink-0" aria-hidden="true" />
+                    </ContactButton>
+                    <Button href={project.url} target="_blank" rel="noreferrer" variant="outline">
                       {t.work.viewProject}<ArrowUpRight size={18} className="ml-4" aria-hidden="true" />
                     </Button>
+                    </div>
                   </div>
                 </div>
                 <ProjectGallery screens={isGames ? gameScreensByLanguage[language] : autoAlexScreens} labels={isGames ? t.work.gamesViews : [t.work.devicesPreview, ...t.work.screens.slice(1)]} name={project.name} galleryLabel={isGames ? t.work.gamesGallery : t.work.gallery} mockup={isGames ? undefined : autoAlexMockup} />
