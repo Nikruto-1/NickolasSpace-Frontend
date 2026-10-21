@@ -19,9 +19,9 @@ export default function App() {
       <main id="main-content" tabIndex={-1}>
         <Hero />
         <IntroStatement />
+        <SelectedWork />
         <BusinessChallenges />
         <Services />
-        <SelectedWork />
         <BusinessAutomation />
         <HowWeWork />
         <FounderSection />

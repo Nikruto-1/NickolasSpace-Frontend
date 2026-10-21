@@ -18,14 +18,14 @@ export default function BusinessAutomation() {
           {t.automation.accent}
         </h2>
         <div ref={ref} className="relative mt-12 md:mt-16">
-          <div className="absolute bottom-3 left-[7px] top-3 w-px bg-paper/20 md:bottom-auto md:left-0 md:right-0 md:top-[7px] md:h-px md:w-auto" />
+          <div className="absolute bottom-3 left-[7px] top-3 w-px bg-paper/20 xl:bottom-auto xl:left-0 xl:right-0 xl:top-[7px] xl:h-px xl:w-auto" />
           <div
-            className="absolute bottom-3 left-[7px] top-3 w-px origin-top bg-paper transition-transform duration-[2400ms] ease-out md:bottom-auto md:left-0 md:right-0 md:top-[7px] md:h-px md:w-auto md:origin-left"
+            className="absolute bottom-3 left-[7px] top-3 w-px origin-top bg-paper transition-transform duration-[2400ms] ease-out xl:bottom-auto xl:left-0 xl:right-0 xl:top-[7px] xl:h-px xl:w-auto xl:origin-left"
             style={{ transform: seen ? "scale(1)" : "scale(0)" }}
           />
-          <ol className="relative flex flex-col gap-10 md:flex-row md:justify-between">
+          <ol className="relative flex flex-col gap-10 xl:flex-row xl:justify-between">
             {t.automation.nodes.map((node, index) => (
-              <li key={node} className="flex items-center gap-5 md:flex-col md:items-start md:gap-6">
+              <li key={node} className="flex min-w-0 items-center gap-5 xl:flex-col xl:items-start xl:gap-6">
                 <span
                   className="h-[15px] w-[15px] shrink-0 rounded-full border border-accent transition-colors duration-500"
                   style={{ transitionDelay: `${index * 330}ms`, background: seen ? "var(--accent)" : "var(--ink)" }}

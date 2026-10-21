@@ -1,8 +1,9 @@
-import { useId, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useLanguage from "../i18n/useLanguage.js";
 import Button from "./shared/Button.jsx";
+import DeviceMockup from "./DeviceMockup.jsx";
 import { gameProjectDetails } from "../i18n/gameProjectDetails.js";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, X } from "lucide-react";
 
 const autoAlexScreens = [
   { src: "./assets/autoalex-home.jpeg", preview: "./assets/autoalex-home", width: 1536, height: 874 },
@@ -27,28 +28,40 @@ const gameScreensByLanguage = {
 
 function ProjectGallery({ screens, labels, name, galleryLabel, mockup }) {
   const { t } = useLanguage();
-  const maskId = useId();
   const [selected, setSelected] = useState(0);
+  const [expanded, setExpanded] = useState(false);
+  const dialogRef = useRef(null);
   const showingMockup = mockup && selected === 0;
   const screen = showingMockup ? mockup : screens[selected];
+  const PreviewTag = showingMockup ? "button" : "a";
+  const previewProps = showingMockup
+    ? { type: "button", onClick: () => setExpanded(true) }
+    : { href: screen.src, target: "_blank", rel: "noreferrer" };
+
+  useEffect(() => {
+    if (!expanded) return undefined;
+    const dialog = dialogRef.current;
+    const trigger = document.activeElement;
+    const previousOverflow = document.body.style.overflow;
+    dialog.showModal();
+    document.body.style.overflow = "hidden";
+    return () => {
+      dialog.close();
+      document.body.style.overflow = previousOverflow;
+      if (trigger?.isConnected) trigger.focus({ preventScroll: true });
+    };
+  }, [expanded]);
 
   return (
     <figure className="min-w-0">
-      <a href={screen.src} target="_blank" rel="noreferrer" aria-label={`${t.work.openImage}: ${name}, ${labels[selected]}`} className={`block overflow-hidden rounded-lg ${showingMockup ? "aspect-[4/3] md:aspect-[16/10]" : "aspect-[16/9] bg-[#202020]"}`}>
+      <PreviewTag {...previewProps} aria-label={`${t.work.openImage}: ${name}, ${labels[selected]}`} className={`block w-full overflow-hidden rounded-lg ${showingMockup ? "aspect-[4/3] md:aspect-[16/10]" : "aspect-[16/9] bg-[#202020]"}`}>
         {showingMockup ? (
-          <svg viewBox="0 0 836 607" width="836" height="607" role="img" aria-label={`${name} — ${labels[selected]}`} className="h-full w-full">
-            <defs>
-              <mask id={maskId} maskUnits="userSpaceOnUse" x="0" y="0" width="836" height="607" style={{ maskType: "alpha" }}>
-                <image href="./assets/autoalex-device-mask.svg" x="-49.92" y="-163.92" width="934.353" height="934.353" />
-              </mask>
-            </defs>
-            <image href={screen.src} width="836" height="607" mask={`url(#${maskId})`} />
-          </svg>
+          <DeviceMockup src={screen.src} label={`${name} — ${labels[selected]}`} />
         ) : <picture>
           <source type="image/webp" srcSet={`${screen.preview}-720.webp 720w, ${screen.preview}-1440.webp 1440w`} sizes="(min-width: 1400px) 1304px, (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)" />
           <img src={screen.src} alt={`${name} — ${labels[selected]}`} width={screen.width} height={screen.height} loading="lazy" decoding="async" draggable={false} className="h-full w-full object-contain" />
         </picture>}
-      </a>
+      </PreviewTag>
       <div role="group" aria-label={galleryLabel} className="mt-4 flex flex-wrap gap-x-5 gap-y-1">
         {screens.map((item, index) => (
           <button key={index} type="button" aria-pressed={selected === index} onClick={() => setSelected(index)} className={`min-h-11 border-b-2 py-2 text-sm font-medium transition-colors ${selected === index ? "border-accent text-accent" : "border-transparent text-mist hover:text-paper"}`}>
@@ -57,8 +70,19 @@ function ProjectGallery({ screens, labels, name, galleryLabel, mockup }) {
         ))}
       </div>
       <figcaption className="mt-3 text-sm text-mist">
-        <a href={screen.src} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 py-2 underline underline-offset-4 hover:text-paper">{t.work.openImage}<ArrowUpRight size={14} aria-hidden="true" /></a>
+        <PreviewTag {...previewProps} className="inline-flex min-h-11 items-center gap-2 py-2 underline underline-offset-4 hover:text-paper">{t.work.openImage}<ArrowUpRight size={14} aria-hidden="true" /></PreviewTag>
       </figcaption>
+      {mockup && <dialog ref={dialogRef} aria-label={`${name} — ${t.work.devicesPreview}`} onCancel={() => setExpanded(false)} onClick={(event) => {
+        if (event.target === event.currentTarget) setExpanded(false);
+      }} className="fixed inset-0 m-auto max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-[1400px] rounded-lg border bd bg-ink2 p-4 text-paper backdrop:bg-ink/90 md:p-6">
+        <div className="flex items-center justify-between gap-4">
+          <p className="text-sm text-mist">{name} — {t.work.devicesPreview}</p>
+          <button type="button" onClick={() => setExpanded(false)} aria-label={t.work.closePreview} title={t.work.closePreview} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md hover:bg-paper/5"><X size={24} aria-hidden="true" /></button>
+        </div>
+        <div className="aspect-[836/607] max-h-[70dvh] w-full">
+          <DeviceMockup src={mockup.src} label={`${name} — ${t.work.devicesPreview}`} />
+        </div>
+      </dialog>}
     </figure>
   );
 }
