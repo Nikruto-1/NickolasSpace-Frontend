@@ -69,7 +69,7 @@ export const translations = {
       screens: ["Homepage", "Cost calculator", "Order form"],
       openImage: "View full-size image",
       cases: [
-        { name: "AutoAlexDE", desc: "Vehicle sourcing and automation platform for Auto Alex KFZ-Handel.", tags: ["Web Platform", "Automation", "Telegram", "API"], url: "https://autoalex.net/" },
+        { name: "AutoAlexDE", desc: "Vehicle sourcing and automation platform for Auto Alex KFZ-Handel.", tags: ["Web Platform", "Automation", "Telegram Bot", "Admin Panel", "API", "SEO"], url: "https://autoalex.net/" },
         { name: "NickolasGames", desc: "Our own browser-based party games product. Built with multilingual interfaces, offline play and progress saved on the device.", tags: ["Own Product", "Web App", "PWA", "Multilingual"], url: "https://games.nickolasspace.com/", image: "./assets/nickolasgames-icon.png" },
       ],
     },
@@ -185,7 +185,7 @@ export const translations = {
       screens: ["Головна", "Калькулятор", "Замовлення"],
       openImage: "Відкрити зображення",
       cases: [
-        { name: "AutoAlexDE", desc: "Платформа для підбору авто та автоматизації для Auto Alex KFZ-Handel.", tags: ["Вебплатформа", "Автоматизація", "Telegram", "API"], url: "https://autoalex.net/" },
+        { name: "AutoAlexDE", desc: "Платформа для підбору авто та автоматизації для Auto Alex KFZ-Handel.", tags: ["Вебплатформа", "Автоматизація", "Telegram-бот", "Адмінпанель", "API", "SEO"], url: "https://autoalex.net/" },
         { name: "NickolasGames", desc: "Наш власний продукт із компанійськими іграми у браузері. Мультимовний інтерфейс, гра офлайн і збереження прогресу на пристрої.", tags: ["Власний продукт", "Вебзастосунок", "PWA", "Мультимовність"], url: "https://games.nickolasspace.com/", image: "./assets/nickolasgames-icon.png" },
       ],
     },
@@ -301,7 +301,7 @@ export const translations = {
       screens: ["Startsida", "Kostnadskalkyl", "Beställningsformulär"],
       openImage: "Visa bilden i full storlek",
       cases: [
-        { name: "AutoAlexDE", desc: "Plattform för fordonsförmedling och automation för Auto Alex KFZ-Handel.", tags: ["Webbplattform", "Automation", "Telegram", "API"], url: "https://autoalex.net/" },
+        { name: "AutoAlexDE", desc: "Plattform för fordonsförmedling och automation för Auto Alex KFZ-Handel.", tags: ["Webbplattform", "Automation", "Telegram-bot", "Adminpanel", "API", "SEO"], url: "https://autoalex.net/" },
         { name: "NickolasGames", desc: "Vår egen produkt med sällskapsspel i webbläsaren. Flerspråkigt gränssnitt, spel offline och framsteg som sparas på enheten.", tags: ["Egen produkt", "Webbapp", "PWA", "Flerspråkig"], url: "https://games.nickolasspace.com/", image: "./assets/nickolasgames-icon.png" },
       ],
     },

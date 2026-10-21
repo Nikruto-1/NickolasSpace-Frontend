@@ -4,8 +4,8 @@ export const caseStudies = {
     projects: {
       AutoAlexDE: [
         "Bring vehicle selection, cost estimates and order requests together in one online service.",
-        "A vehicle catalogue, cost calculator and order form, with Telegram and API integrations.",
-        "Customers can browse vehicles, estimate costs and send a request on the same website, with a clear path from selection to enquiry.",
+        "A vehicle catalogue, cost calculator, order form and API integrations. A Telegram bot sends new enquiry notifications with the details and can be managed through an admin panel. We also carried out SEO optimisation.",
+        "Customers can browse vehicles, estimate costs and send a request on one website. The manager automatically receives the new enquiry details in Telegram, while the bot can be managed from the admin panel.",
       ],
       NickolasGames: [
         "Let a group start playing party games from one shared device without creating accounts.",
@@ -19,8 +19,8 @@ export const caseStudies = {
     projects: {
       AutoAlexDE: [
         "Об’єднати вибір автомобіля, попередній розрахунок вартості та заявку на замовлення в одному онлайн-сервісі.",
-        "Каталог авто, калькулятор вартості й форму замовлення з інтеграціями Telegram та API.",
-        "Клієнт може переглянути автомобілі, оцінити витрати й надіслати запит на одному сайті. Шлях від вибору до звернення зібраний в одному місці.",
+        "Каталог авто, калькулятор вартості, форму замовлення й API-інтеграції. Telegram-бот надсилає сповіщення про нові заявки з деталями та керується через адмінпанель. Також виконали SEO-оптимізацію сайту.",
+        "Клієнт переглядає автомобілі, оцінює витрати й залишає заявку на одному сайті. Менеджер автоматично отримує її деталі в Telegram, а керування ботом доступне в адмінпанелі.",
       ],
       NickolasGames: [
         "Дати компанії можливість почати гру з одного спільного пристрою без створення акаунтів.",
@@ -34,8 +34,8 @@ export const caseStudies = {
     projects: {
       AutoAlexDE: [
         "Samla fordonsval, kostnadsberäkning och beställningsförfrågningar i en och samma onlinetjänst.",
-        "En fordonskatalog, kostnadskalkyl och beställningsformulär med Telegram- och API-integrationer.",
-        "Kunder kan se fordon, uppskatta kostnader och skicka en förfrågan på samma webbplats, med en tydlig väg från val till kontakt.",
+        "En fordonskatalog, kostnadskalkyl, beställningsformulär och API-integrationer. En Telegram-bot skickar aviseringar med detaljer om nya förfrågningar och kan hanteras via en adminpanel. Vi utförde även SEO-optimering.",
+        "Kunder kan se fordon, uppskatta kostnader och skicka en förfrågan på samma webbplats. Ansvarig får automatiskt detaljerna i Telegram, och boten kan hanteras via adminpanelen.",
       ],
       NickolasGames: [
         "Låta en grupp börja spela sällskapsspel på en gemensam enhet utan att skapa konton.",
