@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useId, useRef, useState } from "react";
 import useLanguage from "../i18n/useLanguage.js";
 import Button from "./shared/Button.jsx";
 import { gameProjectDetails } from "../i18n/gameProjectDetails.js";
@@ -27,15 +27,23 @@ const gameScreensByLanguage = {
 
 function ProjectGallery({ screens, labels, name, galleryLabel, mockup }) {
   const { t } = useLanguage();
+  const maskId = useId();
   const [selected, setSelected] = useState(0);
   const showingMockup = mockup && selected === 0;
   const screen = showingMockup ? mockup : screens[selected];
 
   return (
     <figure className="min-w-0">
-      <a href={screen.src} target="_blank" rel="noreferrer" aria-label={`${t.work.openImage}: ${name}, ${labels[selected]}`} className={`block overflow-hidden rounded-lg ${showingMockup ? "aspect-[4/3] bg-[#e5e5e5] md:aspect-[16/10]" : "aspect-[16/9] bg-[#202020]"}`}>
+      <a href={screen.src} target="_blank" rel="noreferrer" aria-label={`${t.work.openImage}: ${name}, ${labels[selected]}`} className={`block overflow-hidden rounded-lg ${showingMockup ? "aspect-[4/3] md:aspect-[16/10]" : "aspect-[16/9] bg-[#202020]"}`}>
         {showingMockup ? (
-          <img src={screen.src} alt={`${name} — ${labels[selected]}`} width={screen.width} height={screen.height} loading="lazy" decoding="async" draggable={false} className="h-full w-full object-contain" />
+          <svg viewBox="0 0 836 607" width="836" height="607" role="img" aria-label={`${name} — ${labels[selected]}`} className="h-full w-full">
+            <defs>
+              <mask id={maskId} maskUnits="userSpaceOnUse" x="0" y="0" width="836" height="607" style={{ maskType: "alpha" }}>
+                <image href="./assets/autoalex-device-mask.svg" x="-49.92" y="-163.92" width="934.353" height="934.353" />
+              </mask>
+            </defs>
+            <image href={screen.src} width="836" height="607" mask={`url(#${maskId})`} />
+          </svg>
         ) : <picture>
           <source type="image/webp" srcSet={`${screen.preview}-720.webp 720w, ${screen.preview}-1440.webp 1440w`} sizes="(min-width: 1400px) 1304px, (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)" />
           <img src={screen.src} alt={`${name} — ${labels[selected]}`} width={screen.width} height={screen.height} loading="lazy" decoding="async" draggable={false} className="h-full w-full object-contain" />
