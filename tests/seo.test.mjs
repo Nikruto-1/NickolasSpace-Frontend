@@ -4,6 +4,7 @@ import test from "node:test";
 import { URL } from "node:url";
 import { translations } from "../src/i18n/translations.js";
 import { serviceDescriptions } from "../src/i18n/serviceDescriptions.js";
+import { caseStudies } from "../src/i18n/caseStudies.js";
 
 const html = await readFile(new URL("../dist/index.html", import.meta.url), "utf8");
 const escapeHtml = (value) => value.replace(/[&<>"']/g, (character) => ({
@@ -65,6 +66,20 @@ test("all slider projects remain in the built HTML", () => {
   }
   assert.match(html, /id="project-slide-1"[^>]*hidden/);
   assert.ok(html.includes("Timed or relaxed rounds"));
+});
+
+test("case studies cover each project in every language and are prerendered", () => {
+  for (const [language, copy] of Object.entries(translations)) {
+    const study = caseStudies[language];
+    for (const project of copy.work.cases) {
+      const paragraphs = study.projects[project.name];
+      assert.equal(paragraphs.length, study.labels.length);
+      assert.ok(paragraphs.every((paragraph) => paragraph.trim().length > 0));
+      if (language === "en") {
+        for (const paragraph of paragraphs) assert.ok(html.includes(escapeHtml(paragraph)));
+      }
+    }
+  }
 });
 
 test("the initial HTML does not request decorative videos", () => {

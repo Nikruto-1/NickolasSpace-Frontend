@@ -3,6 +3,7 @@ import useLanguage from "../i18n/useLanguage.js";
 import Button from "./shared/Button.jsx";
 import DeviceMockup from "./DeviceMockup.jsx";
 import { gameProjectDetails } from "../i18n/gameProjectDetails.js";
+import { caseStudies } from "../i18n/caseStudies.js";
 import { ArrowLeft, ArrowRight, ArrowUpRight, X } from "lucide-react";
 
 const autoAlexScreens = [
@@ -92,6 +93,7 @@ export default function SelectedWork() {
   const [active, setActive] = useState(0);
   const gesture = useRef(null);
   const projects = t.work.cases;
+  const caseStudy = caseStudies[language];
   const move = (offset) => setActive((index) => Math.max(0, Math.min(projects.length - 1, index + offset)));
   const arrowClass = "flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-control text-paper transition-colors hover:border-accent hover:bg-paper/5 disabled:cursor-default disabled:opacity-30 disabled:hover:bg-transparent";
 
@@ -153,6 +155,16 @@ export default function SelectedWork() {
                   </div>
                 </div>
                 <ProjectGallery screens={isGames ? gameScreensByLanguage[language] : autoAlexScreens} labels={isGames ? t.work.gamesViews : [t.work.devicesPreview, ...t.work.screens.slice(1)]} name={project.name} galleryLabel={isGames ? t.work.gamesGallery : t.work.gallery} mockup={isGames ? undefined : autoAlexMockup} />
+                {caseStudy.projects[project.name] && (
+                  <dl className="order-last grid min-w-0 gap-7 border-t bd pt-7 md:grid-cols-3 md:gap-8">
+                    {caseStudy.projects[project.name].map((description, itemIndex) => (
+                      <div key={caseStudy.labels[itemIndex]} className="min-w-0">
+                        <dt className="text-base font-semibold text-paper">{caseStudy.labels[itemIndex]}</dt>
+                        <dd className="mt-3 break-words text-base leading-relaxed text-mist">{description}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
                 {isGames && (
                   <details className="order-last border-t bd">
                     <summary className="cursor-pointer py-5 font-semibold text-paper hover:text-mist">{t.work.gamesDetailsLabel}</summary>

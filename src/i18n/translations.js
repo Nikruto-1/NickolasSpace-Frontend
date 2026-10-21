@@ -24,7 +24,7 @@ export const translations = {
     notice: "The website is still being refined, but requests are open. New projects are handled with priority.",
     hero: {
       lines: ["Websites & automation", "for your business."],
-      text: "Websites that help customers understand your services. Automation that reduces routine work. For small businesses and independent professionals.",
+      text: "Websites and automation for small and medium-sized businesses. Design, branding and promotion to help launch and develop your project.",
       primary: "Discuss your project",
       secondary: "View service catalogue",
       scroll: "Scroll",
@@ -140,7 +140,7 @@ export const translations = {
     notice: "Сайт ще допрацьовується, але заявки вже приймаємо. Ваші проєкти беремо в роботу в першу чергу.",
     hero: {
       lines: ["Сайти й автоматизація", "для вашого бізнесу."],
-      text: "Сайти, які допомагають клієнтам зрозуміти ваші послуги. Автоматизація, що зменшує рутину. Для малого бізнесу та незалежних фахівців.",
+      text: "Сайти й автоматизація для малого та середнього бізнесу. Дизайн, брендинг і просування для запуску та розвитку вашого проєкту.",
       primary: "Обговорити проєкт",
       secondary: "Переглянути каталог послуг",
       scroll: "Скрол",
@@ -256,7 +256,7 @@ export const translations = {
     notice: "Webbplatsen finslipas fortfarande, men vi tar redan emot förfrågningar. Nya projekt prioriteras.",
     hero: {
       lines: ["Webbplatser & automation", "för ditt företag."],
-      text: "Webbplatser som hjälper kunder att förstå era tjänster. Automation som minskar rutinarbete. För småföretag och egenföretagare.",
+      text: "Webbplatser och automation för små och medelstora företag. Design, varumärkesarbete och marknadsföring för att lansera och utveckla ditt projekt.",
       primary: "Diskutera ditt projekt",
       secondary: "Visa tjänstekatalogen",
       scroll: "Scrolla",
