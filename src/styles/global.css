@@ -214,7 +214,13 @@ body {
   color: rgb(var(--mist-rgb));
   font-size: 1.5rem;
   font-variant-numeric: tabular-nums;
-  transition: background-color 250ms, color 250ms;
+  transition: background-color 350ms, color 350ms, border-color 350ms;
+}
+
+.process-step[data-complete="true"] .process-step-number {
+  border-color: rgb(var(--accent-rgb) / 0.6);
+  background: rgb(var(--accent-rgb) / 0.1);
+  color: rgb(var(--accent-rgb));
 }
 
 .process-step[data-active="true"] .process-step-number {
@@ -224,9 +230,46 @@ body {
 }
 
 .process-step-copy {
+  position: relative;
+  isolation: isolate;
   min-width: 0;
   padding-top: 14px;
   overflow-wrap: break-word;
+  transition: transform 350ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.process-step-copy::before {
+  content: "";
+  position: absolute;
+  inset: -10px -10px -14px;
+  z-index: -1;
+  border-radius: 8px;
+  background: rgb(var(--accent-rgb) / 0.07);
+  opacity: 0;
+  transform: scale(0.985);
+  transition: opacity 350ms, transform 450ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.process-step-copy h3,
+.process-step-copy p {
+  transition: color 350ms;
+}
+
+.process-step[data-active="true"] .process-step-copy {
+  transform: translateX(6px);
+}
+
+.process-step[data-active="true"] .process-step-copy::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.process-step[data-active="true"] .process-step-copy h3 {
+  color: rgb(var(--accent-rgb));
+}
+
+.process-step[data-active="true"] .process-step-copy p {
+  color: rgb(var(--paper-rgb));
 }
 
 .process-step-line {
@@ -267,6 +310,11 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .process-step[data-active="true"] .process-step-copy,
+  .process-step-copy::before {
+    transform: none;
+  }
+
   .process-step-line > span {
     transform: none !important;
   }

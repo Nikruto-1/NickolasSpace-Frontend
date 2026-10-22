@@ -6,7 +6,7 @@ import Video from "./shared/Video.jsx";
 
 export default function HowWeWork() {
   const listRef = useRef(null);
-  const progress = useScrollProgress(listRef);
+  const { activeIndex, progressByStep } = useScrollProgress(listRef);
   const { t } = useLanguage();
 
   return (
@@ -24,11 +24,11 @@ export default function HowWeWork() {
         </div>
         <ol ref={listRef} className="process-timeline">
           {t.process.steps.map(([number, title, description], index) => {
-            const stepProgress = Math.min(1, Math.max(0, progress * t.process.steps.length - index));
-            const active = index === 0 || stepProgress > 0;
+            const stepProgress = progressByStep[index] ?? 0;
+            const active = index === activeIndex;
 
             return (
-              <li key={number} className="process-step" data-active={active}>
+              <li key={number} className="process-step" data-active={active} data-complete={index < activeIndex} aria-current={active ? "step" : undefined}>
                 <span className="process-step-number" aria-hidden="true">{number}</span>
                 {index < t.process.steps.length - 1 && <span className="process-step-line" aria-hidden="true">
                   <span style={{ transform: `scaleY(${stepProgress})` }} />
