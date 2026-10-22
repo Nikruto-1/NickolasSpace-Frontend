@@ -60,6 +60,12 @@ body {
   overflow-wrap: anywhere;
 }
 
+@media (min-width: 768px) {
+  .project-preview {
+    max-height: min(42dvh, 360px);
+  }
+}
+
 .business-challenges {
   isolation: isolate;
 }

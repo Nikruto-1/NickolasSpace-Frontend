@@ -56,11 +56,11 @@ function ProjectGallery({ screens, labels, name, galleryLabel, mockup }) {
 
   return (
     <figure className="min-w-0">
-      <PreviewTag {...previewProps} aria-label={`${t.work.openImage}: ${name}, ${labels[selected]}`} className={`block w-full overflow-hidden rounded-lg ${showingMockup ? "aspect-[4/3] md:aspect-[16/10]" : "aspect-[16/9] bg-deep"}`}>
+      <PreviewTag {...previewProps} aria-label={`${t.work.openImage}: ${name}, ${labels[selected]}`} className={`project-preview block w-full overflow-hidden rounded-lg ${showingMockup ? "aspect-[4/3] md:aspect-[16/10]" : "aspect-[16/9] bg-deep"}`}>
         {showingMockup ? (
           <DeviceMockup src={screen.src} label={`${name} — ${labels[selected]}`} />
         ) : <picture>
-          <source type="image/webp" srcSet={`${screen.preview}-720.webp 720w, ${screen.preview}-1440.webp 1440w`} sizes="(min-width: 1400px) 1304px, (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)" />
+          <source type="image/webp" srcSet={`${screen.preview}-720.webp 720w, ${screen.preview}-1440.webp 1440w`} sizes="(min-width: 1400px) 758px, (min-width: 1024px) calc((100vw - 136px) * 0.6), (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)" />
           <img src={screen.src} alt={`${name} — ${labels[selected]}`} width={screen.width} height={screen.height} loading="lazy" decoding="async" draggable={false} className="h-full w-full object-contain" />
         </picture>}
       </PreviewTag>
@@ -140,17 +140,17 @@ export default function SelectedWork() {
           {projects.map((project, index) => {
             const isGames = project.name === "NickolasGames";
             return (
-              <article key={project.name} id={`project-slide-${index}`} aria-labelledby={`project-title-${index}`} hidden={active !== index} className={`project-slide gap-8 pt-8 lg:gap-10 ${active === index ? "grid" : "hidden"}`}>
-                <div className="order-last grid min-w-0 gap-6 border-t bd pt-7 lg:grid-cols-[1.2fr_1fr] lg:gap-12">
+              <article key={project.name} id={`project-slide-${index}`} aria-labelledby={`project-title-${index}`} hidden={active !== index} className={`project-slide items-start gap-8 pt-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-10 ${active === index ? "grid" : "hidden"}`}>
+                <div className="order-last grid min-w-0 gap-6 border-t bd pt-7 lg:order-first lg:border-t-0 lg:pt-2">
                   <div>
                     <h3 id={`project-title-${index}`} className="display break-words text-3xl md:text-4xl">{project.name}</h3>
                     <p className="mt-5 max-w-lg text-base leading-7 text-mist">{project.desc}</p>
                   </div>
-                  <div className="lg:justify-self-end lg:text-right">
-                    <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-mist lg:justify-end">
+                  <div>
+                    <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-mist">
                       {project.tags.map((tag) => <li key={tag}>{tag}</li>)}
                     </ul>
-                    <div className="mt-7 flex flex-wrap gap-3 lg:justify-end">
+                    <div className="mt-7 flex flex-wrap gap-3">
                     <ContactButton project={project.name}>
                       {t.work.discussSimilar}<ArrowUpRight size={18} className="ml-3 shrink-0" aria-hidden="true" />
                     </ContactButton>
@@ -162,7 +162,7 @@ export default function SelectedWork() {
                 </div>
                 <ProjectGallery screens={isGames ? gameScreensByLanguage[language] : autoAlexScreens} labels={isGames ? t.work.gamesViews : [t.work.devicesPreview, ...t.work.screens.slice(1)]} name={project.name} galleryLabel={isGames ? t.work.gamesGallery : t.work.gallery} mockup={isGames ? undefined : autoAlexMockup} />
                 {caseStudy.projects[project.name] && (
-                  <dl className="order-last grid min-w-0 gap-7 border-t bd pt-7 md:grid-cols-3 md:gap-8">
+                  <dl className="order-last grid min-w-0 gap-7 border-t bd pt-7 md:grid-cols-3 md:gap-8 lg:col-span-2">
                     {caseStudy.projects[project.name].map((description, itemIndex) => (
                       <div key={caseStudy.labels[itemIndex]} className="min-w-0">
                         <dt className="text-base font-semibold text-paper">{caseStudy.labels[itemIndex]}</dt>
@@ -172,7 +172,7 @@ export default function SelectedWork() {
                   </dl>
                 )}
                 {isGames && (
-                  <details className="order-last border-t bd">
+                  <details className="order-last border-t bd lg:col-span-2">
                     <summary className="cursor-pointer py-5 font-semibold text-paper hover:text-mist">{t.work.gamesDetailsLabel}</summary>
                     <div className="grid gap-10 pb-6 pt-3 md:grid-cols-2 xl:grid-cols-3">
                       {gameProjectDetails[language].map((group) => (
