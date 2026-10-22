@@ -9,6 +9,7 @@ import { projectMedia } from "../src/data/projectMedia.js";
 import { translations } from "../src/i18n/translations.js";
 import { caseStudies } from "../src/i18n/caseStudies.js";
 import { projectPages } from "../src/i18n/projectPages.js";
+import { projectStories } from "../src/i18n/projectStories.js";
 import { normalizePortfolioState, isPlainNavigation, openProject, switchProjectLanguage } from "../src/navigation/portfolioState.js";
 
 const read = (path) => readFile(new URL(`../dist/${path}`, import.meta.url), "utf8");
@@ -72,6 +73,43 @@ test("case galleries keep accessible image links without a duplicate text link",
       assert.ok(!html.includes(`>${label}<`));
     }
   }
+});
+
+test("each case has translated screen context, contribution, decisions and a final invitation", async () => {
+  for (const [index, slug] of projectSlugs.entries()) {
+    for (const language of projectLanguages) {
+      const copy = projectStories[language];
+      const story = copy.projects[index];
+      const html = await read(projectFilename(slug, language));
+      assert.equal(story.views.length, projectMedia(index, language).screens.length);
+      for (const view of story.views) assert.ok(view.every((text) => text.trim()));
+      for (const value of [story.intro, story.role, copy.gallery, copy.decisions, copy.closingTitle, copy.closingText, ...story.views[0], ...story.decisions.flat()]) {
+        assert.ok(html.includes(escape(value)), `${slug}/${language}: ${value}`);
+      }
+      for (const id of ["case-gallery-title", "case-overview", "case-features", "case-decisions", "case-flow", "case-contact-title"]) {
+        assert.equal((html.match(new RegExp(`id="${id}"`, "g")) || []).length, 1);
+      }
+    }
+  }
+});
+
+test("each case has its own real, language-specific 1200 by 630 social cover", async () => {
+  const images = new Set();
+  for (const [index, slug] of projectSlugs.entries()) {
+    for (const language of projectLanguages) {
+      const metadata = projectMetadata({ index, slug, language });
+      images.add(metadata.image);
+      assert.equal(metadata.imageType, "image/png");
+      const bytes = await readFile(new URL(`../dist/${new URL(metadata.image).pathname.slice(1)}`, import.meta.url));
+      assert.equal(bytes.subarray(1, 4).toString(), "PNG");
+      assert.equal(bytes.readUInt32BE(16), metadata.imageWidth);
+      assert.equal(bytes.readUInt32BE(20), metadata.imageHeight);
+      assert.deepEqual([metadata.imageWidth, metadata.imageHeight], [1200, 630]);
+      const html = await read(projectFilename(slug, language));
+      for (const key of ["og:image", "twitter:image"]) assert.ok(html.includes(`content="${metadata.image}"`) && html.includes(key));
+    }
+  }
+  assert.equal(images.size, 6);
 });
 
 test("portfolio restoration accepts only valid projects and gallery indices", () => {

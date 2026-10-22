@@ -9,7 +9,7 @@ import { openProject } from "../navigation/portfolioState.js";
 import usePortfolioState from "../navigation/usePortfolioState.js";
 import { ArrowLeft, ArrowRight, ArrowUpRight, X } from "lucide-react";
 
-export function ProjectGallery({ screens, labels, name, galleryLabel, mockup, selectedIndex, onSelect, large = false }) {
+export function ProjectGallery({ screens, labels, name, galleryLabel, mockup, selectedIndex, onSelect, large = false, context }) {
   const { t } = useLanguage();
   const [localSelected, setLocalSelected] = useState(0);
   const selected = selectedIndex ?? localSelected;
@@ -18,6 +18,7 @@ export function ProjectGallery({ screens, labels, name, galleryLabel, mockup, se
   const dialogRef = useRef(null);
   const showingMockup = mockup && selected === 0;
   const screen = showingMockup ? mockup : screens[selected];
+  const view = context?.[selected];
   const PreviewTag = showingMockup ? "button" : "a";
   const previewProps = showingMockup
     ? { type: "button", onClick: () => setExpanded(true) }
@@ -38,23 +39,28 @@ export function ProjectGallery({ screens, labels, name, galleryLabel, mockup, se
   }, [expanded]);
 
   return (
-    <figure className="min-w-0">
-      <PreviewTag {...previewProps} aria-label={`${t.work.openImage}: ${name}, ${labels[selected]}`} className={`${large ? "case-preview" : "project-preview"} block w-full overflow-hidden rounded-lg ${showingMockup ? "aspect-[4/3] md:aspect-[16/10]" : "aspect-[16/9] bg-deep"}`}>
+    <figure className={`min-w-0 ${context ? "case-gallery" : ""}`}>
+      <PreviewTag {...previewProps} aria-label={`${t.work.openImage}: ${name}, ${labels[selected]}`} style={large ? { aspectRatio: `${screens[0].width} / ${screens[0].height}` } : undefined} className={`${large ? "case-preview" : "project-preview"} block w-full overflow-hidden rounded-lg ${showingMockup ? "aspect-[4/3] md:aspect-[16/10]" : large ? "bg-deep" : "aspect-[16/9] bg-deep"}`}>
         {showingMockup ? (
           <DeviceMockup src={screen.src} label={`${name} — ${labels[selected]}`} />
         ) : <picture>
-          <source type="image/webp" srcSet={`${screen.preview}-720.webp 720w, ${screen.preview}-1440.webp 1440w`} sizes={large ? "(min-width: 1400px) 1304px, (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)" : "(min-width: 1400px) 758px, (min-width: 1024px) calc((100vw - 136px) * 0.6), (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)"} />
+          <source type="image/webp" srcSet={`${screen.preview}-720.webp 720w, ${screen.preview}-1440.webp 1440w`} sizes={large ? "(min-width: 1280px) 864px, (min-width: 1024px) calc(100vw - 416px), (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)" : "(min-width: 1400px) 758px, (min-width: 1024px) calc((100vw - 136px) * 0.6), (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)"} />
           <img src={screen.src} alt={`${name} — ${labels[selected]}`} width={screen.width} height={screen.height} loading={large ? "eager" : "lazy"} decoding="async" draggable={false} className="h-full w-full object-contain" />
         </picture>}
       </PreviewTag>
-      <div role="group" aria-label={galleryLabel} className="mt-4 flex flex-wrap gap-x-5 gap-y-1">
+      <div role="group" aria-label={galleryLabel} className={`flex flex-wrap gap-x-5 gap-y-1 ${context ? "case-gallery-controls" : "mt-4"}`}>
         {screens.map((item, index) => (
           <button key={index} type="button" aria-pressed={selected === index} onClick={() => setSelected(index)} className={`min-h-11 border-b-2 py-2 text-sm font-medium transition-colors ${selected === index ? "border-accent text-accent" : "border-transparent text-mist hover:text-paper"}`}>
             {labels[index]}
           </button>
         ))}
       </div>
-      {screen.demo && <figcaption className="mt-3 text-xs leading-relaxed text-mist">{t.work.adminDemo}</figcaption>}
+      {view ? <figcaption className="case-gallery-caption">
+        <p className="text-sm text-accent">{view[0]}</p>
+        <h3 className="display mt-3 text-2xl">{view[1]}</h3>
+        <p className="mt-4 leading-7 text-mist">{view[2]}</p>
+        {screen.demo && <p className="mt-5 text-xs leading-relaxed text-mist">{t.work.adminDemo}</p>}
+      </figcaption> : screen.demo && <figcaption className="mt-3 text-xs leading-relaxed text-mist">{t.work.adminDemo}</figcaption>}
       {mockup && <dialog ref={dialogRef} aria-label={`${name} — ${t.work.devicesPreview}`} onCancel={() => setExpanded(false)} onClick={(event) => {
         if (event.target === event.currentTarget) setExpanded(false);
       }} className="fixed inset-0 m-auto max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-[1400px] rounded-lg border bd bg-ink2 p-4 text-paper backdrop:bg-ink/90 md:p-6">

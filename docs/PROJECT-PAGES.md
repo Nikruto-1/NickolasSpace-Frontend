@@ -7,6 +7,10 @@ Each project has a separate, prerendered page in EN, UK and SV:
 
 The homepage keeps the single-project slider and screenshot galleries. Its detail links open the corresponding language page in the same tab. Project facts reuse `caseStudies.js`, `gameProjectDetails.js` and the existing translations; the explanatory feature/workflow copy lives in `projectPages.js`.
 
+The case presentation in `projectStories.js` adds a concise introduction, contribution, per-screenshot context and product decisions in EN/UK/SV. The decisions describe observable product behaviour, not invented research or business results. Case galleries keep a stable project-specific image ratio and show every original without cropping. No genuine mobile screenshots were supplied, so none are fabricated.
+
+Each case has a separate branded 1200 x 630 PNG social cover per language. To regenerate these code-designed layouts from the current copy, logo, palette and original screenshots on Windows, run `powershell -ExecutionPolicy Bypass -File scripts/generate-project-covers.ps1`, then build. The checked-in assets do not require a Windows dependency on the deployment host.
+
 AutoAlexDE also includes the three original admin screenshots supplied by the owner: dashboard, vehicle management and enquiries. On 2026-10-22 the owner explicitly confirmed that their displayed records are test data and requested unmodified originals. The PNG originals are preserved; resized WebP previews are lossless. A translated caption identifies the admin screenshots as test data and makes clear to EN/SV readers that the admin interface shown is Ukrainian. No generatively edited screenshot is included.
 
 ## Returning To The Portfolio

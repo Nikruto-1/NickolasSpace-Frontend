@@ -54,6 +54,92 @@ body {
   line-height: 1.12;
 }
 
+.case-container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+.case-intro {
+  display: grid;
+  gap: 28px;
+  padding-block: 28px 40px;
+}
+
+.case-lead {
+  max-width: 32ch;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.case-gallery {
+  display: grid;
+  gap: 16px;
+}
+
+.case-gallery-caption {
+  min-width: 0;
+  padding-top: 8px;
+}
+
+.case-gallery-controls {
+  align-content: start;
+}
+
+.case-game-details {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .case-container {
+    padding-inline: 48px;
+  }
+
+  .case-lead {
+    font-size: 1.5rem;
+  }
+
+  .case-game-details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .case-intro {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 64px;
+    padding-block: 32px 48px;
+  }
+
+  .case-role {
+    padding-top: 6px;
+  }
+
+  .case-gallery {
+    grid-template-columns: minmax(0, 1fr) 280px;
+    column-gap: 40px;
+  }
+
+  .case-gallery-caption {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+    padding-top: 0;
+  }
+
+  .case-gallery-controls {
+    grid-column: 1;
+  }
+
+  .case-game-details {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .hero-title {
   font-size: 4rem;
   line-height: 1.12;
