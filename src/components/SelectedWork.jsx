@@ -1,36 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import useLanguage from "../i18n/useLanguage.js";
 import Button from "./shared/Button.jsx";
-import ContactButton from "./contact/ContactButton.jsx";
 import DeviceMockup from "./DeviceMockup.jsx";
-import { gameProjectDetails } from "../i18n/gameProjectDetails.js";
-import { caseStudies } from "../i18n/caseStudies.js";
+import { projectPages } from "../i18n/projectPages.js";
+import { projectMedia } from "../data/projectMedia.js";
+import { projectFilename, projectSlugs } from "../data/projectRoutes.js";
+import { openProject } from "../navigation/portfolioState.js";
+import usePortfolioState from "../navigation/usePortfolioState.js";
 import { ArrowLeft, ArrowRight, ArrowUpRight, X } from "lucide-react";
 
-const autoAlexScreens = [
-  { src: "./assets/autoalex-home.jpeg", preview: "./assets/autoalex-home", width: 1536, height: 874 },
-  { src: "./assets/autoalex-calculator.png", preview: "./assets/autoalex-calculator", width: 1902, height: 1080 },
-  { src: "./assets/autoalex-order.png", preview: "./assets/autoalex-order", width: 1901, height: 1080 },
-];
-const autoAlexMockup = { src: "./assets/autoalex-devices-figma.png", width: 836, height: 607 };
-const gameScreensByLanguage = {
-  uk: [
-    { src: "./assets/nickolasgames-home-uk.png?v=2", preview: "./assets/nickolasgames-home-uk", width: 1904, height: 876 },
-    { src: "./assets/nickolasgames-catalog-uk.png", preview: "./assets/nickolasgames-catalog-uk", width: 1900, height: 1080 },
-  ],
-  en: [
-    { src: "./assets/nickolasgames-home-en.png?v=2", preview: "./assets/nickolasgames-home-en", width: 1902, height: 877 },
-    { src: "./assets/nickolasgames-catalog-en.png", preview: "./assets/nickolasgames-catalog-en", width: 1900, height: 1080 },
-  ],
-  sv: [
-    { src: "./assets/nickolasgames-home-sv.png?v=2", preview: "./assets/nickolasgames-home-sv", width: 1900, height: 878 },
-    { src: "./assets/nickolasgames-catalog-sv.png", preview: "./assets/nickolasgames-catalog-sv", width: 1898, height: 1080 },
-  ],
-};
-
-function ProjectGallery({ screens, labels, name, galleryLabel, mockup }) {
+export function ProjectGallery({ screens, labels, name, galleryLabel, mockup, selectedIndex, onSelect, large = false }) {
   const { t } = useLanguage();
-  const [selected, setSelected] = useState(0);
+  const [localSelected, setLocalSelected] = useState(0);
+  const selected = selectedIndex ?? localSelected;
+  const setSelected = onSelect ?? setLocalSelected;
   const [expanded, setExpanded] = useState(false);
   const dialogRef = useRef(null);
   const showingMockup = mockup && selected === 0;
@@ -56,12 +39,12 @@ function ProjectGallery({ screens, labels, name, galleryLabel, mockup }) {
 
   return (
     <figure className="min-w-0">
-      <PreviewTag {...previewProps} aria-label={`${t.work.openImage}: ${name}, ${labels[selected]}`} className={`project-preview block w-full overflow-hidden rounded-lg ${showingMockup ? "aspect-[4/3] md:aspect-[16/10]" : "aspect-[16/9] bg-deep"}`}>
+      <PreviewTag {...previewProps} aria-label={`${t.work.openImage}: ${name}, ${labels[selected]}`} className={`${large ? "case-preview" : "project-preview"} block w-full overflow-hidden rounded-lg ${showingMockup ? "aspect-[4/3] md:aspect-[16/10]" : "aspect-[16/9] bg-deep"}`}>
         {showingMockup ? (
           <DeviceMockup src={screen.src} label={`${name} — ${labels[selected]}`} />
         ) : <picture>
-          <source type="image/webp" srcSet={`${screen.preview}-720.webp 720w, ${screen.preview}-1440.webp 1440w`} sizes="(min-width: 1400px) 758px, (min-width: 1024px) calc((100vw - 136px) * 0.6), (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)" />
-          <img src={screen.src} alt={`${name} — ${labels[selected]}`} width={screen.width} height={screen.height} loading="lazy" decoding="async" draggable={false} className="h-full w-full object-contain" />
+          <source type="image/webp" srcSet={`${screen.preview}-720.webp 720w, ${screen.preview}-1440.webp 1440w`} sizes={large ? "(min-width: 1400px) 1304px, (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)" : "(min-width: 1400px) 758px, (min-width: 1024px) calc((100vw - 136px) * 0.6), (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)"} />
+          <img src={screen.src} alt={`${name} — ${labels[selected]}`} width={screen.width} height={screen.height} loading={large ? "eager" : "lazy"} decoding="async" draggable={false} className="h-full w-full object-contain" />
         </picture>}
       </PreviewTag>
       <div role="group" aria-label={galleryLabel} className="mt-4 flex flex-wrap gap-x-5 gap-y-1">
@@ -91,10 +74,11 @@ function ProjectGallery({ screens, labels, name, galleryLabel, mockup }) {
 
 export default function SelectedWork() {
   const { t, language } = useLanguage();
-  const [active, setActive] = useState(0);
+  const [portfolio, updatePortfolio] = usePortfolioState();
+  const { active } = portfolio;
+  const setActive = (value) => updatePortfolio({ active: typeof value === "function" ? value(active) : value });
   const gesture = useRef(null);
   const projects = t.work.cases;
-  const caseStudy = caseStudies[language];
   const move = (offset) => setActive((index) => Math.max(0, Math.min(projects.length - 1, index + offset)));
   const arrowClass = "flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-control text-paper transition-colors hover:border-accent hover:bg-paper/5 disabled:cursor-default disabled:opacity-30 disabled:hover:bg-transparent";
 
@@ -139,6 +123,8 @@ export default function SelectedWork() {
         }} onTouchCancel={() => { gesture.current = null; }}>
           {projects.map((project, index) => {
             const isGames = project.name === "NickolasGames";
+            const media = projectMedia(index, language);
+            const href = `./${projectFilename(projectSlugs[index], language)}`;
             return (
               <article key={project.name} id={`project-slide-${index}`} aria-labelledby={`project-title-${index}`} hidden={active !== index} className={`project-slide items-start gap-8 pt-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-10 ${active === index ? "grid" : "hidden"}`}>
                 <div className="order-last grid min-w-0 gap-6 border-t bd pt-7 lg:order-first lg:border-t-0 lg:pt-2">
@@ -151,43 +137,16 @@ export default function SelectedWork() {
                       {project.tags.map((tag) => <li key={tag}>{tag}</li>)}
                     </ul>
                     <div className="mt-7 flex flex-wrap gap-3">
-                    <ContactButton project={project.name}>
-                      {t.work.discussSimilar}<ArrowUpRight size={18} className="ml-3 shrink-0" aria-hidden="true" />
-                    </ContactButton>
+                    <Button id={`project-details-${index}`} href={href} aria-label={`${projectPages[language].details}: ${project.name}`} onClick={(event) => openProject(event, href, portfolio)}>
+                      {projectPages[language].details}<ArrowRight size={18} className="ml-3 shrink-0" aria-hidden="true" />
+                    </Button>
                     <Button href={project.url} target="_blank" rel="noreferrer" variant="outline">
                       {t.work.viewProject}<ArrowUpRight size={18} className="ml-4" aria-hidden="true" />
                     </Button>
                     </div>
                   </div>
                 </div>
-                <ProjectGallery screens={isGames ? gameScreensByLanguage[language] : autoAlexScreens} labels={isGames ? t.work.gamesViews : [t.work.devicesPreview, ...t.work.screens.slice(1)]} name={project.name} galleryLabel={isGames ? t.work.gamesGallery : t.work.gallery} mockup={isGames ? undefined : autoAlexMockup} />
-                {caseStudy.projects[project.name] && (
-                  <dl className="order-last grid min-w-0 gap-7 border-t bd pt-7 md:grid-cols-3 md:gap-8 lg:col-span-2">
-                    {caseStudy.projects[project.name].map((description, itemIndex) => (
-                      <div key={caseStudy.labels[itemIndex]} className="min-w-0">
-                        <dt className="text-base font-semibold text-paper">{caseStudy.labels[itemIndex]}</dt>
-                        <dd className="mt-3 break-words text-base leading-relaxed text-mist">{description}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                )}
-                {isGames && (
-                  <details className="order-last border-t bd lg:col-span-2">
-                    <summary className="cursor-pointer py-5 font-semibold text-paper hover:text-mist">{t.work.gamesDetailsLabel}</summary>
-                    <div className="grid gap-10 pb-6 pt-3 md:grid-cols-2 xl:grid-cols-3">
-                      {gameProjectDetails[language].map((group) => (
-                        <section key={group.title}>
-                          <h4 className="text-xl font-semibold">{group.title}</h4>
-                          <dl className="mt-6 space-y-5">
-                            {group.items.map(([title, description]) => (
-                              <div key={title}><dt className="font-semibold">{title}</dt><dd className="mt-2 text-sm leading-relaxed text-mist">{description}</dd></div>
-                            ))}
-                          </dl>
-                        </section>
-                      ))}
-                    </div>
-                  </details>
-                )}
+                <ProjectGallery {...media} labels={isGames ? t.work.gamesViews : [t.work.devicesPreview, ...t.work.screens.slice(1)]} name={project.name} galleryLabel={isGames ? t.work.gamesGallery : t.work.gallery} selectedIndex={portfolio.screens[index]} onSelect={(selected) => updatePortfolio({ screens: portfolio.screens.map((value, item) => item === index ? selected : value) })} />
               </article>
             );
           })}

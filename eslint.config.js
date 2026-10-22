@@ -21,6 +21,7 @@ export default [
         document: "readonly",
         IntersectionObserver: "readonly",
         window: "readonly",
+        URLSearchParams: "readonly",
       },
     },
     plugins: {

@@ -11,12 +11,14 @@ import SelectedWork from "./components/SelectedWork.jsx";
 import Services from "./components/Services.jsx";
 import { ContactModalProvider } from "./components/contact/ContactModalContext.jsx";
 import MotionProvider from "./components/shared/MotionProvider.jsx";
+import ProjectPage from "./components/ProjectPage.jsx";
 
-export default function App() {
+export default function App({ projectRoute = null }) {
   return (
     <MotionProvider><ContactModalProvider>
-      <Header />
+      <Header projectRoute={projectRoute} />
       <main id="main-content" tabIndex={-1}>
+        {projectRoute ? <ProjectPage route={projectRoute} /> : <>
         <Hero />
         <IntroStatement />
         <SelectedWork />
@@ -26,8 +28,9 @@ export default function App() {
         <HowWeWork />
         <FounderSection />
         <FinalCTA />
+        </>}
       </main>
-      <Footer />
+      <Footer home={projectRoute ? "./" : ""} />
     </ContactModalProvider></MotionProvider>
   );
 }

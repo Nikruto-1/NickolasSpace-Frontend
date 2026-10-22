@@ -16,7 +16,7 @@ const social = [
   ["Email", "mailto:kkosmacevskij@gmail.com"],
 ];
 
-export default function Footer() {
+export default function Footer({ home = "" }) {
   const { t } = useLanguage();
   const colClass = "flex flex-col gap-3 text-mist [&_a]:transition-colors [&_a:hover]:text-accent";
 
@@ -24,7 +24,7 @@ export default function Footer() {
     <footer id="contact" className="bg-deep">
       <div className="mx-auto grid max-w-[1400px] gap-12 px-6 py-20 md:grid-cols-4 md:px-12">
         <div className="md:col-span-2">
-          <a href="#top" aria-label="NickolasSpace" className="inline-flex flex-col items-start">
+          <a href={`${home}#top`} aria-label="NickolasSpace" className="inline-flex flex-col items-start">
             <img src="./assets/logo-cyan-480.webp" alt="" width="480" height="480" loading="lazy" decoding="async" className="h-24 w-44 object-contain object-left md:h-32 md:w-60" />
             <span className="-mt-2 text-2xl font-semibold text-paper md:text-3xl">NickolasSpace</span>
           </a>
@@ -32,7 +32,7 @@ export default function Footer() {
         </div>
         <nav className={colClass} aria-label={t.nav.navigation}>
           {nav.map(([key, href]) => (
-            <a key={key} href={href}>
+            <a key={key} href={`${home}${href}`}>
               {t.nav[key]}
             </a>
           ))}

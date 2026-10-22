@@ -44,8 +44,8 @@ function subscribe(listener) {
   };
 }
 
-export function LanguageProvider({ children }) {
-  const language = useSyncExternalStore(subscribe, getLanguage, () => defaultLanguage);
+export function LanguageProvider({ children, pageLanguage }) {
+  const language = useSyncExternalStore(subscribe, () => pageLanguage || getLanguage(), () => pageLanguage || defaultLanguage);
   const value = useMemo(() => ({ language, setLanguage, t: translations[language] }), [language]);
 
   useEffect(() => {

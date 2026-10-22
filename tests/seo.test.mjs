@@ -11,11 +11,11 @@ const escapeHtml = (value) => value.replace(/[&<>"']/g, (character) => ({
   "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#x27;",
 })[character]);
 
-test("project enquiry buttons are translated and rendered for every case", () => {
+test("project detail links are prerendered for every case", () => {
   for (const copy of Object.values(translations)) {
     assert.ok(copy.work.discussSimilar.trim());
   }
-  assert.equal(html.split(escapeHtml(translations.en.work.discussSimilar)).length - 1, translations.en.work.cases.length);
+  for (const slug of ["autoalex", "nickolasgames"]) assert.ok(html.includes(`href="./project-${slug}.html"`));
 });
 
 test("built HTML contains every service before JavaScript runs", () => {
@@ -72,19 +72,16 @@ test("all slider projects remain in the built HTML", () => {
     assert.ok(html.includes(escapeHtml(project.desc)), `Missing project description: ${project.name}`);
   }
   assert.match(html, /id="project-slide-1"[^>]*hidden/);
-  assert.ok(html.includes("Timed or relaxed rounds"));
+  assert.ok(html.includes("Project details"));
 });
 
-test("case studies cover each project in every language and are prerendered", () => {
+test("case studies cover each project in every language", () => {
   for (const [language, copy] of Object.entries(translations)) {
     const study = caseStudies[language];
     for (const project of copy.work.cases) {
       const paragraphs = study.projects[project.name];
       assert.equal(paragraphs.length, study.labels.length);
       assert.ok(paragraphs.every((paragraph) => paragraph.trim().length > 0));
-      if (language === "en") {
-        for (const paragraph of paragraphs) assert.ok(html.includes(escapeHtml(paragraph)));
-      }
     }
   }
 });
