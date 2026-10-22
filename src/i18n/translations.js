@@ -83,7 +83,7 @@ export const translations = {
       title: "From the first conversation",
       accent: "to ongoing growth.",
       steps: [
-        ["01", "Start", "We start with a brief, a contract and payment. On our kickoff call, we clarify the details, discuss expectations and lay the groundwork for effective collaboration."],
+        ["01", "Start", "We start with a brief to understand your goals and expectations. Together, we agree on the tasks, timeline and payment terms so the scope and next steps are clear before work begins."],
         ["02", "Strategy", "We clarify your goals, audience and priorities, then agree on a plan, deliverables and success measures. Research, brand strategy or a promotion plan are included where relevant to your project."],
         ["03", "Implementation", "We carry out the agreed work: a website or application, automation, design or content. You review the key stages and share feedback before we move forward."],
         ["04", "Launch & promotion", "We check the result, launch it and hand over the necessary access and guidance. For marketing projects, we start the agreed publishing schedule or advertising campaigns."],
@@ -200,7 +200,7 @@ export const translations = {
       title: "Від знайомства",
       accent: "до розвитку бізнесу.",
       steps: [
-        ["01", "Старт", "Починаємо з брифування, підписання договору та оплати. Проводимо стартовий дзвінок — дебрифінг, де уточнюємо деталі, обговорюємо очікування та закладаємо основу для ефективної роботи."],
+        ["01", "Старт", "Починаємо з брифування: з’ясовуємо ваші цілі та очікування. Разом узгоджуємо завдання, терміни й умови оплати, щоб до початку роботи були зрозумілі обсяг проєкту та наступні кроки."],
         ["02", "Стратегія", "Уточнюємо цілі, аудиторію та пріоритети. Погоджуємо план, склад робіт і критерії результату. Дослідження, бренд-стратегію чи план просування включаємо тоді, коли вони потрібні вашому проєкту."],
         ["03", "Реалізація", "Виконуємо погоджені роботи: створюємо сайт чи застосунок, автоматизацію, дизайн або контент. Ви переглядаєте ключові етапи й надаєте зворотний зв’язок, перш ніж рухаємося далі."],
         ["04", "Запуск і просування", "Перевіряємо результат, запускаємо рішення та передаємо потрібні доступи й інструкції. Для маркетингових проєктів починаємо погоджені публікації або рекламні кампанії."],
@@ -317,7 +317,7 @@ export const translations = {
       title: "Från första samtalet",
       accent: "till fortsatt utveckling.",
       steps: [
-        ["01", "Start", "Vi börjar med en brief, avtal och betalning. Under uppstartsmötet klargör vi detaljer, diskuterar förväntningar och lägger grunden för ett bra samarbete."],
+        ["01", "Start", "Vi börjar med en brief för att förstå dina mål och förväntningar. Tillsammans kommer vi överens om arbetsuppgifter, tidsplan och betalningsvillkor, så att projektets omfattning och nästa steg är tydliga innan arbetet börjar."],
         ["02", "Strategi", "Vi klargör mål, målgrupp och prioriteringar och kommer överens om plan, leveranser och hur resultatet ska bedömas. Research, varumärkesstrategi eller marknadsplan ingår när projektet behöver det."],
         ["03", "Genomförande", "Vi utför det överenskomna arbetet: webbplats eller app, automation, design eller innehåll. Du granskar viktiga steg och lämnar återkoppling innan vi går vidare."],
         ["04", "Lansering & marknadsföring", "Vi kontrollerar resultatet, lanserar lösningen och lämnar över åtkomst och instruktioner. För marknadsföringsprojekt startar vi överenskomna publiceringar eller annonskampanjer."],
