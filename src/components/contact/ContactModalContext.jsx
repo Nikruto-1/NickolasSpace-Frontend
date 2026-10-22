@@ -75,7 +75,7 @@ export function ContactModalProvider({ children }) {
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {contactLinks.map((item) => {
                 const isEmail = item.key === "email";
-                const className = `group flex min-h-20 items-center justify-between rounded-md border border-control bg-ink2 px-5 py-4 text-left text-base font-medium transition-colors hover:border-accent hover:bg-accent/10 ${isEmail ? "sm:col-span-2" : ""}`;
+                const className = `group flex min-h-20 items-center justify-between rounded-md border border-control bg-ink2 px-5 py-4 text-left text-base font-medium transition-colors hover:border-accent hover:bg-surface-hover ${isEmail ? "sm:col-span-2" : ""}`;
                 const content = (
                   <>
                     <span className="flex min-w-0 flex-col gap-1">

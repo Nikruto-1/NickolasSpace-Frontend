@@ -26,7 +26,7 @@ export default function Header() {
   return (
     <header onKeyDown={(event) => {
       if (event.key === "Escape" && menuOpen) { setMenuOpen(false); menuRef.current?.focus(); }
-    }} className={`fixed inset-x-0 top-0 z-50 text-paper transition-colors duration-200 ${solid || menuOpen ? "border-b bd bg-ink/95 backdrop-blur-md" : "bg-ink/95"}`}>
+    }} className={`fixed inset-x-0 top-0 z-50 text-paper transition-colors duration-200 ${solid || menuOpen ? "border-b bd bg-deep/95 backdrop-blur-md" : "bg-deep/95"}`}>
       <a href="#main-content" className="skip-link">{t.nav.skip}</a>
       <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-2 px-3 py-4 sm:gap-3 sm:px-6 md:px-12 md:py-5">
         <a href="#top" className="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold sm:gap-2 sm:text-lg" onClick={() => setMenuOpen(false)}>
@@ -65,7 +65,7 @@ export default function Header() {
           </button>
         </div>
       </div>
-      {menuOpen && <nav id="mobile-navigation" aria-label={t.nav.navigation} className="max-h-[calc(100dvh-5rem)] overflow-y-auto border-t bd bg-ink px-6 py-4 xl:hidden">
+      {menuOpen && <nav id="mobile-navigation" aria-label={t.nav.navigation} className="max-h-[calc(100dvh-5rem)] overflow-y-auto border-t bd bg-deep px-6 py-4 xl:hidden">
         {links.map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)} className="block rounded-md py-3 text-mist hover:text-accent">{label}</a>)}
         <div className="mt-3 flex items-center justify-between gap-3 border-t bd pt-4">
           <ContactButton onClick={() => { setMenuOpen(false); menuRef.current?.focus(); }}>{t.nav.start}</ContactButton>

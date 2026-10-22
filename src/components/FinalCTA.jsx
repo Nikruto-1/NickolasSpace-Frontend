@@ -7,9 +7,9 @@ export default function FinalCTA() {
   const { t } = useLanguage();
 
   return (
-    <section className="relative overflow-hidden bg-ink">
+    <section className="relative overflow-hidden bg-deep">
       <Video src={ASSETS.cta} smoothLoop />
-      <div className="absolute inset-0 bg-ink/85" />
+      <div className="absolute inset-0 bg-deep/85" />
       <div className="relative mx-auto w-full max-w-[1400px] px-6 py-20 md:px-12 md:py-28">
         <h2 className="display section-title">
           {t.cta.title}

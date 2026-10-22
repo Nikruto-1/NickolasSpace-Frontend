@@ -56,7 +56,7 @@ function ProjectGallery({ screens, labels, name, galleryLabel, mockup }) {
 
   return (
     <figure className="min-w-0">
-      <PreviewTag {...previewProps} aria-label={`${t.work.openImage}: ${name}, ${labels[selected]}`} className={`block w-full overflow-hidden rounded-lg ${showingMockup ? "aspect-[4/3] md:aspect-[16/10]" : "aspect-[16/9] bg-[#202020]"}`}>
+      <PreviewTag {...previewProps} aria-label={`${t.work.openImage}: ${name}, ${labels[selected]}`} className={`block w-full overflow-hidden rounded-lg ${showingMockup ? "aspect-[4/3] md:aspect-[16/10]" : "aspect-[16/9] bg-deep"}`}>
         {showingMockup ? (
           <DeviceMockup src={screen.src} label={`${name} — ${labels[selected]}`} />
         ) : <picture>

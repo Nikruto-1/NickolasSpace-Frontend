@@ -218,8 +218,8 @@ body {
 }
 
 .process-step[data-active="true"] .process-step-number {
-  border-color: rgb(var(--paper-rgb));
-  background: rgb(var(--paper-rgb));
+  border-color: rgb(var(--accent-rgb));
+  background: rgb(var(--accent-rgb));
   color: rgb(var(--ink-rgb));
 }
 
@@ -244,7 +244,7 @@ body {
   width: 100%;
   height: 100%;
   transform-origin: top;
-  background: rgb(var(--paper-rgb));
+  background: rgb(var(--accent-rgb));
 }
 
 @media (max-width: 640px) {

@@ -21,7 +21,7 @@ export default function Footer() {
   const colClass = "flex flex-col gap-3 text-mist [&_a]:transition-colors [&_a:hover]:text-accent";
 
   return (
-    <footer id="contact" className="bg-ink">
+    <footer id="contact" className="bg-deep">
       <div className="mx-auto grid max-w-[1400px] gap-12 px-6 py-20 md:grid-cols-4 md:px-12">
         <div className="md:col-span-2">
           <a href="#top" aria-label="NickolasSpace" className="inline-flex flex-col items-start">

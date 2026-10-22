@@ -8,9 +8,9 @@ export default function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section id="top" className="relative flex min-h-[100dvh] items-center overflow-hidden bg-ink">
+    <section id="top" className="relative flex min-h-[100dvh] items-center overflow-hidden bg-deep">
       <Video src={ASSETS.hero} smoothLoop />
-      <div className="absolute inset-0 bg-ink/85" />
+      <div className="absolute inset-0 bg-deep/80" />
       <div className="relative mx-auto w-full max-w-[1400px] px-6 pb-12 pt-32 md:px-12 md:pb-20">
         <h1 className="hero-title display">
           <span className="mask">NickolasSpace</span>

@@ -18,14 +18,14 @@ const contrast = (first, second) => {
 };
 
 test("palette text pairs meet WCAG AA normal-text contrast", () => {
-  for (const [foreground, background] of [["paper", "ink"], ["paper", "ink2"], ["mist", "ink"], ["mist", "ink2"], ["accent", "ink"], ["accent", "ink2"], ["ink", "accent"], ["ink", "accent-hover"], ["muted-dark", "paper"]]) {
+  for (const [foreground, background] of [["paper", "ink"], ["paper", "deep"], ["paper", "ink2"], ["paper", "surface-hover"], ["mist", "ink"], ["mist", "deep"], ["mist", "ink2"], ["mist", "surface-hover"], ["accent", "ink"], ["accent", "ink2"], ["ink", "accent"], ["ink", "accent-hover"], ["muted-dark", "paper"], ["muted-dark", "accent"]]) {
     const ratio = contrast(foreground, background);
     assert.ok(ratio >= 4.5, `${foreground}/${background}: ${ratio.toFixed(2)}`);
   }
 });
 
 test("control boundaries have at least 3:1 contrast", () => {
-  for (const background of ["ink", "ink2"]) assert.ok(contrast("control", background) >= 3);
+  for (const background of ["ink", "deep", "ink2", "surface-hover"]) assert.ok(contrast("control", background) >= 3);
 });
 
 test("production CSP limits scripts and hashes every inline script", async () => {
