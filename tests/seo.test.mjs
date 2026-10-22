@@ -56,11 +56,11 @@ test("the process is readable before scroll and JavaScript", () => {
 });
 
 test("social previews use the dedicated landscape cover", async () => {
-  const coverUrl = "https://nickolasspace.com/assets/nickolasspace-social-v1.png";
+  const coverUrl = "https://nickolasspace.com/assets/nickolasspace-social-v2.png";
   assert.ok(html.includes(`property="og:image" content="${coverUrl}"`));
   assert.ok(html.includes(`name="twitter:image" content="${coverUrl}"`));
   assert.match(html, /name="twitter:card" content="summary_large_image"/);
-  const cover = await readFile(new URL("../dist/assets/nickolasspace-social-v1.png", import.meta.url));
+  const cover = await readFile(new URL("../dist/assets/nickolasspace-social-v2.png", import.meta.url));
   assert.equal(cover.subarray(0, 8).toString("hex"), "89504e470d0a1a0a");
   assert.equal(cover.readUInt32BE(16), 1200);
   assert.equal(cover.readUInt32BE(20), 630);
