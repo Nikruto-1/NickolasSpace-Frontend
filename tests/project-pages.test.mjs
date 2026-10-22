@@ -5,6 +5,8 @@ import test from "node:test";
 import { URL } from "node:url";
 import { projectFilename, projectRoute, projectLanguages, projectSlugs } from "../src/data/projectRoutes.js";
 import { projectMetadata } from "../src/data/projectMetadata.js";
+import { projectMedia } from "../src/data/projectMedia.js";
+import { translations } from "../src/i18n/translations.js";
 import { caseStudies } from "../src/i18n/caseStudies.js";
 import { projectPages } from "../src/i18n/projectPages.js";
 import { normalizePortfolioState, isPlainNavigation, openProject, switchProjectLanguage } from "../src/navigation/portfolioState.js";
@@ -61,12 +63,48 @@ test("game and mode details remain collapsed but present in every case language"
   }
 });
 
+test("case galleries keep accessible image links without a duplicate text link", async () => {
+  for (const slug of projectSlugs) {
+    for (const language of projectLanguages) {
+      const html = await read(projectFilename(slug, language));
+      const label = escape(translations[language].work.openImage);
+      assert.ok(html.includes(`aria-label="${label}:`));
+      assert.ok(!html.includes(`>${label}<`));
+    }
+  }
+});
+
 test("portfolio restoration accepts only valid projects and gallery indices", () => {
   assert.deepEqual(normalizePortfolioState({ active: 1, screens: [2, 1] }), { active: 1, screens: [2, 1] });
   assert.deepEqual(normalizePortfolioState({ active: 50, screens: [-1, 90] }), { active: 0, screens: [0, 0] });
   assert.equal(normalizePortfolioState(null, "?project=nickolasgames").active, 1);
   assert.equal(normalizePortfolioState(null, "?project=unknown").active, 0);
   assert.equal(normalizePortfolioState({ active: 0 }, "?project=nickolasgames").active, 0);
+  assert.deepEqual(normalizePortfolioState({ active: 0, screens: [3, 1] }), { active: 0, screens: [3, 1] });
+  assert.deepEqual(normalizePortfolioState({ active: 0, screens: [5, 1] }), { active: 0, screens: [5, 1] });
+  assert.deepEqual(normalizePortfolioState({ active: 0, screens: [6, 2] }), { active: 0, screens: [0, 0] });
+});
+
+test("the AutoAlex admin overview and translated capabilities are included in each case", async () => {
+  for (const language of projectLanguages) {
+    const media = projectMedia(0, language);
+    assert.equal(media.screens.length, translations[language].work.screens.length);
+    assert.deepEqual(media.screens.filter((screen) => screen.demo).map((screen) => screen.src), [
+      "./assets/autoalex-admin-dashboard.png", "./assets/autoalex-admin-vehicles.png", "./assets/autoalex-admin-enquiries.png",
+    ]);
+    assert.ok(translations[language].work.adminDemo.trim());
+    const html = await read(projectFilename("autoalex", language));
+    for (const label of translations[language].work.screens) assert.ok(html.includes(escape(label)));
+    for (const [title, description] of projectPages[language].autoFeatures) {
+      assert.ok(html.includes(escape(title)));
+      assert.ok(html.includes(escape(description)));
+    }
+  }
+  for (const view of ["dashboard", "vehicles", "enquiries"]) {
+    for (const suffix of [".png", "-720.webp", "-1440.webp"]) {
+      assert.ok((await stat(new URL(`../dist/assets/autoalex-admin-${view}${suffix}`, import.meta.url))).size > 0);
+    }
+  }
 });
 
 test("modified clicks retain native open-in-new-tab behaviour", () => {

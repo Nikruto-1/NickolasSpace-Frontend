@@ -54,9 +54,7 @@ export function ProjectGallery({ screens, labels, name, galleryLabel, mockup, se
           </button>
         ))}
       </div>
-      <figcaption className="mt-3 text-sm text-mist">
-        <PreviewTag {...previewProps} className="inline-flex min-h-11 items-center gap-2 py-2 underline underline-offset-4 hover:text-paper">{t.work.openImage}<ArrowUpRight size={14} aria-hidden="true" /></PreviewTag>
-      </figcaption>
+      {screen.demo && <figcaption className="mt-3 text-xs leading-relaxed text-mist">{t.work.adminDemo}</figcaption>}
       {mockup && <dialog ref={dialogRef} aria-label={`${name} — ${t.work.devicesPreview}`} onCancel={() => setExpanded(false)} onClick={(event) => {
         if (event.target === event.currentTarget) setExpanded(false);
       }} className="fixed inset-0 m-auto max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-[1400px] rounded-lg border bd bg-ink2 p-4 text-paper backdrop:bg-ink/90 md:p-6">

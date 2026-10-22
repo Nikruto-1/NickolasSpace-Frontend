@@ -7,6 +7,8 @@ Each project has a separate, prerendered page in EN, UK and SV:
 
 The homepage keeps the single-project slider and screenshot galleries. Its detail links open the corresponding language page in the same tab. Project facts reuse `caseStudies.js`, `gameProjectDetails.js` and the existing translations; the explanatory feature/workflow copy lives in `projectPages.js`.
 
+AutoAlexDE also includes the three original admin screenshots supplied by the owner: dashboard, vehicle management and enquiries. On 2026-10-22 the owner explicitly confirmed that their displayed records are test data and requested unmodified originals. The PNG originals are preserved; resized WebP previews are lossless. A translated caption identifies the admin screenshots as test data and makes clear to EN/SV readers that the admin interface shown is Ukrainian. No generatively edited screenshot is included.
+
 ## Returning To The Portfolio
 
 On an ordinary detail-link click, the current history entry records the selected project, each gallery selection, the work section's viewport offset and the link to refocus. The destination receives a temporary `from=portfolio` parameter, replaces it with an entry-scoped history marker and removes the parameter from the visible URL. The return links use browser Back for this flow. The homepage restores the section's offset and focuses the original link without scrolling again.

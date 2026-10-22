@@ -67,7 +67,8 @@ export const translations = {
       gamesGallery: "NickolasGames screenshots by language",
       gamesViews: ["Homepage", "Game catalogue"],
       gamesDetailsLabel: "Games, modes & features",
-      screens: ["Homepage", "Cost calculator", "Order form"],
+      screens: ["Homepage", "Cost calculator", "Order form", "Admin overview", "Vehicle management", "Enquiries"],
+      adminDemo: "Ukrainian admin interface with test data.",
       openImage: "View full-size image",
       cases: [
         { name: "AutoAlexDE", desc: "Vehicle sourcing and automation platform for Auto Alex KFZ-Handel.", tags: ["Web Platform", "Automation", "Telegram Bot", "Admin Panel", "API", "SEO"], url: "https://autoalex.net/" },
@@ -184,7 +185,8 @@ export const translations = {
       gamesGallery: "Скриншоти NickolasGames різними мовами",
       gamesViews: ["Головна", "Каталог ігор"],
       gamesDetailsLabel: "Ігри, режими та можливості",
-      screens: ["Головна", "Калькулятор", "Замовлення"],
+      screens: ["Головна", "Калькулятор", "Замовлення", "Дашборд", "Керування авто", "Заявки"],
+      adminDemo: "На скриншотах адмінпанелі показані тестові дані.",
       openImage: "Відкрити зображення",
       cases: [
         { name: "AutoAlexDE", desc: "Платформа для підбору авто та автоматизації для Auto Alex KFZ-Handel.", tags: ["Вебплатформа", "Автоматизація", "Telegram-бот", "Адмінпанель", "API", "SEO"], url: "https://autoalex.net/" },
@@ -301,7 +303,8 @@ export const translations = {
       gamesGallery: "Skärmbilder av NickolasGames på olika språk",
       gamesViews: ["Startsida", "Spelkatalog"],
       gamesDetailsLabel: "Spel, lägen och funktioner",
-      screens: ["Startsida", "Kostnadskalkyl", "Beställningsformulär"],
+      screens: ["Startsida", "Kostnadskalkyl", "Beställningsformulär", "Adminöversikt", "Fordonshantering", "Förfrågningar"],
+      adminDemo: "Ukrainskt administratörsgränssnitt med testdata.",
       openImage: "Visa bilden i full storlek",
       cases: [
         { name: "AutoAlexDE", desc: "Plattform för fordonsförmedling och automation för Auto Alex KFZ-Handel.", tags: ["Webbplattform", "Automation", "Telegram-bot", "Adminpanel", "API", "SEO"], url: "https://autoalex.net/" },

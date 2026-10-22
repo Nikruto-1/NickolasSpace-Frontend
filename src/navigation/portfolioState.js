@@ -1,4 +1,5 @@
 import { projectSlugs } from "../data/projectRoutes.js";
+import { projectMedia } from "../data/projectMedia.js";
 
 export const defaultPortfolioState = { active: 0, screens: [0, 0] };
 
@@ -9,7 +10,7 @@ export function normalizePortfolioState(value, search = "") {
     active: active === 1 ? 1 : 0,
     screens: [0, 1].map((index) => {
       const screen = value?.screens?.[index];
-      return Number.isInteger(screen) && screen >= 0 && screen < (index === 0 ? 3 : 2) ? screen : 0;
+      return Number.isInteger(screen) && screen >= 0 && screen < projectMedia(index, "en").screens.length ? screen : 0;
     }),
   };
 }
