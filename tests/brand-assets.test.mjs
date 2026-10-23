@@ -33,3 +33,26 @@ test("new favicon URLs point to real PNGs with their declared sizes", async () =
     assert.ok((await read(name)).toString().includes('href="./assets/favicon-cyan-32.png"'));
   }
 });
+
+test("standard and legacy icon routes contain the current cyan brand", async () => {
+  for (const [source, destinations] of [
+    ["assets/favicon-cyan-32.png", ["assets/favicon-32.png"]],
+    ["assets/favicon-cyan-48.png", ["favicon.png", "assets/favicon-48.png"]],
+    ["assets/apple-touch-icon-cyan.png", ["apple-touch-icon.png", "apple-touch-icon-precomposed.png", "assets/apple-touch-icon.png"]],
+  ]) {
+    for (const destination of destinations) assert.deepEqual(await read(destination), await read(source));
+  }
+  const ico = await read("favicon.ico");
+  assert.equal(ico.readUInt16LE(0), 0);
+  assert.equal(ico.readUInt16LE(2), 1);
+  assert.equal(ico.readUInt16LE(4), 2);
+  for (const [index, size] of [32, 48].entries()) {
+    const entry = 6 + index * 16;
+    const length = ico.readUInt32LE(entry + 8);
+    const offset = ico.readUInt32LE(entry + 12);
+    assert.equal(ico[entry], size);
+    assert.equal(ico[entry + 1], size);
+    assert.deepEqual(ico.subarray(offset, offset + length), await read(`assets/favicon-cyan-${size}.png`));
+  }
+  assert.ok((await read("index.html")).toString().includes('href="./favicon.ico?v=cyan-20261023"'));
+});
