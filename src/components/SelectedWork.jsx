@@ -43,7 +43,7 @@ export function ProjectGallery({ screens, labels, name, galleryLabel, mockup, se
 
   return (
     <figure className={`min-w-0 ${context ? "case-gallery" : ""}`}>
-      <PreviewTag {...previewProps} aria-label={`${t.work.openImage}: ${name}, ${labels[selected]}`} title={t.work.openImage} style={large ? { aspectRatio: `${screens[0].width} / ${screens[0].height}` } : undefined} className={`${large ? "case-preview" : "project-preview"} relative block w-full overflow-hidden rounded-lg ${showingMockup ? "aspect-[4/3] md:aspect-[16/10]" : large ? "bg-deep" : "aspect-[16/9] bg-deep"}`}>
+      <PreviewTag {...previewProps} aria-label={`${t.work.openImage}: ${name}, ${labels[selected]}`} title={t.work.openImage} style={large && !showingPhone ? { aspectRatio: `${screens[0].width} / ${screens[0].height}` } : undefined} className={`${large ? "case-preview" : "project-preview"} relative block w-full overflow-hidden rounded-lg ${showingPhone ? "phone-preview bg-deep" : showingMockup ? "aspect-[4/3] md:aspect-[16/10]" : large ? "bg-deep" : "aspect-[16/9] bg-deep"}`}>
         {showingMockup ? (
           <DeviceMockup src={screen.src} label={`${name} — ${labels[selected]}`} />
         ) : showingPhone ? <>

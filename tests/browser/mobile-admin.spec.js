@@ -18,6 +18,10 @@ test("mobile admin views load in the portfolio and each translated case", async 
       const image = preview.locator(".phone-mockup img");
       await expect(image).toHaveAttribute("src", `./assets/autoalex-admin-${view}-mobile.svg`);
       await expect.poll(() => image.evaluate((element) => element.complete && element.naturalWidth > 0)).toBe(true);
+      const frame = await preview.locator(".phone-mockup").boundingBox();
+      expect(frame.height).toBeGreaterThan(300);
+      expect(frame.width).toBeGreaterThan(150);
+      expect(frame.height / frame.width).toBeCloseTo(2, 1);
       await expect(gallery.locator("source")).toHaveCount(0);
       await preview.click();
       const dialog = page.getByRole("dialog");

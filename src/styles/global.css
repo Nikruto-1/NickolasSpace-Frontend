@@ -93,16 +93,22 @@ body {
   gap: 24px;
 }
 
+.phone-preview {
+  height: min(68svh, 560px);
+  min-height: 360px;
+}
+
 .phone-stage {
   display: flex;
   width: 100%;
   height: 100%;
   align-items: center;
   justify-content: center;
-  padding: 12px;
+  padding: 16px;
 }
 
 .phone-mockup {
+  position: relative;
   display: block;
   flex-shrink: 0;
   height: 100%;
@@ -110,10 +116,31 @@ body {
   max-width: 100%;
   aspect-ratio: 1 / 2;
   padding: 5px;
-  border: 2px solid rgb(var(--control-rgb));
-  border-radius: 30px;
-  background: #080b10;
-  box-shadow: inset 0 0 0 1px rgb(var(--line-rgb));
+  border: 2px solid #747d86;
+  border-radius: 14% / 7%;
+  background: #050608;
+  box-shadow: inset 0 0 0 2px #252a30, 0 10px 24px #0006;
+}
+
+.phone-mockup::before,
+.phone-mockup::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  border-radius: 2px;
+  background: #747d86;
+}
+
+.phone-mockup::before {
+  top: 17%;
+  left: -4px;
+  height: 12%;
+}
+
+.phone-mockup::after {
+  top: 28%;
+  right: -4px;
+  height: 17%;
 }
 
 .phone-screen {
@@ -121,7 +148,7 @@ body {
   display: block;
   height: 100%;
   overflow: hidden;
-  border-radius: 22px;
+  border-radius: 12% / 6%;
   background: #101010;
 }
 
@@ -136,10 +163,23 @@ body {
 }
 
 .phone-screen::before {
-  top: 7px;
-  width: 25%;
-  height: 5px;
+  top: 0;
+  width: 42%;
+  height: 18px;
+  border-radius: 0 0 12px 12px;
   background: #020304;
+}
+
+.phone-camera {
+  position: absolute;
+  z-index: 2;
+  top: 5px;
+  left: calc(50% + 20px);
+  width: 5px;
+  height: 5px;
+  border: 1px solid #303945;
+  border-radius: 50%;
+  background: #101826;
 }
 
 .phone-screen::after {
@@ -152,7 +192,7 @@ body {
 .phone-screen img {
   width: 100%;
   height: 100%;
-  padding-block: 18px 14px;
+  padding-block: 20px 14px;
   object-fit: contain;
 }
 
@@ -212,6 +252,10 @@ body {
 @media (min-width: 768px) {
   .project-preview {
     max-height: min(42dvh, 360px);
+  }
+
+  .project-preview.phone-preview {
+    min-height: 0;
   }
 }
 
