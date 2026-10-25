@@ -67,7 +67,7 @@ export const translations = {
       gamesGallery: "NickolasGames screenshots by language",
       gamesViews: ["Homepage", "Game catalogue"],
       gamesDetailsLabel: "Games, modes & features",
-      screens: ["Homepage", "Cost calculator", "Order form", "Admin overview", "Vehicle management", "Enquiries"],
+      screens: ["Homepage", "Cost calculator", "Order form", "Admin overview", "Mobile dashboard", "Vehicle management", "Enquiries", "Mobile enquiries"],
       adminDemo: "Ukrainian admin interface with test data.",
       openImage: "View full-size image",
       cases: [
@@ -185,7 +185,7 @@ export const translations = {
       gamesGallery: "Скриншоти NickolasGames різними мовами",
       gamesViews: ["Головна", "Каталог ігор"],
       gamesDetailsLabel: "Ігри, режими та можливості",
-      screens: ["Головна", "Калькулятор", "Замовлення", "Дашборд", "Керування авто", "Заявки"],
+      screens: ["Головна", "Калькулятор", "Замовлення", "Дашборд", "Мобільний дашборд", "Керування авто", "Заявки", "Мобільні заявки"],
       adminDemo: "На скриншотах адмінпанелі показані тестові дані.",
       openImage: "Відкрити зображення",
       cases: [
@@ -303,7 +303,7 @@ export const translations = {
       gamesGallery: "Skärmbilder av NickolasGames på olika språk",
       gamesViews: ["Startsida", "Spelkatalog"],
       gamesDetailsLabel: "Spel, lägen och funktioner",
-      screens: ["Startsida", "Kostnadskalkyl", "Beställningsformulär", "Adminöversikt", "Fordonshantering", "Förfrågningar"],
+      screens: ["Startsida", "Kostnadskalkyl", "Beställningsformulär", "Adminöversikt", "Mobil översikt", "Fordonshantering", "Förfrågningar", "Mobila förfrågningar"],
       adminDemo: "Ukrainskt administratörsgränssnitt med testdata.",
       openImage: "Visa bilden i full storlek",
       cases: [

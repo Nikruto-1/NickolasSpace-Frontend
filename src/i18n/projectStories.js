@@ -11,8 +11,10 @@ export const projectStories = {
           ["For the customer", "Understand the costs before enquiring", "The calculator lets customers make a preliminary estimate of purchase and delivery costs before contacting the team."],
           ["For the customer", "Send the vehicle requirements", "The order form collects vehicle preferences and contact details so the manager can review the request."],
           ["For the team", "An overview in one place", "The dashboard shows vehicles in the catalogue, total enquiries, new enquiries and requests in progress."],
+          ["For the team on mobile", "Check the overview from a phone", "The mobile dashboard shows catalogue and enquiry counts, with access to admin sections from the side menu."],
           ["For the team", "Keep the catalogue up to date", "Staff can add vehicles and edit existing listings in the admin panel, without changing the website code."],
           ["For the team", "Review enquiries and their status", "The admin panel brings requests and their details together, with status filters. New enquiry notifications also arrive in Telegram."],
+          ["For the team on mobile", "Manage enquiries away from the desk", "On a phone, enquiry cards show contact details, vehicle requirements and comments, with filters and status controls."],
         ],
         decisions: [
           ["A connected customer journey", "The catalogue, calculator and order form serve consecutive steps: choose a vehicle, estimate the costs and send a request."],
@@ -45,8 +47,10 @@ export const projectStories = {
           ["Для покупця", "Оцінити витрати до звернення", "Калькулятор дозволяє попередньо розрахувати витрати на купівлю й доставку автомобіля, перш ніж звертатися до команди."],
           ["Для покупця", "Передати побажання до авто", "Форма замовлення збирає побажання до автомобіля й контактні дані, щоб менеджер міг опрацювати запит."],
           ["Для команди", "Загальна картина в одному місці", "Дашборд показує кількість авто в каталозі, усіх заявок, нових звернень і заявок у роботі."],
+          ["Для команди зі смартфона", "Переглянути показники з телефона", "Мобільний дашборд показує кількість авто й заявок, а бічне меню відкриває розділи адмінпанелі."],
           ["Для команди", "Підтримувати актуальний каталог", "В адмінпанелі можна додавати автомобілі та редагувати наявні пропозиції без змін у коді сайту."],
           ["Для команди", "Бачити заявки та їхні статуси", "Адмінпанель об’єднує звернення з деталями й фільтрами за статусом. Сповіщення про нові заявки також надходять у Telegram."],
+          ["Для команди зі смартфона", "Працювати із заявками без комп’ютера", "На телефоні картки заявок показують контакти, побажання до авто й коментарі. Доступні фільтри та зміна статусу."],
         ],
         decisions: [
           ["Послідовний шлях покупця", "Каталог, калькулятор і форма замовлення відповідають послідовним крокам: вибрати авто, оцінити витрати та надіслати запит."],
@@ -79,8 +83,10 @@ export const projectStories = {
           ["För kunden", "Förstå kostnaderna före kontakt", "Med kalkylen kan kunden uppskatta kostnaderna för köp och leverans av ett fordon innan teamet kontaktas."],
           ["För kunden", "Skicka önskemålen om fordonet", "Beställningsformuläret samlar fordonsönskemål och kontaktuppgifter så att ansvarig kan granska förfrågan."],
           ["För teamet", "En samlad översikt", "Översikten visar antal fordon i katalogen, totalt antal förfrågningar samt nya och pågående förfrågningar."],
+          ["För teamet på mobilen", "Se översikten från telefonen", "Den mobila översikten visar antal fordon och förfrågningar. Sidomenyn ger tillgång till adminpanelens avsnitt."],
           ["För teamet", "Håll katalogen uppdaterad", "Personalen kan lägga till fordon och redigera befintliga annonser i adminpanelen utan att ändra webbplatsens kod."],
           ["För teamet", "Se förfrågningar och deras status", "Adminpanelen samlar förfrågningar med detaljer och statusfilter. Aviseringar om nya förfrågningar skickas också till Telegram."],
+          ["För teamet på mobilen", "Hantera förfrågningar utan dator", "På telefonen visar korten kontaktuppgifter, fordonsönskemål och kommentarer, med filter och möjlighet att ändra status."],
         ],
         decisions: [
           ["En sammanhängande kundresa", "Katalogen, kalkylen och beställningsformuläret motsvarar stegen att välja ett fordon, uppskatta kostnader och skicka en förfrågan."],

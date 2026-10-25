@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { Buffer } from "node:buffer";
 import { createHash } from "node:crypto";
 import { readFile, stat } from "node:fs/promises";
 import test from "node:test";
@@ -120,7 +121,8 @@ test("portfolio restoration accepts only valid projects and gallery indices", ()
   assert.equal(normalizePortfolioState({ active: 0 }, "?project=nickolasgames").active, 0);
   assert.deepEqual(normalizePortfolioState({ active: 0, screens: [3, 1] }), { active: 0, screens: [3, 1] });
   assert.deepEqual(normalizePortfolioState({ active: 0, screens: [5, 1] }), { active: 0, screens: [5, 1] });
-  assert.deepEqual(normalizePortfolioState({ active: 0, screens: [6, 2] }), { active: 0, screens: [0, 0] });
+  assert.deepEqual(normalizePortfolioState({ active: 0, screens: [7, 1] }), { active: 0, screens: [7, 1] });
+  assert.deepEqual(normalizePortfolioState({ active: 0, screens: [8, 2] }), { active: 0, screens: [0, 0] });
 });
 
 test("the AutoAlex admin overview and translated capabilities are included in each case", async () => {
@@ -128,7 +130,7 @@ test("the AutoAlex admin overview and translated capabilities are included in ea
     const media = projectMedia(0, language);
     assert.equal(media.screens.length, translations[language].work.screens.length);
     assert.deepEqual(media.screens.filter((screen) => screen.demo).map((screen) => screen.src), [
-      "./assets/autoalex-admin-dashboard.png", "./assets/autoalex-admin-vehicles.png", "./assets/autoalex-admin-enquiries.png",
+      "./assets/autoalex-admin-dashboard.png", "./assets/autoalex-admin-dashboard-mobile.svg", "./assets/autoalex-admin-vehicles.png", "./assets/autoalex-admin-enquiries.png", "./assets/autoalex-admin-enquiries-mobile.svg",
     ]);
     assert.ok(translations[language].work.adminDemo.trim());
     const html = await read(projectFilename("autoalex", language));
@@ -150,6 +152,28 @@ test("modified clicks retain native open-in-new-tab behaviour", () => {
   assert.equal(isPlainNavigation(plain), true);
   for (const modifier of ["ctrlKey", "metaKey", "shiftKey", "altKey", "defaultPrevented"]) assert.equal(isPlainNavigation({ ...plain, [modifier]: true }), false);
   assert.equal(isPlainNavigation({ button: 1 }), false);
+});
+
+test("mobile admin screenshots follow their desktop views and preserve the original pixels", async () => {
+  const screens = projectMedia(0, "en").screens;
+  for (const [index, view] of [[4, "dashboard"], [7, "enquiries"]]) {
+    const screen = screens[index];
+    assert.equal(screen.src, `./assets/autoalex-admin-${view}-mobile.svg`);
+    assert.ok(screens[index - 1].src.endsWith(`admin-${view}.png`));
+    assert.equal(screen.demo, true);
+    assert.equal(screen.device, "phone");
+    const svg = await read(screen.src.replace("./", ""));
+    assert.match(svg, /viewBox="0 91 588 1045"/);
+    const data = svg.match(/href="data:image\/jpeg;base64,([A-Za-z0-9+/=]+)"/);
+    assert.ok(data, "The crop must embed the unchanged source JPEG, not a redrawn interface");
+    const bytes = Buffer.from(data[1], "base64");
+    assert.equal(bytes.subarray(0, 3).toString("hex"), "ffd8ff");
+    assert.doesNotMatch(svg, /<script|https?:\/\/(?!www\.w3\.org)/);
+    for (const language of projectLanguages) {
+      assert.ok(translations[language].work.screens[index].trim());
+      assert.ok(projectStories[language].projects[0].views[index].every((value) => value.trim()));
+    }
+  }
 });
 
 test("detail navigation preserves the portfolio entry and language changes replace the case entry", (context) => {

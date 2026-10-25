@@ -1,7 +1,7 @@
 export const ASSETS = {
-  hero: "./assets/hero.mp4",
-  automation: "./assets/automation.mp4",
-  how: "./assets/how-we-work.mp4",
-  cta: "./assets/final-cta.mp4",
+  hero: "./assets/hero-web.mp4",
+  automation: "./assets/automation-web.mp4",
+  how: "./assets/how-we-work-web.mp4",
+  cta: "./assets/final-cta-web.mp4",
   portrait: "./assets/mykola.webp",
 };

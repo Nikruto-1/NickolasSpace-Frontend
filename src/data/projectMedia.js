@@ -3,8 +3,10 @@ const autoAlexScreens = [
   { src: "./assets/autoalex-calculator.png", preview: "./assets/autoalex-calculator", width: 1902, height: 1080 },
   { src: "./assets/autoalex-order.png", preview: "./assets/autoalex-order", width: 1901, height: 1080 },
   { src: "./assets/autoalex-admin-dashboard.png", preview: "./assets/autoalex-admin-dashboard", width: 1903, height: 868, demo: true },
+  { src: "./assets/autoalex-admin-dashboard-mobile.svg", width: 588, height: 1045, demo: true, device: "phone" },
   { src: "./assets/autoalex-admin-vehicles.png", preview: "./assets/autoalex-admin-vehicles", width: 1899, height: 864, demo: true },
   { src: "./assets/autoalex-admin-enquiries.png", preview: "./assets/autoalex-admin-enquiries", width: 1893, height: 872, demo: true },
+  { src: "./assets/autoalex-admin-enquiries-mobile.svg", width: 588, height: 1045, demo: true, device: "phone" },
 ];
 const gameScreens = {
   uk: [

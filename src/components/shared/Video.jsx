@@ -63,9 +63,6 @@ function BasicVideo({ src, poster, active, className = "" }) {
 function CrossfadeVideo({ src, poster, active: isActive, className = "" }) {
   const firstRef = useRef(null);
   const secondRef = useRef(null);
-  const activeRef = useRef(0);
-  const transitionRef = useRef(false);
-  const frameRef = useRef(0);
 
   useEffect(() => {
     const videos = [firstRef.current, secondRef.current];
@@ -74,54 +71,90 @@ function CrossfadeVideo({ src, poster, active: isActive, className = "" }) {
       videos.forEach((video) => video.pause());
       return undefined;
     }
+    let activeIndex = 0;
+    let pending = false;
+    let cancelled = false;
+    let frameId;
     let timeoutId;
-
-    activeRef.current = 0;
-    transitionRef.current = false;
+    let videoFrameId;
+    let incomingVideo;
+    let retryAfter = 0;
 
     videos.forEach((video, index) => {
       video.currentTime = 0;
       video.style.opacity = index === 0 ? "1" : "0";
+      video.style.zIndex = index === 0 ? "1" : "0";
       video.pause();
     });
 
-    const play = (video) => video.play().catch(() => {});
-    const onCanPlay = () => play(videos[activeRef.current]);
-    videos.forEach((video) => video.addEventListener("canplay", onCanPlay));
-    play(videos[0]);
+    const onCanPlay = () => {
+      if (!cancelled) videos[activeIndex].play().catch(() => {});
+    };
+    videos[0].addEventListener("canplay", onCanPlay);
+    onCanPlay();
+
+    const crossfade = async (outgoing, incoming, nextIndex) => {
+      pending = true;
+      incomingVideo = incoming;
+      try {
+        incoming.currentTime = 0;
+        await incoming.play();
+        if (cancelled) return;
+        // Keep the outgoing frame visible until the decoder presents its replacement.
+        if (incoming.requestVideoFrameCallback) {
+          await new Promise((resolve) => {
+            videoFrameId = incoming.requestVideoFrameCallback(resolve);
+          });
+        } else if (incoming.readyState < 2 || incoming.seeking) {
+          incoming.pause();
+          pending = false;
+          return;
+        }
+        if (cancelled) return;
+        incoming.style.zIndex = "2";
+        incoming.style.opacity = "1";
+        // Only fade in the top layer, avoiding a dark dip between two fading layers.
+        timeoutId = window.setTimeout(() => {
+          outgoing.pause();
+          outgoing.style.opacity = "0";
+          outgoing.style.zIndex = "0";
+          incoming.style.zIndex = "1";
+          activeIndex = nextIndex;
+          pending = false;
+        }, 700);
+      } catch {
+        pending = false;
+        retryAfter = window.performance.now() + 2000;
+      }
+    };
 
     const tick = () => {
-      const active = videos[activeRef.current];
-      const standbyIndex = activeRef.current === 0 ? 1 : 0;
+      const active = videos[activeIndex];
+      const standbyIndex = activeIndex === 0 ? 1 : 0;
       const standby = videos[standbyIndex];
 
       if (active.duration && !active.paused && !active.seeking) {
         const remaining = active.duration - active.currentTime;
 
-        if (remaining < 0.75 && !transitionRef.current) {
-          transitionRef.current = true;
-          standby.currentTime = 0;
-          play(standby);
-          standby.style.opacity = "1";
-          active.style.opacity = "0";
-
-          timeoutId = window.setTimeout(() => {
-            active.pause();
-            active.currentTime = 0;
-            activeRef.current = standbyIndex;
-            transitionRef.current = false;
-          }, 700);
+        if (remaining < 1.2 && !pending && window.performance.now() >= retryAfter) {
+          crossfade(active, standby, standbyIndex);
         }
       }
+      // A slow standby decoder may outlast the clip; retain the final frame and retry.
+      if (active.ended && !pending && window.performance.now() >= retryAfter) {
+        crossfade(active, standby, standbyIndex);
+      }
 
-      frameRef.current = window.requestAnimationFrame(tick);
+      frameId = window.requestAnimationFrame(tick);
     };
 
-    frameRef.current = window.requestAnimationFrame(tick);
+    frameId = window.requestAnimationFrame(tick);
 
     return () => {
-      window.cancelAnimationFrame(frameRef.current);
+      cancelled = true;
+      window.cancelAnimationFrame(frameId);
       window.clearTimeout(timeoutId);
+      if (videoFrameId !== undefined) incomingVideo?.cancelVideoFrameCallback(videoFrameId);
       videos.forEach((video) => {
         video.pause();
         video.removeEventListener("canplay", onCanPlay);
@@ -139,7 +172,7 @@ function CrossfadeVideo({ src, poster, active: isActive, className = "" }) {
   );
 }
 
-export default function Video({ smoothLoop = false, src, ...props }) {
+export default function Video({ smoothLoop = false, src, poster = src?.replace(/\.mp4$/, "-poster.webp"), ...props }) {
   const containerRef = useRef(null);
   const [status, setStatus] = useState({ loaded: false, active: false });
   const [visible, setVisible] = useState(true);
@@ -173,8 +206,9 @@ export default function Video({ smoothLoop = false, src, ...props }) {
 
   const VideoPlayer = smoothLoop ? CrossfadeVideo : BasicVideo;
   return (
-    <div ref={containerRef} className="absolute inset-0" aria-hidden="true">
-      <VideoPlayer {...props} src={status.loaded && !paused ? src : undefined} active={status.active && visible && !paused} />
+    <div ref={containerRef} className="absolute inset-0 isolate" aria-hidden="true">
+      {poster && <img src={poster} alt="" width="1280" height="720" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />}
+      <VideoPlayer {...props} poster={poster} src={status.loaded && !paused ? src : undefined} active={status.active && visible && !paused} />
     </div>
   );
 }

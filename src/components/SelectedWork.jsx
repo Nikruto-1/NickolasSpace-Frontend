@@ -2,12 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import useLanguage from "../i18n/useLanguage.js";
 import Button from "./shared/Button.jsx";
 import DeviceMockup from "./DeviceMockup.jsx";
+import PhoneMockup from "./PhoneMockup.jsx";
 import { projectPages } from "../i18n/projectPages.js";
 import { projectMedia } from "../data/projectMedia.js";
 import { projectFilename, projectSlugs } from "../data/projectRoutes.js";
 import { openProject } from "../navigation/portfolioState.js";
 import usePortfolioState from "../navigation/usePortfolioState.js";
-import { ArrowLeft, ArrowRight, ArrowUpRight, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Maximize2, X } from "lucide-react";
 
 export function ProjectGallery({ screens, labels, name, galleryLabel, mockup, selectedIndex, onSelect, large = false, context }) {
   const { t } = useLanguage();
@@ -18,9 +19,11 @@ export function ProjectGallery({ screens, labels, name, galleryLabel, mockup, se
   const dialogRef = useRef(null);
   const showingMockup = mockup && selected === 0;
   const screen = showingMockup ? mockup : screens[selected];
+  const showingPhone = screen.device === "phone";
   const view = context?.[selected];
-  const PreviewTag = showingMockup ? "button" : "a";
-  const previewProps = showingMockup
+  const previewLabel = showingPhone ? labels[selected] : t.work.devicesPreview;
+  const PreviewTag = showingMockup || showingPhone ? "button" : "a";
+  const previewProps = showingMockup || showingPhone
     ? { type: "button", onClick: () => setExpanded(true) }
     : { href: screen.src, target: "_blank", rel: "noreferrer" };
 
@@ -40,11 +43,14 @@ export function ProjectGallery({ screens, labels, name, galleryLabel, mockup, se
 
   return (
     <figure className={`min-w-0 ${context ? "case-gallery" : ""}`}>
-      <PreviewTag {...previewProps} aria-label={`${t.work.openImage}: ${name}, ${labels[selected]}`} style={large ? { aspectRatio: `${screens[0].width} / ${screens[0].height}` } : undefined} className={`${large ? "case-preview" : "project-preview"} block w-full overflow-hidden rounded-lg ${showingMockup ? "aspect-[4/3] md:aspect-[16/10]" : large ? "bg-deep" : "aspect-[16/9] bg-deep"}`}>
+      <PreviewTag {...previewProps} aria-label={`${t.work.openImage}: ${name}, ${labels[selected]}`} title={t.work.openImage} style={large ? { aspectRatio: `${screens[0].width} / ${screens[0].height}` } : undefined} className={`${large ? "case-preview" : "project-preview"} relative block w-full overflow-hidden rounded-lg ${showingMockup ? "aspect-[4/3] md:aspect-[16/10]" : large ? "bg-deep" : "aspect-[16/9] bg-deep"}`}>
         {showingMockup ? (
           <DeviceMockup src={screen.src} label={`${name} — ${labels[selected]}`} />
-        ) : <picture>
-          <source type="image/webp" srcSet={`${screen.preview}-720.webp 720w, ${screen.preview}-1440.webp 1440w`} sizes={large ? "(min-width: 1280px) 864px, (min-width: 1024px) calc(100vw - 416px), (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)" : "(min-width: 1400px) 758px, (min-width: 1024px) calc((100vw - 136px) * 0.6), (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)"} />
+        ) : showingPhone ? <>
+          <PhoneMockup screen={screen} label={`${name} — ${labels[selected]}`} loading={large ? "eager" : "lazy"} />
+          <span className="absolute bottom-3 right-3 flex h-9 w-9 items-center justify-center rounded-md border bd bg-ink text-paper" aria-hidden="true"><Maximize2 size={16} /></span>
+        </> : <picture>
+          {screen.preview && <source type="image/webp" srcSet={`${screen.preview}-720.webp 720w, ${screen.preview}-1440.webp 1440w`} sizes={large ? "(min-width: 1280px) 864px, (min-width: 1024px) calc(100vw - 416px), (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)" : "(min-width: 1400px) 758px, (min-width: 1024px) calc((100vw - 136px) * 0.6), (min-width: 768px) calc(100vw - 96px), calc(100vw - 48px)"} />}
           <img src={screen.src} alt={`${name} — ${labels[selected]}`} width={screen.width} height={screen.height} loading={large ? "eager" : "lazy"} decoding="async" draggable={false} className="h-full w-full object-contain" />
         </picture>}
       </PreviewTag>
@@ -61,15 +67,15 @@ export function ProjectGallery({ screens, labels, name, galleryLabel, mockup, se
         <p className="mt-4 leading-7 text-mist">{view[2]}</p>
         {screen.demo && <p className="mt-5 text-xs leading-relaxed text-mist">{t.work.adminDemo}</p>}
       </figcaption> : screen.demo && <figcaption className="mt-3 text-xs leading-relaxed text-mist">{t.work.adminDemo}</figcaption>}
-      {mockup && <dialog ref={dialogRef} aria-label={`${name} — ${t.work.devicesPreview}`} onCancel={() => setExpanded(false)} onClick={(event) => {
+      {(mockup || showingPhone) && <dialog ref={dialogRef} aria-label={`${name} — ${previewLabel}`} onCancel={() => setExpanded(false)} onClick={(event) => {
         if (event.target === event.currentTarget) setExpanded(false);
       }} className="fixed inset-0 m-auto max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-[1400px] rounded-lg border bd bg-ink2 p-4 text-paper backdrop:bg-ink/90 md:p-6">
         <div className="flex items-center justify-between gap-4">
-          <p className="text-sm text-mist">{name} — {t.work.devicesPreview}</p>
+          <p className="text-sm text-mist">{name} — {previewLabel}</p>
           <button type="button" onClick={() => setExpanded(false)} aria-label={t.work.closePreview} title={t.work.closePreview} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md hover:bg-paper/5"><X size={24} aria-hidden="true" /></button>
         </div>
-        <div className="aspect-[836/607] max-h-[70dvh] w-full">
-          <DeviceMockup src={mockup.src} label={`${name} — ${t.work.devicesPreview}`} />
+        <div className={showingPhone ? "h-[min(70dvh,640px)] w-full" : "aspect-[836/607] max-h-[70dvh] w-full"}>
+          {showingPhone ? <PhoneMockup screen={screen} label={`${name} — ${previewLabel}`} loading="eager" /> : <DeviceMockup src={mockup.src} label={`${name} — ${t.work.devicesPreview}`} />}
         </div>
       </dialog>}
     </figure>
